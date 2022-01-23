@@ -1,0 +1,32 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.6",
+    "heartbeatAt": "2022-01-23T23:08:51.553171",
+    "startedAt": "2022-01-23T23:08:43.288174",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "--ip=127.0.0.1",
+        "--stdin=9003",
+        "--control=9001",
+        "--hb=9000",
+        "--Session.signature_scheme=\"hmac-sha256\"",
+        "--Session.key=b\"12709965-ae37-4074-bc07-7721e7e5cf9c\"",
+        "--shell=9002",
+        "--transport=\"tcp\"",
+        "--iopub=9004",
+        "--f=/var/folders/yt/3gz8yy8s1ks3w9hgqhvppyyc0000gn/T/tmp-100299DFrWab1ZCo.json"
+    ],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/JoLi0608/CartPole_PPO.git",
+        "commit": "b27e2a2db0e32614d4fa0d459c072bcf76c79fc8"
+    },
+    "email": "wyli608@163.com",
+    "root": "/Users/liwenyu/Documents/GitHub/RTDM",
+    "host": "dhcp-10-241-184-198.cp.wireless.private.cam.ac.uk",
+    "username": "liwenyu",
+    "executable": "/usr/local/bin/python3.9"
+}
