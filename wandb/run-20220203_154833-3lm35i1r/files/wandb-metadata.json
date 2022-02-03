@@ -1,0 +1,32 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.6",
+    "heartbeatAt": "2022-02-03T15:48:55.876817",
+    "startedAt": "2022-02-03T15:48:33.203829",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "--ip=127.0.0.1",
+        "--stdin=9003",
+        "--control=9001",
+        "--hb=9000",
+        "--Session.signature_scheme=\"hmac-sha256\"",
+        "--Session.key=b\"36776b37-326b-4f25-9236-5b9799793666\"",
+        "--shell=9002",
+        "--transport=\"tcp\"",
+        "--iopub=9004",
+        "--f=/var/folders/yt/3gz8yy8s1ks3w9hgqhvppyyc0000gn/T/tmp-11489qjBMlpRcV1u.json"
+    ],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/JoLi0608/RTDM.git",
+        "commit": "7ce477a126a12583829efaa9a7edb339f261986e"
+    },
+    "email": "wyli608@163.com",
+    "root": "/Users/liwenyu/Documents/GitHub/RTDM",
+    "host": "dhcp-10-240-101-68.cp.wireless.private.cam.ac.uk",
+    "username": "liwenyu",
+    "executable": "/usr/local/bin/python3.9"
+}

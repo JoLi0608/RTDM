@@ -1,0 +1,31 @@
+2022-02-03 16:35:52,474 INFO    MainThread:1774 [wandb_setup.py:_flush():71] setting env: {}
+2022-02-03 16:35:52,474 INFO    MainThread:1774 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-02-03 16:35:52,474 INFO    MainThread:1774 [wandb_init.py:_log_setup():371] Logging user logs to /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220203_163552-5e4rnk0r/logs/debug.log
+2022-02-03 16:35:52,475 INFO    MainThread:1774 [wandb_init.py:_log_setup():372] Logging internal logs to /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220203_163552-5e4rnk0r/logs/debug-internal.log
+2022-02-03 16:35:52,475 INFO    MainThread:1774 [wandb_init.py:_jupyter_setup():321] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7fb4b2123df0>
+2022-02-03 16:35:52,475 INFO    MainThread:1774 [wandb_init.py:init():404] calling init triggers
+2022-02-03 16:35:52,475 INFO    MainThread:1774 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {}
+2022-02-03 16:35:52,476 INFO    MainThread:1774 [wandb_init.py:init():424] re-initializing run, found existing run on stack: ngohftsu
+2022-02-03 16:35:52,478 INFO    MainThread:1774 [wandb_run.py:finish():1463] finishing run lwyjo/PPO/ngohftsu
+2022-02-03 16:35:52,479 INFO    MainThread:1774 [jupyter.py:save_history():429] not saving jupyter history
+2022-02-03 16:35:52,480 INFO    MainThread:1774 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2022-02-03 16:35:52,480 INFO    MainThread:1774 [wandb_init.py:_jupyter_teardown():303] cleaning up jupyter logic
+2022-02-03 16:35:52,484 INFO    MainThread:1774 [wandb_init.py:init():449] starting backend
+2022-02-03 16:35:52,485 INFO    MainThread:1774 [backend.py:_multiprocessing_setup():95] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2022-02-03 16:35:52,490 INFO    MainThread:1774 [backend.py:ensure_launched():199] starting backend process...
+2022-02-03 16:35:52,544 INFO    MainThread:1774 [backend.py:ensure_launched():204] started backend process with pid: 1893
+2022-02-03 16:35:52,546 INFO    MainThread:1774 [wandb_init.py:init():458] backend started and connected
+2022-02-03 16:35:52,569 INFO    MainThread:1774 [wandb_run.py:_label_probe_notebook():917] probe notebook
+2022-02-03 16:35:52,570 INFO    MainThread:1774 [wandb_run.py:_label_probe_notebook():927] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2022-02-03 16:35:52,570 INFO    MainThread:1774 [wandb_init.py:init():519] updated telemetry
+2022-02-03 16:35:52,654 INFO    MainThread:1774 [wandb_init.py:init():549] communicating current version
+2022-02-03 16:35:53,824 INFO    MainThread:1774 [wandb_init.py:init():554] got version response upgrade_message: "wandb version 0.12.10 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2022-02-03 16:35:53,827 INFO    MainThread:1774 [wandb_init.py:init():564] communicating run to backend with 30 second timeout
+2022-02-03 16:35:54,058 INFO    MainThread:1774 [wandb_init.py:init():592] starting run threads in backend
+2022-02-03 16:35:57,230 INFO    MainThread:1774 [wandb_run.py:_console_start():1816] atexit reg
+2022-02-03 16:35:57,231 INFO    MainThread:1774 [wandb_run.py:_redirect():1690] redirect: SettingsConsole.WRAP
+2022-02-03 16:35:57,232 INFO    MainThread:1774 [wandb_run.py:_redirect():1727] Wrapping output streams.
+2022-02-03 16:35:57,233 INFO    MainThread:1774 [wandb_run.py:_redirect():1751] Redirects installed.
+2022-02-03 16:35:57,234 INFO    MainThread:1774 [wandb_init.py:init():619] run started, returning control to user process

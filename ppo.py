@@ -14,10 +14,12 @@ class PPOAgent:
                  hidden_layers,
                  lr_policy, 
                  use_reset, 
-                 device
+                 device,
+                 input_channel, 
+                 feature_dim
                 ):
 
-        #self.main_net = ConvNet(state_size, feature_dim, seed, use_reset, input_channel).to(device)
+        #self.main_net = ConvNet(state_size, seed, use_reset, input_channel=1, feature_dim=[4,4]).to(device)
         self.main_net = FCNet(state_size, seed, hidden_layers=[64,64], use_reset=True, act_fnc=F.relu).to(device)
         self.policy = Policy(state_size, action_size, seed, self.main_net).to(device)
         self.optimizer = optim.Adam(self.policy.parameters(), lr=lr_policy)
