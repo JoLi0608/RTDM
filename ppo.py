@@ -14,9 +14,7 @@ class PPOAgent:
                  hidden_layers,
                  lr_policy, 
                  use_reset, 
-                 device,
-                 input_channel, 
-                 feature_dim
+                 device
                 ):
 
         #self.main_net = ConvNet(state_size, seed, use_reset, input_channel=1, feature_dim=[4,4]).to(device)
