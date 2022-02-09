@@ -1,0 +1,107 @@
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 20.8     |
+|    ep_rew_mean     | 20.8     |
+| time/              |          |
+|    fps             | 2119     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 26.1        |
+|    ep_rew_mean          | 26.1        |
+| time/                   |             |
+|    fps                  | 1593        |
+|    iterations           | 2           |
+|    time_elapsed         | 2           |
+|    total_timesteps      | 4096        |
+| train/                  |             |
+|    approx_kl            | 0.007799549 |
+|    clip_fraction        | 0.0853      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -0.687      |
+|    explained_variance   | -0.0081     |
+|    learning_rate        | 0.0003      |
+|    loss                 | 7.13        |
+|    n_updates            | 10          |
+|    policy_gradient_loss | -0.011      |
+|    value_loss           | 45          |
+-----------------------------------------
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 33.5        |
+|    ep_rew_mean          | 33.5        |
+| time/                   |             |
+|    fps                  | 1383        |
+|    iterations           | 3           |
+|    time_elapsed         | 4           |
+|    total_timesteps      | 6144        |
+| train/                  |             |
+|    approx_kl            | 0.010122312 |
+|    clip_fraction        | 0.0623      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -0.669      |
+|    explained_variance   | 0.101       |
+|    learning_rate        | 0.0003      |
+|    loss                 | 16          |
+|    n_updates            | 20          |
+|    policy_gradient_loss | -0.017      |
+|    value_loss           | 36.7        |
+-----------------------------------------
+----------------------------------------
+| rollout/                |            |
+|    ep_len_mean          | 45         |
+|    ep_rew_mean          | 45         |
+| time/                   |            |
+|    fps                  | 1279       |
+|    iterations           | 4          |
+|    time_elapsed         | 6          |
+|    total_timesteps      | 8192       |
+| train/                  |            |
+|    approx_kl            | 0.00839112 |
+|    clip_fraction        | 0.093      |
+|    clip_range           | 0.2        |
+|    entropy_loss         | -0.636     |
+|    explained_variance   | 0.187      |
+|    learning_rate        | 0.0003     |
+|    loss                 | 26.8       |
+|    n_updates            | 30         |
+|    policy_gradient_loss | -0.0184    |
+|    value_loss           | 54.1       |
+----------------------------------------
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 59.1        |
+|    ep_rew_mean          | 59.1        |
+| time/                   |             |
+|    fps                  | 1219        |
+|    iterations           | 5           |
+|    time_elapsed         | 8           |
+|    total_timesteps      | 10240       |
+| train/                  |             |
+|    approx_kl            | 0.007652093 |
+|    clip_fraction        | 0.066       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -0.611      |
+|    explained_variance   | 0.285       |
+|    learning_rate        | 0.0003      |
+|    loss                 | 23.5        |
+|    n_updates            | 40          |
+|    policy_gradient_loss | -0.0158     |
+|    value_loss           | 60.9        |
+-----------------------------------------
+difficulty level: 0
+[500.0, 431.0, 500.0, 280.0, 500.0, 258.0, 500.0, 219.0, 494.0, 500.0, 500.0, 248.0, 500.0, 500.0, 486.0, 418.0, 500.0, 500.0, 246.0, 500.0]
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/main.py", line 59, in <module>
+    reward_ave = play(env, model, 800, asy = 0)
+  File "/Users/liwenyu/Documents/GitHub/RTDM/main.py", line 55, in play
+    wandb.log({"average_rewards": reward_ave},{"difficulty_level": level})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1329, in log
+    if self.history._step > step:
+TypeError: '>' not supported between instances of 'int' and 'dict'
