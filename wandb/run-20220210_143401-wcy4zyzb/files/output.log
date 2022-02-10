@@ -1,0 +1,11 @@
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/MPPO.py", line 14, in <module>
+    model.learn(total_timesteps=10000)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/sb3_contrib/ppo_mask/ppo_mask.py", line 545, in learn
+    continue_training = self.collect_rollouts(self.env, callback, self.rollout_buffer, self.n_steps, use_masking)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/sb3_contrib/ppo_mask/ppo_mask.py", line 307, in collect_rollouts
+    raise ValueError("Environment does not support action masking. Consider using ActionMasker wrapper")
+ValueError: Environment does not support action masking. Consider using ActionMasker wrapper

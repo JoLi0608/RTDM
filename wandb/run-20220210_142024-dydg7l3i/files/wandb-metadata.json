@@ -1,0 +1,22 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.6",
+    "heartbeatAt": "2022-02-10T14:20:29.194054",
+    "startedAt": "2022-02-10T14:20:24.660992",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/liwenyu/Documents/GitHub/RTDM/PPO.py",
+    "codePath": "PPO.py",
+    "git": {
+        "remote": "https://github.com/JoLi0608/RTDM.git",
+        "commit": "ead8bd92afecc8de70dae4ca4c187345fe9de45e"
+    },
+    "email": "wyli608@163.com",
+    "root": "/Users/liwenyu/Documents/GitHub/RTDM",
+    "host": "dhcp-10-240-123-202.cp.wireless.private.cam.ac.uk",
+    "username": "liwenyu",
+    "executable": "/usr/local/bin/python3.9"
+}

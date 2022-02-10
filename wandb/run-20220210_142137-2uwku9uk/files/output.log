@@ -1,0 +1,99 @@
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 21       |
+|    ep_rew_mean     | 21       |
+| time/              |          |
+|    fps             | 2605     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 26.4        |
+|    ep_rew_mean          | 26.4        |
+| time/                   |             |
+|    fps                  | 1553        |
+|    iterations           | 2           |
+|    time_elapsed         | 2           |
+|    total_timesteps      | 4096        |
+| train/                  |             |
+|    approx_kl            | 0.008587141 |
+|    clip_fraction        | 0.0883      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -0.686      |
+|    explained_variance   | -0.00294    |
+|    learning_rate        | 0.0003      |
+|    loss                 | 5.81        |
+|    n_updates            | 10          |
+|    policy_gradient_loss | -0.0135     |
+|    value_loss           | 47.4        |
+-----------------------------------------
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 36.6        |
+|    ep_rew_mean          | 36.6        |
+| time/                   |             |
+|    fps                  | 1423        |
+|    iterations           | 3           |
+|    time_elapsed         | 4           |
+|    total_timesteps      | 6144        |
+| train/                  |             |
+|    approx_kl            | 0.010089792 |
+|    clip_fraction        | 0.0653      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -0.668      |
+|    explained_variance   | 0.08        |
+|    learning_rate        | 0.0003      |
+|    loss                 | 10.3        |
+|    n_updates            | 20          |
+|    policy_gradient_loss | -0.017      |
+|    value_loss           | 34.8        |
+-----------------------------------------
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 45.7        |
+|    ep_rew_mean          | 45.7        |
+| time/                   |             |
+|    fps                  | 1339        |
+|    iterations           | 4           |
+|    time_elapsed         | 6           |
+|    total_timesteps      | 8192        |
+| train/                  |             |
+|    approx_kl            | 0.006918953 |
+|    clip_fraction        | 0.0773      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -0.635      |
+|    explained_variance   | 0.209       |
+|    learning_rate        | 0.0003      |
+|    loss                 | 19.9        |
+|    n_updates            | 30          |
+|    policy_gradient_loss | -0.0172     |
+|    value_loss           | 51.6        |
+-----------------------------------------
+-----------------------------------------
+| rollout/                |             |
+|    ep_len_mean          | 58.4        |
+|    ep_rew_mean          | 58.4        |
+| time/                   |             |
+|    fps                  | 1297        |
+|    iterations           | 5           |
+|    time_elapsed         | 7           |
+|    total_timesteps      | 10240       |
+| train/                  |             |
+|    approx_kl            | 0.009343451 |
+|    clip_fraction        | 0.0972      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -0.607      |
+|    explained_variance   | 0.325       |
+|    learning_rate        | 0.0003      |
+|    loss                 | 17.6        |
+|    n_updates            | 40          |
+|    policy_gradient_loss | -0.0207     |
+|    value_loss           | 58          |
+-----------------------------------------
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/gym/logger.py:34: UserWarning: [33mWARN: You are calling 'step()' even though this environment has already returned done = True. You should always call 'reset()' once you receive 'done = True' -- any further steps are undefined behavior.
+  warnings.warn(colorize("%s: %s" % ("WARN", msg % args), "yellow"))

@@ -1,0 +1,22 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.6",
+    "heartbeatAt": "2022-02-09T17:48:11.424667",
+    "startedAt": "2022-02-09T17:48:04.682689",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/liwenyu/Documents/GitHub/RTDM/A2C.py",
+    "codePath": "A2C.py",
+    "git": {
+        "remote": "https://github.com/JoLi0608/RTDM.git",
+        "commit": "ead8bd92afecc8de70dae4ca4c187345fe9de45e"
+    },
+    "email": "wyli608@163.com",
+    "root": "/Users/liwenyu/Documents/GitHub/RTDM",
+    "host": "dhcp-10-241-179-137.cp.wireless.private.cam.ac.uk",
+    "username": "liwenyu",
+    "executable": "/usr/local/bin/python3.9"
+}
