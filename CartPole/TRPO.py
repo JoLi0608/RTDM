@@ -4,7 +4,7 @@ from numpy import average
 from sb3_contrib import TRPO
 import wandb
 
-wandb.init(project="PPO", entity="lwyjo")
+wandb.init(project="RTDM", entity="rt_dm")
 env = gym.make("CartPole-v1")
 
 seed = 1234
@@ -22,10 +22,18 @@ config.seed = seed
 def play(env, model, times, asy = 0, level = 0):
     #print('difficulty level:', level)
     total_rewards = []
+    iter_ep = 20
+    total_ep = level*iter_ep
+    
+    
+    
 
-    for k in range(20):
+    for k in range(iter_ep):
         obs = env.reset()
         total_reward = 0
+        total_ep += 1
+        wandb.log({"episode": total_ep, "difficulty_level": level})
+
 
         for i in range(times):
 
