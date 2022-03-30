@@ -86,4 +86,4 @@ RUN pip --no-cache-dir install wandb
 RUN pip install mbrl
 RUN pip install torch==1.7.0
 
-
+ADD ./../../script/ ./
