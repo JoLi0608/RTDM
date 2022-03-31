@@ -1,0 +1,25 @@
+
+2022-03-30 18:55:45,892	WARNING trainer.py:2347 -- You have specified 1 evaluation workers, but your `evaluation_interval` is None! Therefore, evaluation will not occur automatically with each call to `Trainer.train()`. Instead, you will have to call `Trainer.evaluate()` manually in order to trigger an evaluation run.
+2022-03-30 18:55:48,451	INFO services.py:1412 -- View the Ray dashboard at [32m[1mhttp://127.0.0.1:8265
+2022-03-30 18:55:59,622	WARNING deprecation.py:45 -- DeprecationWarning: `simple_optimizer` has been deprecated. This will raise an error in the future!
+2022-03-30 18:55:59,622	WARNING trainer.py:2347 -- You have specified 1 evaluation workers, but your `evaluation_interval` is None! Therefore, evaluation will not occur automatically with each call to `Trainer.train()`. Instead, you will have to call `Trainer.evaluate()` manually in order to trigger an evaluation run.
+2022-03-30 18:55:59,710	INFO trainable.py:127 -- Trainable.setup took 13.821 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+2022-03-30 18:55:59,713	WARNING util.py:55 -- Install gputil for GPU system monitoring.
+2022-03-30 18:56:01,995	WARNING deprecation.py:45 -- DeprecationWarning: `slice` has been deprecated. Use `SampleBatch[start:stop]` instead. This will raise an error in the future!
+<bound method Deprecated.<locals>._inner.<locals>._ctor of PPOTrainer>
+difficulty level: 0
+0
+1
+2
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 113, in <module>
+    reward_ave = play(env, trainer, 800, asy = 0)
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 108, in play
+    reward_ave = sum(total_rewards)/len(total_rewards+1)
+TypeError: can only concatenate list (not "int") to list
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 113, in <module>
+    reward_ave = play(env, trainer, 800, asy = 0)
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 108, in play
+    reward_ave = sum(total_rewards)/len(total_rewards+1)
+TypeError: can only concatenate list (not "int") to list

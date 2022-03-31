@@ -1,0 +1,57 @@
+2022-03-30 19:48:55,537	WARNING sac.py:208 -- You need `tensorflow_probability` in order to run SAC! Install it via `pip install tensorflow_probability`. Your tf.__version__=2.7.0.Trying to import tfp results in the following error:
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 34, in <module>
+    trainer = SACTrainer(config=config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/sac/sac.py", line 187, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 746, in __init__
+    super().__init__(config, logger_creator, remote_checkpoint_dir,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/tune/trainable.py", line 124, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 775, in setup
+    self.validate_config(self.config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/sac/sac.py", line 213, in validate_config
+    try_import_tfp(error=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/utils/framework.py", line 143, in try_import_tfp
+    raise e
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/utils/framework.py", line 139, in try_import_tfp
+    import tensorflow_probability as tfp
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/__init__.py", line 23, in <module>
+    from tensorflow_probability.python import *  # pylint: disable=wildcard-import
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/python/__init__.py", line 138, in <module>
+    dir(globals()[pkg_name])  # Forces loading the package from its lazy loader.
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/python/internal/lazy_loader.py", line 57, in __dir__
+    module = self._load()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/python/internal/lazy_loader.py", line 37, in _load
+    self._on_first_access()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/python/__init__.py", line 59, in _validate_tf_environment
+    raise ImportError(
+ImportError: This version of TensorFlow Probability requires TensorFlow version >= 2.8; Detected an installation of version 2.7.0. Please upgrade TensorFlow to proceed.
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 34, in <module>
+    trainer = SACTrainer(config=config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/sac/sac.py", line 187, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 746, in __init__
+    super().__init__(config, logger_creator, remote_checkpoint_dir,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/tune/trainable.py", line 124, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 775, in setup
+    self.validate_config(self.config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/sac/sac.py", line 213, in validate_config
+    try_import_tfp(error=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/utils/framework.py", line 143, in try_import_tfp
+    raise e
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/utils/framework.py", line 139, in try_import_tfp
+    import tensorflow_probability as tfp
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/__init__.py", line 23, in <module>
+    from tensorflow_probability.python import *  # pylint: disable=wildcard-import
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/python/__init__.py", line 138, in <module>
+    dir(globals()[pkg_name])  # Forces loading the package from its lazy loader.
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/python/internal/lazy_loader.py", line 57, in __dir__
+    module = self._load()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/python/internal/lazy_loader.py", line 37, in _load
+    self._on_first_access()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/tensorflow_probability/python/__init__.py", line 59, in _validate_tf_environment
+    raise ImportError(
+ImportError: This version of TensorFlow Probability requires TensorFlow version >= 2.8; Detected an installation of version 2.7.0. Please upgrade TensorFlow to proceed.

@@ -1,0 +1,37 @@
+2022-03-30 19:46:56,865	WARNING sac.py:208 -- You need `tensorflow_probability` in order to run SAC! Install it via `pip install tensorflow_probability`. Your tf.__version__=2.7.0.Trying to import tfp results in the following error:
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 34, in <module>
+    trainer = SACTrainer(config=config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/sac/sac.py", line 187, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 746, in __init__
+    super().__init__(config, logger_creator, remote_checkpoint_dir,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/tune/trainable.py", line 124, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 775, in setup
+    self.validate_config(self.config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/sac/sac.py", line 213, in validate_config
+    try_import_tfp(error=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/utils/framework.py", line 143, in try_import_tfp
+    raise e
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/utils/framework.py", line 139, in try_import_tfp
+    import tensorflow_probability as tfp
+ModuleNotFoundError: No module named 'tensorflow_probability'
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 34, in <module>
+    trainer = SACTrainer(config=config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/sac/sac.py", line 187, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 746, in __init__
+    super().__init__(config, logger_creator, remote_checkpoint_dir,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/tune/trainable.py", line 124, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 775, in setup
+    self.validate_config(self.config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/sac/sac.py", line 213, in validate_config
+    try_import_tfp(error=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/utils/framework.py", line 143, in try_import_tfp
+    raise e
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/utils/framework.py", line 139, in try_import_tfp
+    import tensorflow_probability as tfp
+ModuleNotFoundError: No module named 'tensorflow_probability'

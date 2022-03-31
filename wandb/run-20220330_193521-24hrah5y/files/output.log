@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 41, in <module>
+    trainer = ARSTrainer(config=config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 746, in __init__
+    super().__init__(config, logger_creator, remote_checkpoint_dir,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/tune/trainable.py", line 124, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/ars/ars.py", line 234, in setup
+    self.config = self.merge_trainer_configs(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 2077, in merge_trainer_configs
+    return deep_update(config1, config2, _allow_unknown_configs,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/util/ml_utils/dict.py", line 51, in deep_update
+    raise Exception("Unknown config parameter `{}` ".format(k))
+Exception: Unknown config parameter `target_network_update_freq`
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/evaluations/PPO.py", line 41, in <module>
+    trainer = ARSTrainer(config=config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 746, in __init__
+    super().__init__(config, logger_creator, remote_checkpoint_dir,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/tune/trainable.py", line 124, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/ars/ars.py", line 234, in setup
+    self.config = self.merge_trainer_configs(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 2077, in merge_trainer_configs
+    return deep_update(config1, config2, _allow_unknown_configs,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/util/ml_utils/dict.py", line 51, in deep_update
+    raise Exception("Unknown config parameter `{}` ".format(k))
+Exception: Unknown config parameter `target_network_update_freq`

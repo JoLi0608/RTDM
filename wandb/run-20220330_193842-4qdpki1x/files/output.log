@@ -1,0 +1,55 @@
+
+2022-03-30 19:38:51,127	INFO services.py:1412 -- View the Ray dashboard at [32m[1mhttp://127.0.0.1:8265
+2022-03-30 19:39:04,229	INFO ars.py:265 -- Creating actors.
+2022-03-30 19:39:04,251	INFO trainable.py:127 -- Trainable.setup took 16.036 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+2022-03-30 19:39:04,252	WARNING util.py:55 -- Install gputil for GPU system monitoring.
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3440: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/ars/ars.py:373: RuntimeWarning: Mean of empty slice.
+  episode_len_mean=eval_lengths.mean(),
+[36m(Worker pid=4689)[39m 2022-03-30 19:39:10,701	WARNING deprecation.py:45 -- DeprecationWarning: `clear_buffer` has been deprecated. Use `Filter.reset_buffer()` instead. This will raise an error in the future!
+[36m(Worker pid=4688)[39m 2022-03-30 19:39:10,702	WARNING deprecation.py:45 -- DeprecationWarning: `clear_buffer` has been deprecated. Use `Filter.reset_buffer()` instead. This will raise an error in the future!
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/gym/logger.py:30: UserWarning: [33mWARN: You are calling 'step()' even though this environment has already returned done = True. You should always call 'reset()' once you receive 'done = True' -- any further steps are undefined behavior.
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+<bound method Deprecated.<locals>._inner.<locals>._ctor of ARSTrainer>
+difficulty level: 0
+here
+difficulty level: 1
+here
+difficulty level: 2
+here
+difficulty level: 3
+here
+difficulty level: 4
+here
+difficulty level: 5
+here
+difficulty level: 6
+here
+difficulty level: 7
+here
+difficulty level: 8
+here
+difficulty level: 9
+here
+difficulty level: 10
+here
+difficulty level: 11
+here
+difficulty level: 12
+here
+difficulty level: 13
+here
+difficulty level: 14
+here
+difficulty level: 15
+here
+difficulty level: 16
+here
+difficulty level: 17
+here
+difficulty level: 18
+here
+difficulty level: 19
