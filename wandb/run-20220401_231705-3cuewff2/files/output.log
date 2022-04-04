@@ -1,0 +1,37 @@
+
+2022-04-01 23:17:13,223	INFO services.py:1412 -- View the Ray dashboard at [32m[1mhttp://127.0.0.1:8265
+[36m(ServeController pid=31681)[39m 2022-04-01 23:17:16,414	INFO checkpoint_path.py:16 -- Using RayInternalKVStore for controller checkpoint and recovery.
+[36m(ServeController pid=31681)[39m 2022-04-01 23:17:16,518	INFO http_state.py:98 -- Starting HTTP proxy with name 'SERVE_CONTROLLER_ACTOR:ZhOYeD:SERVE_PROXY_ACTOR-node:127.0.0.1-0' on node 'node:127.0.0.1-0' listening on '127.0.0.1:8000'
+2022-04-01 23:17:16,767	INFO api.py:521 -- Started Serve instance in namespace 'serve'.
+[36m(HTTPProxyActor pid=31680)[39m INFO:     Started server process [31680]
+2022-04-01 23:17:16,822	INFO torch_policy.py:162 -- TorchPolicy (worker=local) running on CPU.
+2022-04-01 23:17:16,828	INFO ars.py:260 -- Creating shared noise table.
+2022-04-01 23:17:27,217	INFO ars.py:265 -- Creating actors.
+2022-04-01 23:17:27,243	INFO trainable.py:127 -- Trainable.setup took 10.443 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+2022-04-01 23:17:27,244	WARNING util.py:55 -- Install gputil for GPU system monitoring.
+[36m(Worker pid=31678)[39m 2022-04-01 23:17:34,547	INFO torch_policy.py:162 -- TorchPolicy (worker=local) running on CPU.
+[36m(Worker pid=31678)[39m 2022-04-01 23:17:34,556	WARNING deprecation.py:45 -- DeprecationWarning: `clear_buffer` has been deprecated. Use `Filter.reset_buffer()` instead. This will raise an error in the future!
+[36m(Worker pid=31679)[39m 2022-04-01 23:17:34,718	INFO torch_policy.py:162 -- TorchPolicy (worker=local) running on CPU.
+2022-04-01 23:17:34,731	INFO trainable.py:495 -- Restored on 127.0.0.1 from checkpoint: /Users/liwenyu/Downloads/ray_results/ARS_Hopper-v2_303ed_00000_0_2022-03-30_13-27-47/checkpoint_001400/checkpoint-1400
+2022-04-01 23:17:34,731	INFO trainable.py:503 -- Current state after restoring: {'_iteration': 1400, '_timesteps_total': 42382380, '_time_total': 21484.993481636047, '_episodes_total': None}
+[36m(Worker pid=31679)[39m 2022-04-01 23:17:34,727	WARNING deprecation.py:45 -- DeprecationWarning: `clear_buffer` has been deprecated. Use `Filter.reset_buffer()` instead. This will raise an error in the future!
+difficulty level: 0
+difficulty level: 1
+difficulty level: 2
+difficulty level: 3
+difficulty level: 4
+difficulty level: 5
+difficulty level: 6
+difficulty level: 7
+difficulty level: 8
+difficulty level: 9
+difficulty level: 10
+difficulty level: 11
+difficulty level: 12
+difficulty level: 13
+difficulty level: 14
+difficulty level: 15
+difficulty level: 16
+difficulty level: 17
+difficulty level: 18
+difficulty level: 19

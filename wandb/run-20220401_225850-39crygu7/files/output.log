@@ -1,0 +1,30 @@
+
+2022-04-01 22:59:01,048	INFO services.py:1412 -- View the Ray dashboard at [32m[1mhttp://127.0.0.1:8265
+[36m(ServeController pid=30696)[39m 2022-04-01 22:59:06,267	INFO checkpoint_path.py:16 -- Using RayInternalKVStore for controller checkpoint and recovery.
+[36m(ServeController pid=30696)[39m 2022-04-01 22:59:06,374	INFO http_state.py:98 -- Starting HTTP proxy with name 'SERVE_CONTROLLER_ACTOR:fdaZNv:SERVE_PROXY_ACTOR-node:127.0.0.1-0' on node 'node:127.0.0.1-0' listening on '127.0.0.1:8000'
+2022-04-01 22:59:06,658	INFO api.py:521 -- Started Serve instance in namespace 'serve'.
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/loadmodel.py", line 32, in <module>
+    trainer = ars.ARSTrainer(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 746, in __init__
+    super().__init__(config, logger_creator, remote_checkpoint_dir,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/tune/trainable.py", line 124, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/ars/ars.py", line 238, in setup
+    self.validate_config(self.config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/ars/ars.py", line 219, in validate_config
+    raise ValueError("`num_workers` must be > 0 for ARS!")
+ValueError: `num_workers` must be > 0 for ARS!
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/loadmodel.py", line 32, in <module>
+    trainer = ars.ARSTrainer(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/trainer.py", line 746, in __init__
+    super().__init__(config, logger_creator, remote_checkpoint_dir,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/tune/trainable.py", line 124, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/ars/ars.py", line 238, in setup
+    self.validate_config(self.config)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/ray/rllib/agents/ars/ars.py", line 219, in validate_config
+    raise ValueError("`num_workers` must be > 0 for ARS!")
+ValueError: `num_workers` must be > 0 for ARS!
+[36m(HTTPProxyActor pid=30695)[39m INFO:     Started server process [30695]

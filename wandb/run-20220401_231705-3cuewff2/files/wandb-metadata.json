@@ -1,0 +1,22 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.6",
+    "heartbeatAt": "2022-04-01T22:17:10.204512",
+    "startedAt": "2022-04-01T22:17:05.811832",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/liwenyu/Documents/GitHub/RTDM/loadmodel.py",
+    "codePath": "loadmodel.py",
+    "git": {
+        "remote": "https://github.com/JoLi0608/RTDM.git",
+        "commit": "9cc56592f26e29d449bbdfa745d7dde84b87e22a"
+    },
+    "email": "wyli608@163.com",
+    "root": "/Users/liwenyu/Documents/GitHub/RTDM",
+    "host": "dhcp-10-249-173-232.eduroam.wireless.private.cam.ac.uk",
+    "username": "liwenyu",
+    "executable": "/usr/local/bin/python3.9"
+}

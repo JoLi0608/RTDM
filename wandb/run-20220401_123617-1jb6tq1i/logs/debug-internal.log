@@ -1,0 +1,93 @@
+2022-04-01 12:36:19,213 INFO    MainThread:26084 [internal.py:wandb_internal():87] W&B internal server running at pid: 26084, started at: 2022-04-01 12:36:19.213446
+2022-04-01 12:36:19,215 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: check_version
+2022-04-01 12:36:19,216 INFO    WriterThread:26084 [datastore.py:open_for_write():77] open: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/run-1jb6tq1i.wandb
+2022-04-01 12:36:19,218 DEBUG   SenderThread:26084 [sender.py:send():238] send: header
+2022-04-01 12:36:19,218 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: check_version
+2022-04-01 12:36:19,308 DEBUG   SenderThread:26084 [sender.py:send():238] send: run
+2022-04-01 12:36:19,502 INFO    SenderThread:26084 [dir_watcher.py:__init__():169] watching files in: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files
+2022-04-01 12:36:19,502 INFO    SenderThread:26084 [sender.py:_start_run_threads():825] run started: 1jb6tq1i with start time 1648812977
+2022-04-01 12:36:19,502 DEBUG   SenderThread:26084 [sender.py:send():238] send: summary
+2022-04-01 12:36:19,503 INFO    SenderThread:26084 [sender.py:_save_file():960] saving file wandb-summary.json with policy end
+2022-04-01 12:36:19,504 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: run_start
+2022-04-01 12:36:20,608 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/wandb-summary.json
+2022-04-01 12:36:22,309 DEBUG   HandlerThread:26084 [meta.py:__init__():40] meta init
+2022-04-01 12:36:22,309 DEBUG   HandlerThread:26084 [meta.py:__init__():54] meta init done
+2022-04-01 12:36:22,309 DEBUG   HandlerThread:26084 [meta.py:probe():214] probe
+2022-04-01 12:36:22,320 DEBUG   HandlerThread:26084 [meta.py:_setup_git():204] setup git
+2022-04-01 12:36:22,360 DEBUG   HandlerThread:26084 [meta.py:_setup_git():211] setup git done
+2022-04-01 12:36:22,361 DEBUG   HandlerThread:26084 [meta.py:_save_pip():58] save pip
+2022-04-01 12:36:22,362 DEBUG   HandlerThread:26084 [meta.py:_save_pip():72] save pip done
+2022-04-01 12:36:22,362 DEBUG   HandlerThread:26084 [meta.py:probe():252] probe done
+2022-04-01 12:36:22,367 DEBUG   SenderThread:26084 [sender.py:send():238] send: files
+2022-04-01 12:36:22,367 INFO    SenderThread:26084 [sender.py:_save_file():960] saving file wandb-metadata.json with policy now
+2022-04-01 12:36:22,375 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:36:22,376 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:36:22,585 DEBUG   SenderThread:26084 [sender.py:send():238] send: config
+2022-04-01 12:36:22,585 DEBUG   SenderThread:26084 [sender.py:send():238] send: config
+2022-04-01 12:36:22,608 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/output.log
+2022-04-01 12:36:22,609 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/requirements.txt
+2022-04-01 12:36:22,609 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/wandb-metadata.json
+2022-04-01 12:36:23,002 INFO    Thread-11 :26084 [upload_job.py:push():137] Uploaded file /var/folders/yt/3gz8yy8s1ks3w9hgqhvppyyc0000gn/T/tmp27zs58r7wandb/33d8tae7-wandb-metadata.json
+2022-04-01 12:36:28,622 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/output.log
+2022-04-01 12:36:30,630 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/output.log
+2022-04-01 12:36:34,642 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/output.log
+2022-04-01 12:36:37,589 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:36:37,589 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:36:40,663 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/output.log
+2022-04-01 12:36:44,677 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/output.log
+2022-04-01 12:36:48,688 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/output.log
+2022-04-01 12:36:50,696 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/output.log
+2022-04-01 12:36:50,696 INFO    Thread-8  :26084 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/liwenyu/Documents/GitHub/RTDM/wandb/run-20220401_123617-1jb6tq1i/files/config.yaml
+2022-04-01 12:36:51,076 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:36:52,764 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:36:52,765 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:37:07,955 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:37:07,955 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:37:21,732 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:37:23,181 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:37:23,181 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:37:38,360 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:37:38,361 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:37:52,440 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:37:53,835 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:37:53,835 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:38:09,031 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:38:09,032 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:38:22,972 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:38:24,218 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:38:24,219 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:38:39,392 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:38:39,392 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:38:53,551 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:38:54,566 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:38:54,567 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:39:09,752 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:39:09,752 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:39:24,207 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:39:24,948 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:39:24,949 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:39:40,139 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:39:40,140 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:39:54,754 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:39:55,322 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:39:55,323 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:40:10,512 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:40:10,512 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:40:25,420 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:40:25,701 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:40:25,702 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:40:40,891 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:40:40,892 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:40:56,064 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:40:56,064 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:40:56,221 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:41:11,226 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:41:11,226 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:41:26,417 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:41:26,418 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:41:26,735 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
+2022-04-01 12:41:41,610 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:41:41,611 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:41:56,789 DEBUG   HandlerThread:26084 [handler.py:handle_request():130] handle_request: stop_status
+2022-04-01 12:41:56,790 DEBUG   SenderThread:26084 [sender.py:send_request():252] send_request: stop_status
+2022-04-01 12:41:57,391 DEBUG   SenderThread:26084 [sender.py:send():238] send: stats
