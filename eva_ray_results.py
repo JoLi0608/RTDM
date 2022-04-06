@@ -13,13 +13,13 @@ import argparse
 parser = argparse.ArgumentParser(description='Evaluate trained model')
 parser.add_argument("--modelpath", required=True, help="Filepath to trained checkpoint",
                     default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
+parser.add_argument("--trainseed", required=True, help="Training seed.",
+                    default='2')
 parser.add_argument("--algorithm", required=True, help="Algorithm used", default="ARS")
 parser.add_argument("--gymenv", required=True, help="Environment.",
                     default='CartPole-v0')
 parser.add_argument("--checkpoint", required=True, help="checkpoint to evaluate",
                     default="1")
-parser.add_argument("--trainseed", required=True, help="Training seed.",
-                    default='2')
 parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
                     default=1)
 args = vars(parser.parse_args())
