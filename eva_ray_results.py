@@ -1,4 +1,3 @@
-# import ray
 import gym
 import time
 import wandb
@@ -7,8 +6,25 @@ from pydoc import doc
 import ray.rllib.agents.ppo as ppo
 import ray.rllib.agents.ars as ars
 import ray.rllib.agents.sac as sac
-# from ray.rllib.agents.sac import SACTrainer
-# from starlette.requests import Request
+import argparse
+
+
+# Input arguments from command line.
+parser = argparse.ArgumentParser(description='Evaluate trained model')
+parser.add_argument("--modelpath", required=True, help="Filepath to trained checkpoint",
+                    default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
+parser.add_argument("--algorithm", required=True, help="Algorithm used", default="ARS")
+parser.add_argument("--gymenv", required=True, help="Environment.",
+                    default='CartPole-v0')
+parser.add_argument("--checkpoint", required=True, help="checkpoint to evaluate",
+                    default="1")
+parser.add_argument("--trainseed", required=True, help="Training seed.",
+                    default='2')
+parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
+                    default=1)
+args = vars(parser.parse_args())
+print("Input of argparse:", args)
+
 def play(env, trainer, times, asy = 0, level = 0):
     print('difficulty level:', level)
     total_rewards = []
@@ -57,33 +73,48 @@ def play(env, trainer, times, asy = 0, level = 0):
     wandb.log({"average_rewards": reward_ave, "difficulty_level": level})
     return reward_ave
 
-env_seeds = 1
-train_seed = 2
+seed = args["evaseed"]
+algorithm = args["algorithm"]
+trained_model = args["modelpath"]
+env = gym.make(args["gymenv"])
 
-# for env_seed in env_seeds:
-gym_env = "Hopper-v2"
-check_point = 1
-algorithm = "ARS"
-trained_model = "/Users/liwenyu/Downloads/ray_results/ARS_Hopper-v2_303ed_00000_0_2022-03-30_13-27-47/checkpoint_000100/checkpoint-100"
+
 wandb.init(project="RTDM", entity="rt_dm")
-env = gym.make(gym_env)
+wconfig = wandb.config
+wconfig.algorithm = args["algorithm"]
+wconfig.eva_seed = args["evaseed"]
+wconfig.train_seed = args["trainseed"]
+wconfig.env = args["gymenv"]
+wconfig.check = args["checkpoint"]
+
 
 compute_times = []
-wconfig = wandb.config
-# wconfig.learning_timestep = 10000
-wconfig.algorithm = algorithm
-wconfig.env_seed = env_seeds
-wconfig.train_seed = train_seed
-wconfig.env = gym_env
-wconfig.check = check_point
 serve.start()
-trainer = ars.ARSTrainer(
-    config={
-        "framework": "torch",
-        # "num_workers": 4,
-    },
-    env=gym_env,
-)
+if algorithm == "ARS":
+    trainer = ars.ARSTrainer(
+        config={
+            "framework": "torch",
+            # "num_workers": 4,
+        },
+        env=args["gymenv"],
+    )
+elif algorithm == "PPO":
+    trainer = ppo.PPOTrainer(
+        config={
+            "framework": "torch",
+            # "num_workers": 4,
+        },
+        env=args["gymenv"],
+    )
+elif algorithm == "SAC":
+    trainer = sac.SACTrainer(
+        config={
+            "framework": "torch",
+            # "num_workers": 4,
+        },
+        env=args["gymenv"],
+    )
+
 trainer.restore(trained_model)
 record = []
 reward_ave = play(env, trainer, 500, asy = 0)
