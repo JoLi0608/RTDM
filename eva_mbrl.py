@@ -11,12 +11,25 @@ from numpy import average
 from stable_baselines3 import A2C
 from sympy import total_degree
 import wandb
-
+import argparse
 #path = "exp/pets/default/cartpole_continuous/2022.02.21/134508/"
 # path = "exp/pets/default/cartpole_continuous/2022.02.21/134508/"
-
+parser = argparse.ArgumentParser(description='Evaluate trained model')
+parser.add_argument("--modelpath", required=True, help="Filepath to trained checkpoint",
+                    default="/app/data/mbpo/default/gym___Hopper-v2/2022.04.01/100715/")
+# parser.add_argument("--trainseed", required=True, help="Training seed.",
+#                     default='2')
+parser.add_argument("--algorithm", required=True, help="Algorithm used", default="mbpo")
+parser.add_argument("--gymenv", required=True, help="Environment.",
+                    default='Hopper-v2')
+# parser.add_argument("--checkpoint", required=True, help="checkpoint to evaluate",
+#                     default="1")
+parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
+                    default=1)
+args = vars(parser.parse_args())
+print("Input of argparse:", args)
 # cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
-path = "exp/pets/default/gym___Hopper-v2/2022.02.21/134508/"
+path = args["modelpath"]
 
 cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
 cfg["device"] = "cpu"
@@ -32,17 +45,15 @@ agent = mbrl.planning.create_trajectory_optim_agent_for_model(model_env, cfg.alg
 
 #######################################################################
 wandb.init(project="RTDM", entity="rt_dm")
-env = gym.make("Hopper-v2")
+env = gym.make(args["gymenv"])
 
-seed = 10
+seed = args["evaseed"]
 compute_times = []
 
 
-config = wandb.config
-config.learning_timestep = 10000
-config.algorithm = 'A2C'
-config.policy = 'MlpPolicy'
-config.seed = seed
+wconfig = wandb.config
+wconfig.algorithm = args["algorithm"]
+wconfig.eva_seed = seed
 
 
 def play(env, model, times, asy = 0, level = 0):
