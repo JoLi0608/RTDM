@@ -29,12 +29,12 @@ config = {
     "num_workers": 2,
     # Change this to "framework: torch", if you are using PyTorch.
     # Also, use "framework: tf2" for tf2.x eager execution.
-    "framework": "tf"
+    "framework": "torch"
 
 }
 
 # Create our RLlib Trainer.
-trainer = SACTrainer(config=config)
+trainer = PPOTrainer(config=config)
 
 # Run it for n training iterations. A training iteration includes
 # parallel sample collection by the environment workers as well as
