@@ -51,13 +51,13 @@ def play(env, model, times, gap, level = 0):
             obs, reward, done, info = env.step(action)
             repeat = int(level * 1 * compute_time)
             total_reward += reward
-            if repeat:
-                for j in range(repeat):
-                    obs, reward, done, info = env.step(action)
-                    total_reward += reward
-                    if done:
-                        total_rewards.append(total_reward)  
-                        break          
+            # if repeat:
+            #     for j in range(repeat):
+            #         obs, reward, done, info = env.step(action)
+            #         total_reward += reward
+            #         if done:
+            #             total_rewards.append(total_reward)  
+            #             break          
             # else:
             #     if done:
             #         total_rewards.append(total_reward)
