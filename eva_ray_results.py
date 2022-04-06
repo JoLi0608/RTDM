@@ -27,7 +27,7 @@ parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
 args = vars(parser.parse_args())
 print("Input of argparse:", args)
 
-def play(env, model, times, gap, level = 0):
+def play(env, trainer, times, gap, level = 0):
     print('difficulty level:', level)
     total_rewards = []
     iter_ep = 20
@@ -71,6 +71,7 @@ def play(env, model, times, gap, level = 0):
         env.close()
 
     #print(total_rewards)
+    print(total_rewards)
     reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
     
     wandb.log({"average_rewards": reward_ave, "difficulty_level": level})
