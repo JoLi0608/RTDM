@@ -44,11 +44,11 @@ def play(env, trainer, times, asy = 0, level = 0):
             action = trainer.compute_single_action(obs)
             # print(action)
             t2 = time.time()
-            compute_time = 1000 * (t2 - t1)
+            compute_time = (t2 - t1)
             wandb.log({"computation_time": compute_time})
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
-            repeat = int(level * compute_time)
+            repeat = int(level * 1 * compute_time)
             total_reward += reward
             if asy and repeat:
                 for j in range(repeat):
