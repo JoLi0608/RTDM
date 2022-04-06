@@ -8,6 +8,7 @@ import ray.rllib.agents.ars as ars
 import ray.rllib.agents.sac as sac
 import ray.rllib.agents.mbmpo as mbmpo
 import argparse
+import numpy
 
 
 # Input arguments from command line.
@@ -26,11 +27,11 @@ parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
 args = vars(parser.parse_args())
 print("Input of argparse:", args)
 
-def play(env, trainer, times, asy = 0, level = 0):
+def play(env, model, times, gap, asy = 0, level = 0):
     print('difficulty level:', level)
     total_rewards = []
     iter_ep = 20
-    total_ep = level*iter_ep    
+    total_ep = (level-gap)/gap*iter_ep  
 
     for k in range(iter_ep):
         # print("here")
@@ -120,10 +121,14 @@ trainer.restore(trained_model)
 record = []
 reward_ave = play(env, trainer, 500, asy = 0)
 record.append(reward_ave)
-x = range(0,20)
+begin = 0
+gap = 500
+end = 10000
+x = numpy.arange(begin, end, gap)
 for level in x[1:]:
+    # print(level)
     # print('here')
-    reward_ave = play(env, trainer, 500, asy = 1, level = level)
+    reward_ave = play(env, trainer, 5, gap = gap, asy = 1, level = level)
     record.append(reward_ave)
 time_ave = sum(compute_times)/len(compute_times)
 wandb.log({'average_compute_time':time_ave})

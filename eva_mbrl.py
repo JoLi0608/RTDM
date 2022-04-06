@@ -1,11 +1,13 @@
 
 import omegaconf
+from sklearn import gaussian_process
 import torch
 import mbrl.util.env
 import mbrl.util.common
 import mbrl.planning
 import gym
 import time
+import numpy
 # from numpy import average
 # from sympy import total_degree
 import wandb
@@ -54,11 +56,11 @@ wconfig.algorithm = args["algorithm"]
 wconfig.eva_seed = seed
 
 
-def play(env, model, times, asy = 0, level = 0):
+def play(env, model, times, gap, asy = 0, level = 0):
     print('difficulty level:', level)
     total_rewards = []
     iter_ep = 3
-    total_ep = level*iter_ep
+    total_ep = (level-gap)/gap*iter_ep
     
     
     
@@ -109,10 +111,13 @@ def play(env, model, times, asy = 0, level = 0):
 record = []
 reward_ave = play(env, agent, 800, asy = 0)
 record.append(reward_ave)
-x = range(0,20)
+begin = 0
+gap = 500
+end = 10000
+x = numpy.arange(begin, end, gap)
 for level in x[1:]:
-    print('here')
-    reward_ave = play(env, agent, 5, asy = 1, level = level)
+    # print('here')
+    reward_ave = play(env, agent, 5, gap = gap, asy = 1, level = level)
     record.append(reward_ave)
 time_ave = sum(compute_times)/len(compute_times)
 wandb.log({'average_compute_time':time_ave})
