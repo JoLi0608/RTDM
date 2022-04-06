@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/eva_ray_results.py", line 69, in <module>
+    wandb.config.update(allow_val=True)
+TypeError: update() got an unexpected keyword argument 'allow_val'
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/eva_ray_results.py", line 69, in <module>
+    wandb.config.update(allow_val=True)
+TypeError: update() got an unexpected keyword argument 'allow_val'

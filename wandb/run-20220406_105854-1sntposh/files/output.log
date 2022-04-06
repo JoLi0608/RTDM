@@ -1,0 +1,37 @@
+
+2022-04-06 10:59:04,946	INFO services.py:1412 -- View the Ray dashboard at [32m[1mhttp://127.0.0.1:8265
+[36m(ServeController pid=22373)[39m 2022-04-06 10:59:09,512	INFO checkpoint_path.py:16 -- Using RayInternalKVStore for controller checkpoint and recovery.
+[36m(ServeController pid=22373)[39m 2022-04-06 10:59:09,620	INFO http_state.py:98 -- Starting HTTP proxy with name 'SERVE_CONTROLLER_ACTOR:zchATM:SERVE_PROXY_ACTOR-node:127.0.0.1-0' on node 'node:127.0.0.1-0' listening on '127.0.0.1:8000'
+2022-04-06 10:59:09,877	INFO api.py:521 -- Started Serve instance in namespace 'serve'.
+[36m(HTTPProxyActor pid=22377)[39m INFO:     Started server process [22377]
+2022-04-06 10:59:09,987	INFO torch_policy.py:162 -- TorchPolicy (worker=local) running on CPU.
+2022-04-06 10:59:10,035	INFO ars.py:260 -- Creating shared noise table.
+2022-04-06 10:59:20,063	INFO ars.py:265 -- Creating actors.
+2022-04-06 10:59:20,098	INFO trainable.py:127 -- Trainable.setup took 10.180 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+2022-04-06 10:59:20,098	WARNING util.py:55 -- Install gputil for GPU system monitoring.
+difficulty level: 0
+[36m(Worker pid=22374)[39m 2022-04-06 10:59:27,238	INFO torch_policy.py:162 -- TorchPolicy (worker=local) running on CPU.
+[36m(Worker pid=22374)[39m 2022-04-06 10:59:27,249	WARNING deprecation.py:45 -- DeprecationWarning: `clear_buffer` has been deprecated. Use `Filter.reset_buffer()` instead. This will raise an error in the future!
+2022-04-06 10:59:27,485	INFO trainable.py:495 -- Restored on 127.0.0.1 from checkpoint: /Users/liwenyu/Downloads/ray_results/ARS_Hopper-v2_303ed_00000_0_2022-03-30_13-27-47/checkpoint_000100/checkpoint-100
+2022-04-06 10:59:27,485	INFO trainable.py:503 -- Current state after restoring: {'_iteration': 100, '_timesteps_total': 2443758, '_time_total': 1292.9797129631042, '_episodes_total': None}
+[36m(Worker pid=22378)[39m 2022-04-06 10:59:27,469	INFO torch_policy.py:162 -- TorchPolicy (worker=local) running on CPU.
+[36m(Worker pid=22378)[39m 2022-04-06 10:59:27,479	WARNING deprecation.py:45 -- DeprecationWarning: `clear_buffer` has been deprecated. Use `Filter.reset_buffer()` instead. This will raise an error in the future!
+difficulty level: 1
+difficulty level: 2
+difficulty level: 3
+difficulty level: 4
+difficulty level: 5
+difficulty level: 6
+difficulty level: 7
+difficulty level: 8
+difficulty level: 9
+difficulty level: 10
+difficulty level: 11
+difficulty level: 12
+difficulty level: 13
+difficulty level: 14
+difficulty level: 15
+difficulty level: 16
+difficulty level: 17
+difficulty level: 18
+difficulty level: 19
