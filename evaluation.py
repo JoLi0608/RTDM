@@ -1,26 +1,29 @@
 import gym
 import time
 import wandb
-from pydoc import doc
-from ray.rllib.agents.sac import SACTrainer
+from ray.rllib.agents.ppo import PPOTrainer
 
 
 wandb.init(project="RTDM", entity="rt_dm")
-env = gym.make("CartPole-v1")
+algorithm = 'PPO'
+environment = "CartPole-v1"
+env = gym.make(environment)
+
 
 seed = 99
 compute_times = []
 wconfig = wandb.config
 # wconfig.learning_timestep = 10000
-wconfig.algorithm = 'SAC'
+wconfig.algorithm = algorithm
 # wconfig.policy = 'MlpPolicy'
 # wconfig.seed = seed
 wconfig.seed = seed
+wconfig.env = environment
 
 # Configure the algorithm.
 config = {
     # Environment (RLlib understands openAI gym registered strings).
-    "env": "CartPole-v0",
+    "env": environment,
     # Use 2 environment workers (aka "rollout workers") that parallelly
     # collect samples from their own environment clone(s).
     "num_workers": 2,
