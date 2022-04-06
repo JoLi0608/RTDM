@@ -6,6 +6,7 @@ from pydoc import doc
 import ray.rllib.agents.ppo as ppo
 import ray.rllib.agents.ars as ars
 import ray.rllib.agents.sac as sac
+import ray.rllib.agents.mbmpo as mbmpo
 import argparse
 
 
@@ -85,7 +86,7 @@ wconfig.algorithm = args["algorithm"]
 wconfig.eva_seed = args["evaseed"]
 wconfig.train_seed = args["trainseed"]
 wconfig.env = args["gymenv"]
-wconfig.check = args["checkpoint"]
+wconfig.checkpoint = args["checkpoint"]
 
 
 compute_times = []
