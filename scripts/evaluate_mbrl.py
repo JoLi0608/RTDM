@@ -119,10 +119,14 @@
 # #print('final result:' , record)
 
 
-import numpy
-begin = 0
-gap = 500
-end = 10000
-x = numpy.arange(begin, end, gap)
-for level in x[1:]:
-    print(level)
+# import numpy
+# begin = 0
+# gap = 500
+# end = 10000
+# x = numpy.arange(begin, end, gap)
+# for level in x[1:]:
+#     print(level)
+
+x = range(0)
+for i in range(0):
+    print('here')
