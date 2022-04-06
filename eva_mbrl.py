@@ -56,46 +56,41 @@ wconfig.algorithm = args["algorithm"]
 wconfig.eva_seed = seed
 
 
-def play(env, model, times, gap, asy = 0, level = 0):
+def play(env, model, times, gap, level = 0):
     print('difficulty level:', level)
     total_rewards = []
-    iter_ep = 3
-    total_ep = (level-gap)/gap*iter_ep
-    
-    
-    
+    iter_ep = 20
+    total_ep = level/gap*iter_ep  
 
     for k in range(iter_ep):
-        print(k)
+        # print("here")
         obs = env.reset()
         total_reward = 0
         total_ep += 1
         wandb.log({"episode": total_ep, "difficulty_level": level})
 
         for i in range(times):
-
-
             t1 = time.time()
             action = model.act(obs, deterministic=True)
             # print(action)
             t2 = time.time()
-            compute_time = 1000 * (t2 - t1)
+            compute_time = (t2 - t1)
             wandb.log({"computation_time": compute_time})
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
-            repeat = int(level * compute_time)
+            repeat = int(level * 1 * compute_time)
             total_reward += reward
-            if asy and repeat:
-                for j in range(repeat):
-                    obs, reward, done, info = env.step(action)
-                    total_reward += reward
-                    if done:
-                        total_rewards.append(total_reward)  
-                        break          
-            else:
+            # if asy and repeat:
+            for j in range(repeat):
+                obs, reward, done, info = env.step(action)
+                total_reward += reward
                 if done:
-                    total_rewards.append(total_reward)
-                    break
+                    total_rewards.append(total_reward)  
+                    break          
+            # else:
+            #     if done:
+            #         total_rewards.append(total_reward)
+            #         break
                     
             if done:
                 obs = env.reset()
@@ -104,20 +99,21 @@ def play(env, model, times, gap, asy = 0, level = 0):
         env.close()
 
     #print(total_rewards)
-    reward_ave = sum(total_rewards)/len(total_rewards)
+    reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
+    
     wandb.log({"average_rewards": reward_ave, "difficulty_level": level})
     return reward_ave
 
 record = []
-reward_ave = play(env, agent, 800, asy = 0)
-record.append(reward_ave)
 begin = 0
 gap = 500
 end = 10000
 x = numpy.arange(begin, end, gap)
+reward_ave = play(env, agent, 800, gap = gap)
+record.append(reward_ave)
 for level in x[1:]:
     # print('here')
-    reward_ave = play(env, agent, 5, gap = gap, asy = 1, level = level)
+    reward_ave = play(env, agent, 5, gap = gap, level = level)
     record.append(reward_ave)
 time_ave = sum(compute_times)/len(compute_times)
 wandb.log({'average_compute_time':time_ave})

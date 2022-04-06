@@ -27,11 +27,11 @@ parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
 args = vars(parser.parse_args())
 print("Input of argparse:", args)
 
-def play(env, model, times, gap, asy = 0, level = 0):
+def play(env, model, times, gap, level = 0):
     print('difficulty level:', level)
     total_rewards = []
     iter_ep = 20
-    total_ep = (level-gap)/gap*iter_ep  
+    total_ep = level/gap*iter_ep  
 
     for k in range(iter_ep):
         # print("here")
@@ -51,17 +51,17 @@ def play(env, model, times, gap, asy = 0, level = 0):
             obs, reward, done, info = env.step(action)
             repeat = int(level * 1 * compute_time)
             total_reward += reward
-            if asy and repeat:
-                for j in range(repeat):
-                    obs, reward, done, info = env.step(action)
-                    total_reward += reward
-                    if done:
-                        total_rewards.append(total_reward)  
-                        break          
-            else:
+            # if asy and repeat:
+            for j in range(repeat):
+                obs, reward, done, info = env.step(action)
+                total_reward += reward
                 if done:
-                    total_rewards.append(total_reward)
-                    break
+                    total_rewards.append(total_reward)  
+                    break          
+            # else:
+            #     if done:
+            #         total_rewards.append(total_reward)
+            #         break
                     
             if done:
                 obs = env.reset()
@@ -119,16 +119,16 @@ elif algorithm == "SAC":
 
 trainer.restore(trained_model)
 record = []
-reward_ave = play(env, trainer, 500, asy = 0)
-record.append(reward_ave)
 begin = 0
 gap = 500
 end = 10000
 x = numpy.arange(begin, end, gap)
+reward_ave = play(env, trainer, 500, gap = gap)
+record.append(reward_ave)
 for level in x[1:]:
     # print(level)
     # print('here')
-    reward_ave = play(env, trainer, 5, gap = gap, asy = 1, level = level)
+    reward_ave = play(env, trainer, 500, gap = gap, level = level)
     record.append(reward_ave)
 time_ave = sum(compute_times)/len(compute_times)
 wandb.log({'average_compute_time':time_ave})
