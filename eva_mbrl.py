@@ -4,12 +4,10 @@ import torch
 import mbrl.util.env
 import mbrl.util.common
 import mbrl.planning
-
 import gym
 import time
-from numpy import average
-from stable_baselines3 import A2C
-from sympy import total_degree
+# from numpy import average
+# from sympy import total_degree
 import wandb
 import argparse
 #path = "exp/pets/default/cartpole_continuous/2022.02.21/134508/"
