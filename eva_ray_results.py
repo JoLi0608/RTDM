@@ -49,6 +49,7 @@ def play(env, trainer, times, gap, level = 0):
             wandb.log({"computation_time": compute_time})
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
+            print(reward,done)
             repeat = int(level * 1 * compute_time)
             total_reward += reward
             # if repeat:
@@ -71,7 +72,7 @@ def play(env, trainer, times, gap, level = 0):
         env.close()
 
     #print(total_rewards)
-    print(total_rewards)
+    # print(total_rewards)
     reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
     
     wandb.log({"average_rewards": reward_ave, "difficulty_level": level})
