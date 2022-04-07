@@ -54,13 +54,13 @@ def play(env, trainer, times, gap, level = 0):
             # print(reward,done)
             repeat = int(level * 1 * compute_time)
             total_reward += reward
-            # if repeat:
-            #     for j in range(repeat):
-            #         obs, reward, done, info = env.step(action)
-            #         total_reward += reward
-            #         if done:
-            #             total_rewards.append(total_reward)  
-            #             break          
+            if repeat:
+                for j in range(repeat):
+                    obs, reward, done, info = env.step(action)
+                    total_reward += reward
+                    if done:
+                        total_rewards.append(total_reward)  
+                        break          
             # else:
             #     if done:
             #         total_rewards.append(total_reward)
@@ -128,12 +128,12 @@ begin = 0
 gap = 500
 end = 10000
 x = numpy.arange(begin, end, gap)
-reward_ave = play(env, trainer, math.inf, gap = gap)
+reward_ave = play(env, trainer, 100000, gap = gap)
 record.append(reward_ave)
 for level in x[1:]:
     # print(level)
     # print('here')
-    reward_ave = play(env, trainer, math.inf, gap = gap, level = level)
+    reward_ave = play(env, trainer, 100000, gap = gap, level = level)
     record.append(reward_ave)
 time_ave = sum(compute_times)/len(compute_times)
 wandb.log({'average_compute_time':time_ave})
