@@ -1,3 +1,4 @@
+from cmath import inf
 import gym
 import time
 import wandb
@@ -9,6 +10,7 @@ import ray.rllib.agents.sac as sac
 import ray.rllib.agents.mbmpo as mbmpo
 import argparse
 import numpy
+import math
 
 
 # Input arguments from command line.
@@ -49,7 +51,7 @@ def play(env, trainer, times, gap, level = 0):
             wandb.log({"computation_time": compute_time})
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
-            print(reward,done)
+            # print(reward,done)
             repeat = int(level * 1 * compute_time)
             total_reward += reward
             # if repeat:
@@ -126,12 +128,12 @@ begin = 0
 gap = 500
 end = 10000
 x = numpy.arange(begin, end, gap)
-reward_ave = play(env, trainer, 500, gap = gap)
+reward_ave = play(env, trainer, math.inf, gap = gap)
 record.append(reward_ave)
 for level in x[1:]:
     # print(level)
     # print('here')
-    reward_ave = play(env, trainer, 500, gap = gap, level = level)
+    reward_ave = play(env, trainer, math.inf, gap = gap, level = level)
     record.append(reward_ave)
 time_ave = sum(compute_times)/len(compute_times)
 wandb.log({'average_compute_time':time_ave})
