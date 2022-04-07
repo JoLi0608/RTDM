@@ -3,6 +3,7 @@ import argparse
 import os
 from rtrl import Training, run
 from rtrl.wrappers import StatsWrapper
+import gym
 
 # Input arguments from command line.
 
@@ -16,19 +17,13 @@ args = vars(parser.parse_args())
 
 path = args["path"]
 path_split = path.split(path,"/")
-
-#wandb.init(project="RTDM_train", entity="pierthodo")
-#wconfig = wandb.config
-#wconfig.seed = float(path_split[4])
-#wconfig.algo = "RTRL"
-#wconfig.env = path_split[6]
-
 r = rtrl.load(path+"store")
 
-env = StatsWrapper(r.Env(seed_val=r.seed+r.epoch), window=r.stats_window or r.steps)
-for step in range(self.steps):
-    action, training_stats = self.agent.act(*env.transition, train=True)
-    stats_training += training_stats
-    env.step(action)
+env = gym.make("Pusher-v2")
+obs = e.reset()
+prev_action = np.zeros(env.action_space.shape[0])
 
-print(**env.stats())
+for step in range(10000):
+    action = r.agent.act((obs,prev_action),[],[],[]),train=False)[0]
+    obs,reward,done,info =env.step(action)
+    prev_action = action
