@@ -45,6 +45,8 @@ compute_times = []
 wconfig = wandb.config
 wconfig.algorithm = args["algorithm"]
 wconfig.eva_seed = seed
+wconfig.train_seed = args["trainseed"]
+wconfig.env = args["gymenv"]
 
 
 def play(env, agent, times, gap, level = 0):
