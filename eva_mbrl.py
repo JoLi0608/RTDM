@@ -40,7 +40,7 @@ wandb.init(project="RTDM", entity="rt_dm")
 env = cartpole_env.CartPoleEnv()
 agent = load_agent(args["modelpath"],env)
 
-seed = args["evaseed"]
+seed = int(args["evaseed"])
 env.seed(seed)
 compute_times = []
 
