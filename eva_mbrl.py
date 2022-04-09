@@ -89,6 +89,8 @@ def play(env, agent, times, gap, level = 0):
                     total_rewards.append(total_reward)
                     obs = env.reset()
                     break
+            if done:
+                break
     
         env.close()
 
