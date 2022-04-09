@@ -41,7 +41,7 @@ env = cartpole_env.CartPoleEnv()
 agent = load_agent(args["modelpath"],env)
 
 seed = args["evaseed"]
-env.seed(seed)
+# env.seed(seed)
 compute_times = []
 
 
