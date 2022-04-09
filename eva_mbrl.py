@@ -36,7 +36,7 @@ print("Input of argparse:", args)
 
 #######################################################################
 wandb.init(project="RTDM", entity="rt_dm")
-env = gym.make(args["gymenv"])
+env = mbrl.util.env(args["gymenv"])
 agent = load_agent(args["modelpath"],env)
 
 seed = args["evaseed"]
