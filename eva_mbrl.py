@@ -7,7 +7,7 @@ import mbrl.util.common
 import mbrl.planning
 import gym
 import time
-import mujoco_py
+import mbrl.env.cartpole_continuous as cartpole_env
 import numpy
 # from numpy import average
 # from sympy import total_degree
@@ -36,10 +36,12 @@ print("Input of argparse:", args)
 
 #######################################################################
 wandb.init(project="RTDM", entity="rt_dm")
-env = mbrl.util.env(args["gymenv"])
+# env = mbrl.util.env(args["gymenv"])
+env = cartpole_env.CartPoleEnv()
 agent = load_agent(args["modelpath"],env)
 
 seed = args["evaseed"]
+env.seed(seed)
 compute_times = []
 
 
