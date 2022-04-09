@@ -60,16 +60,23 @@ def play(env, trainer, times, gap, level = 0):
                     total_reward += reward
                     if done:
                         total_rewards.append(total_reward)  
-                        break          
-            # else:
-            #     if done:
-            #         total_rewards.append(total_reward)
-            #         break
-                    
+                        break 
+            else:        
+                if done:
+                    total_rewards.append(total_reward)
+                    obs = env.reset()
+                    break
             if done:
-                total_rewards.append(total_reward)
-                obs = env.reset()
-                break
+                break         
+            # # else:
+            # #     if done:
+            # #         total_rewards.append(total_reward)
+            # #         break
+                    
+            # if done:
+            #     total_rewards.append(total_reward)
+            #     obs = env.reset()
+            #     break
     
         env.close()
 
