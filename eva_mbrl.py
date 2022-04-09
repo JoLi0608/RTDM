@@ -7,6 +7,7 @@ import mbrl.util.common
 import mbrl.planning
 import gym
 import time
+import mujoco_py
 import numpy
 # from numpy import average
 # from sympy import total_degree
