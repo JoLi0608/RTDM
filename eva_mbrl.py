@@ -7,7 +7,7 @@ import mbrl.util.common
 import mbrl.planning
 import gym
 import time
-import mbrl.env.humanoid_truncated_obs as humanoid
+import mbrl.env.pets_pusher as pusher
 import numpy
 # from numpy import average
 # from sympy import total_degree
@@ -37,7 +37,7 @@ print("Input of argparse:", args)
 #######################################################################
 wandb.init(project="RTDM", entity="rt_dm")
 # env = mbrl.util.env(args["gymenv"])
-env = humanoid.HumanoidTruncatedObsEnv()
+env = pusher.PusherEnv()
 agent = load_agent(args["modelpath"],env)
 
 seed = int(args["evaseed"])
