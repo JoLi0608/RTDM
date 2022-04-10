@@ -87,7 +87,7 @@ def play(env, trainer, times, gap, level = 0):
     wandb.log({"average_rewards": reward_ave, "difficulty_level": level})
     return reward_ave
 
-seed = args["evaseed"]
+seed = int(args["evaseed"])
 algorithm = args["algorithm"]
 trained_model = args["modelpath"]
 env = gym.make(args["gymenv"])
