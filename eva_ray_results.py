@@ -91,6 +91,7 @@ seed = args["evaseed"]
 algorithm = args["algorithm"]
 trained_model = args["modelpath"]
 env = gym.make(args["gymenv"])
+env.seed(seed)
 
 
 wandb.init(project="RTDM", entity="rt_dm")
