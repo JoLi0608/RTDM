@@ -5,7 +5,6 @@ import torch
 import mbrl.util.env
 import mbrl.util.common
 import mbrl.planning
-import gym
 import time
 import mbrl.env.pets_pusher as pusher
 import numpy

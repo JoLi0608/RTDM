@@ -42,7 +42,6 @@ wconfig.algorithm = args["algorithm"]
 wconfig.eva_seed = seed
 wconfig.train_seed = args["trainseed"]
 wconfig.env = args["gymenv"]
-wconfig.eva_seed = args["evaseed"]
 
 
 def play(env, agent, times, gap, level = 0):
