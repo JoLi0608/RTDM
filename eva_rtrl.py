@@ -1,6 +1,7 @@
 import rtrl
 import argparse
 import os
+import time
 from rtrl import Training, run
 from rtrl.wrappers import StatsWrapper
 import gym
