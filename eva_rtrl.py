@@ -26,7 +26,7 @@ args = vars(parser.parse_args())
 
 path = args["modelpath"]
 # path_split = path.split(path,"/")
-r = rtrl.load(path+"store")
+r = rtrl.load(path+"/store")
 agent = r.agent
 
 env = gym.make(args["gymenv"])
