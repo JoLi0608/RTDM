@@ -61,7 +61,7 @@ def play(env, agent, times, gap, level = 0):
 
         for i in range(times):
             t1 = time.time()
-            action = r.agent.act(obs,prev_action),[],[],[]),train=False)[0]
+            action = r.agent.act(((obs,prev_action),[],[],[]),train=False)[0]
             # print(action)
             t2 = time.time()
             compute_time = (t2 - t1)
