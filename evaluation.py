@@ -24,17 +24,6 @@ import mbrl.env.humanoid_truncated_obs as humanoid
 import mbrl.env.cartpole_continuous as cart
 import argparse
 from mbrl.planning.core import load_agent
-import abc
-import pathlib
-from typing import Any, Union
-
-import gym
-import hydra
-import numpy as np
-import omegaconf
-
-import mbrl.models
-import mbrl.types
 
 
 # Input arguments from command line.
@@ -140,21 +129,8 @@ if type == 'mbrl':
         env = humanoid.HumanoidTruncatedObsEnv()
     elif environment == 'cartpole_continuous':
         env = cart.CartPoleEnv()
-    # trainer = load_agent(args["modelpath"],env)
-    agent_path = pathlib.Path(args["modelpath"])
-    cfg = omegaconf.OmegaConf.load(agent_path / "config.yaml")
+    trainer = load_agent(args["modelpath"],env)
 
-    if cfg.algorithm.agent._target_ == "mbrl.third_party.pytorch_sac_pranz24.sac.SAC":
-        import mbrl.third_party.pytorch_sac_pranz24 as pytorch_sac
-
-        from .sac_wrapper import SACAgent
-
-        complete_agent_cfg(env, cfg.algorithm.agent)
-        agent: pytorch_sac.SAC = hydra.utils.instantiate(cfg.algorithm.agent)
-        agent.load_checkpoint(ckpt_path=agent_path / "sac.pth")
-        trainer = SACAgent(agent)
-    else:
-        raise ValueError("Invalid agent configuration.")
 
 elif type == 'rtrl':
     path = args["modelpath"]
