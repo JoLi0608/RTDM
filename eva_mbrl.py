@@ -7,6 +7,7 @@ import mbrl.util.common
 import mbrl.planning
 import time
 import mbrl.env.pets_pusher as pusher
+import mbrl.env.cartpole_continuous as cart
 import numpy
 # from numpy import average
 # from sympy import total_degree
@@ -36,7 +37,8 @@ print("Input of argparse:", args)
 #######################################################################
 wandb.init(project="RTDM", entity="rt_dm")
 # env = mbrl.util.env(args["gymenv"])
-env = pusher.PusherEnv()
+# env = pusher.PusherEnv()
+env = cart.CartPoleEnv()
 agent = load_agent(args["modelpath"],env)
 
 seed = int(args["evaseed"])
