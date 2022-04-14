@@ -35,7 +35,7 @@ parser.add_argument("--modelpath", required=True, help="Filepath to trained chec
 parser.add_argument("--trainseed", required=True, help="Training seed.",
                     default='2')
 parser.add_argument("--algorithm", required=True, help="Algorithm used", default="ARS")
-parser.add_argument("--gymenv", required=True, help="Environment.",
+parser.add_argument("--envir", required=True, help="Environment.",
                     default='CartPole-v0')
 parser.add_argument("--checkpoint", required=False, help="checkpoint to evaluate",
                     default="1")
@@ -106,7 +106,7 @@ wconfig = wandb.config
 wconfig.algorithm = args["algorithm"]
 wconfig.eva_seed = args["evaseed"]
 wconfig.train_seed = args["trainseed"]
-wconfig.env = args["gymenv"]
+wconfig.env = args["envir"]
 wconfig.checkpoint = args["checkpoint"]
 
 serve.start()
@@ -117,7 +117,7 @@ gap = 500
 end = 10000
 x = np.arange(begin, end, gap)
 seed = int(args["evaseed"])
-environment = args["gymenv"]
+environment = args["envir"]
 compute_times = []
 
 type = args["modeltype"]
@@ -135,20 +135,20 @@ elif type == 'rtrl':
     path = args["modelpath"]
     r = rtrl.load(path+"/store")
     trainer = r.agent
-    env = gym.make(args["gymenv"])
+    env = gym.make(environment)
 
 
 elif type == 'rllib':
     algorithm = args["algorithm"]
     trained_model = args["modelpath"]
-    env = gym.make(args["gymenv"])
+    env = gym.make(environment)
     if algorithm == "ARS":
         trainer = ars.ARSTrainer(
             config={
                 "framework": "torch",
                 # "num_workers": 4,
             },
-            env=args["gymenv"],
+            env=environment,
         )
     elif algorithm == "PPO":
         trainer = ppo.PPOTrainer(
@@ -156,7 +156,7 @@ elif type == 'rllib':
                 "framework": "torch",
                 # "num_workers": 4,
             },
-            env=args["gymenv"],
+            env=environment,
         )
     elif algorithm == "SAC":
         trainer = sac.SACTrainer(
@@ -164,7 +164,7 @@ elif type == 'rllib':
                 "framework": "torch",
                 # "num_workers": 4,
             },
-            env=args["gymenv"],
+            env=environment,
         )
     trainer.restore(trained_model)
 
