@@ -103,6 +103,7 @@ def play(env, trainer, times, gap, type, level = 0):
 
 wandb.init(project="RTDM", entity="rt_dm")
 wconfig = wandb.config
+wconfig.model_type = args["modeltype"]
 wconfig.algorithm = args["algorithm"]
 wconfig.eva_seed = args["evaseed"]
 wconfig.train_seed = args["trainseed"]
