@@ -2,7 +2,7 @@ from cmath import inf
 import gym
 import time
 import wandb
-from ray import serve
+# from ray import serve
 from pydoc import doc
 import ray.rllib.agents.ppo as ppo
 import ray.rllib.agents.ars as ars
@@ -113,7 +113,7 @@ wconfig.train_seed = args["trainseed"]
 wconfig.env = environment
 wconfig.checkpoint = args["checkpoint"]
 
-serve.start()
+# serve.start()
 
 record = []
 begin = 0
