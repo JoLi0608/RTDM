@@ -134,7 +134,7 @@ if type == 'mbrl':
     trainer = load_agent(path,env)
     # path = "/app/data/pets/HalfCheetah-v2/102236/"
 
-    # cfg = omegaconf.OmegaConf.load(args["modelpath"]+".hydra/config.yaml")
+    # cfg = omegaconf.OmegaConf.load(args["modelpath"]+"/.hydra/config.yaml")
     # #cfg["device"] = "cpu"
     # torch_generator = torch.Generator(device=cfg.device)
     # env, term_fn, reward_fn = mbrl.util.env.EnvHandler.make_env(cfg)
