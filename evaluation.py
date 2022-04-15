@@ -99,15 +99,17 @@ def play(env, trainer, times, gap, type, level = 0):
     wandb.log({"average_rewards": reward_ave, "difficulty_level": level})
     return reward_ave
 
-
+type = args["modeltype"]
+seed = int(args["evaseed"])
+environment = args["envir"]
 
 wandb.init(project="RTDM", entity="rt_dm")
 wconfig = wandb.config
-wconfig.model_type = args["modeltype"]
+wconfig.model_type = type
 wconfig.algorithm = args["algorithm"]
 wconfig.eva_seed = args["evaseed"]
 wconfig.train_seed = args["trainseed"]
-wconfig.env = args["envir"]
+wconfig.env = environment
 wconfig.checkpoint = args["checkpoint"]
 
 serve.start()
@@ -117,11 +119,8 @@ begin = 0
 gap = 500
 end = 10000
 x = np.arange(begin, end, gap)
-seed = int(args["evaseed"])
-environment = args["envir"]
 compute_times = []
 
-type = args["modeltype"]
 if type == 'mbrl':
     if environment == 'pets_pusher':
         env = pusher.PusherEnv()
@@ -129,7 +128,19 @@ if type == 'mbrl':
         env = humanoid.HumanoidTruncatedObsEnv()
     elif environment == 'cartpole_continuous':
         env = cart.CartPoleEnv()
-    trainer = load_agent(args["modelpath"],env)
+    # trainer = load_agent(args["modelpath"],env)
+    # path = "/app/data/pets/HalfCheetah-v2/102236/"
+
+    cfg = omegaconf.OmegaConf.load(args["modelpath"]+".hydra/config.yaml")
+    #cfg["device"] = "cpu"
+    torch_generator = torch.Generator(device=cfg.device)
+    env, term_fn, reward_fn = mbrl.util.env.EnvHandler.make_env(cfg)
+    obs_shape = env.observation_space.shape
+    act_shape = env.action_space.shape
+    dynamics_model = mbrl.util.common.create_one_dim_tr_model(cfg, obs_shape, act_shape)
+    dynamics_model.load(args["modelpath"])
+    model_env = mbrl.models.ModelEnv(env, dynamics_model, term_fn, reward_fn)
+    trainer = mbrl.planning.create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent, num_particles=cfg.algorithm.num_particles)
 
 
 elif type == 'rtrl':
