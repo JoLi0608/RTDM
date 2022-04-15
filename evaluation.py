@@ -102,6 +102,7 @@ def play(env, trainer, times, gap, type, level = 0):
 type = args["modeltype"]
 seed = int(args["evaseed"])
 environment = args["envir"]
+path = args["modelpath"]
 
 wandb.init(project="RTDM", entity="rt_dm")
 wconfig = wandb.config
@@ -128,7 +129,9 @@ if type == 'mbrl':
         env = humanoid.HumanoidTruncatedObsEnv()
     elif environment == 'cartpole_continuous':
         env = cart.CartPoleEnv()
-    trainer = load_agent(args["modelpath"],env)
+    else:
+        env = gym.make(environment)
+    trainer = load_agent(path,env)
     # path = "/app/data/pets/HalfCheetah-v2/102236/"
 
     # cfg = omegaconf.OmegaConf.load(args["modelpath"]+".hydra/config.yaml")
@@ -144,7 +147,6 @@ if type == 'mbrl':
 
 
 elif type == 'rtrl':
-    path = args["modelpath"]
     r = rtrl.load(path+"/store")
     trainer = r.agent
     env = gym.make(environment)
@@ -152,7 +154,6 @@ elif type == 'rtrl':
 
 elif type == 'rllib':
     algorithm = args["algorithm"]
-    trained_model = args["modelpath"]
     env = gym.make(environment)
     if algorithm == "ARS":
         trainer = ars.ARSTrainer(
@@ -178,7 +179,7 @@ elif type == 'rllib':
             },
             env=environment,
         )
-    trainer.restore(trained_model)
+    trainer.restore(path)
 
 
 env.seed(seed)
