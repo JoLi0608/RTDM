@@ -17,3 +17,4 @@ dynamics_model = mbrl.util.common.create_one_dim_tr_model(cfg, obs_shape, act_sh
 dynamics_model.load(path)
 model_env = mbrl.models.ModelEnv(env, dynamics_model, term_fn, reward_fn)
 agent = mbrl.planning.create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent, num_particles=cfg.algorithm.num_particles)
+agent.act(env.reset())
