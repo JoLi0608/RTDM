@@ -24,7 +24,7 @@ def run_env(agent,env,num_steps=1000,conc_prev=False):
         prev_action = action
     return (time.time()-t1)/1000
 
-def load_agent(algo="PPO",path=,device="cpu"):
+#def load_agent(algo="PPO",path=,device="cpu"):
 
 print("Benchmark mbpo")
 
