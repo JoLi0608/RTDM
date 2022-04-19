@@ -57,7 +57,6 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
     if type == 'rtrl':
         prev_action = np.zeros(env.action_space.shape[0])
     for k in range(iter_ep):
-        # print("here")
         obs = env.reset()
         total_reward = 0
         total_ep += 1
@@ -75,13 +74,11 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
                     action = np.clip(action, -1.0, 1.0) 
             elif type == 'spinup':
                 action = trainer(obs)
-            # print(action)
             t2 = time.time()
             compute_time = (t2 - t1)
             wandb.log({"computation_time": compute_time})
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
-            print(i,done)
             repeat = int(level * 1 * compute_time)
             total_reward += reward
             if repeat:
@@ -90,12 +87,10 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
                     total_reward += reward
                     if done:
                         total_rewards.append(total_reward)  
-                        print(total_reward)
                         break 
             else:        
                 if done:
                     total_rewards.append(total_reward)
-                    print(total_reward)
                     obs = env.reset()
                     break
             if done:
@@ -107,8 +102,6 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
     
         env.close()
 
-    #print(total_rewards)
-    # print(total_rewards)
     reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
     
     wandb.log({"average_rewards": reward_ave, "difficulty_level": level})
@@ -138,15 +131,16 @@ end = 10000
 x = np.arange(begin, end, gap)
 compute_times = []
 
+if environment == 'pets_pusher':
+    env = pusher.PusherEnv()
+elif environment == 'humanoid_truncated_obs':
+    env = humanoid.HumanoidTruncatedObsEnv()
+elif environment == 'cartpole_continuous':
+    env = cart.CartPoleEnv()
+else:
+    env = gym.make(environment)
+
 if type == 'mbrl':
-    if environment == 'pets_pusher':
-        env = pusher.PusherEnv()
-    elif environment == 'humanoid_truncated_obs':
-        env = humanoid.HumanoidTruncatedObsEnv()
-    elif environment == 'cartpole_continuous':
-        env = cart.CartPoleEnv()
-    else:
-        env = gym.make(environment)
     if algorithm == 'mbpo':
         trainer = load_agent(path,env,"cuda")
     elif algorithm == 'pets':
@@ -167,12 +161,10 @@ if type == 'mbrl':
 elif type == 'rtrl':
     r = rtrl.load(path+"/store")
     trainer = r.agent
-    env = gym.make(environment)
 
 
 elif type == 'rllib':
     algorithm = args["algorithm"]
-    env = gym.make(environment)
     if algorithm == "ARS":
         trainer = ars.ARSTrainer(
             config={
@@ -201,7 +193,6 @@ elif type == 'rllib':
 
 elif type == 'spinup':
     env,trainer = load_policy_and_env(path,device="cpu")
-    env = gym.make(environment)
     
 
 
