@@ -44,7 +44,7 @@ parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
 args = vars(parser.parse_args())
 print("Input of argparse:", args)
 
-def play(env, trainer, times, gap, type, level = 0):
+def play(env, trainer, times, gap, type, algorithm, level = 0):
     print('difficulty level:', level)
     prev_action = np.zeros(env.action_space.shape[0])
     total_rewards = []
@@ -66,6 +66,8 @@ def play(env, trainer, times, gap, type, level = 0):
                 action = trainer.act((obs,prev_action),[],[],[],train=False)[0]
             elif type == 'mbrl':
                 action = trainer.act(obs, deterministic=True)
+                if algorithm == 'pets':
+                    action = np.clip(action, -1.0, 1.0) 
             # print(action)
             t2 = time.time()
             compute_time = (t2 - t1)
@@ -144,9 +146,8 @@ if type == 'mbrl':
         dynamics_model = mbrl.util.common.create_one_dim_tr_model(cfg, obs_shape, act_shape)
         dynamics_model.load(path)
         model_env = mbrl.models.ModelEnv(env, dynamics_model, term_fn, reward_fn)
-        agent = mbrl.planning.create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent, num_particles=cfg.algorithm.num_particles)
-        action = agent.act(env.reset())
-        action = np.clip(action, -1.0, 1.0)  # to account for the noise
+        trainer = mbrl.planning.create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent, num_particles=cfg.algorithm.num_particles)
+
 
 
 
@@ -187,10 +188,10 @@ elif type == 'rllib':
 
 
 env.seed(seed)
-reward_ave = play(env, trainer, 100000, gap = gap, type = type)
+reward_ave = play(env, trainer, 100000, gap = gap, type = type, algorithm = algorithm)
 record.append(reward_ave)
 for level in x[1:]:
-    reward_ave = play(env, trainer, 100000, gap = gap, type = type, level = level)
+    reward_ave = play(env, trainer, 100000, gap = gap, type = type, algorithm = algorithm, level = level)
     record.append(reward_ave)
 time_ave = sum(compute_times)/len(compute_times)
 wandb.log({'average_compute_time':time_ave})
