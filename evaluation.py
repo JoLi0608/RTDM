@@ -50,7 +50,11 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
     prev_action = np.zeros(env.action_space.shape[0])
     total_rewards = []
     iter_ep = 20
+    flag = 0
     total_ep = level/gap*iter_ep  
+    if algorithm == 'Pusher-v2' or 'pets_pusher':
+        flag = 1
+        times = 100
 
     for k in range(iter_ep):
         # print("here")
@@ -95,7 +99,11 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
                     obs = env.reset()
                     break
             if done:
-                break         
+                break 
+            if times == 100 and flag == 1:
+                total_rewards.append(total_reward) 
+
+
     
         env.close()
 
