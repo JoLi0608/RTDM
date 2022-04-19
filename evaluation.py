@@ -24,6 +24,7 @@ import mbrl.env.humanoid_truncated_obs as humanoid
 import mbrl.env.cartpole_continuous as cart
 import argparse
 from mbrl.planning.core import load_agent
+from spinup.utils.test_policy import load_policy_and_env, run_policy
 
 
 # Input arguments from command line.
@@ -68,6 +69,8 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
                 action = trainer.act(obs, deterministic=True)
                 if algorithm == 'pets':
                     action = np.clip(action, -1.0, 1.0) 
+            elif type == 'spinup':
+                action = trainer(obs)
             # print(action)
             t2 = time.time()
             compute_time = (t2 - t1)
@@ -187,6 +190,11 @@ elif type == 'rllib':
             env=environment,
         )
     trainer.restore(path)
+
+elif type == 'spinup':
+    env,trainer = load_policy_and_env("path",device="cpu")
+    
+
 
 
 env.seed(seed)
