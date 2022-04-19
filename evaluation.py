@@ -47,7 +47,6 @@ print("Input of argparse:", args)
 
 def play(env, trainer, times, gap, type, algorithm, level = 0):
     print('difficulty level:', level)
-    prev_action = np.zeros(env.action_space.shape[0])
     total_rewards = []
     iter_ep = 20
     flag = 0
@@ -55,7 +54,8 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
     if algorithm == 'Pusher-v2' or 'pets_pusher':
         flag = 1
         times = 100
-
+    if type == 'rtrl':
+        prev_action = np.zeros(env.action_space.shape[0])
     for k in range(iter_ep):
         # print("here")
         obs = env.reset()
