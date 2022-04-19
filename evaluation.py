@@ -192,7 +192,8 @@ elif type == 'rllib':
     trainer.restore(path)
 
 elif type == 'spinup':
-    env,trainer = load_policy_and_env("path",device="cpu")
+    env,trainer = load_policy_and_env(path,device="cpu")
+    env = gym.make(environment)
     
 
 
