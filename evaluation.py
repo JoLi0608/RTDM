@@ -82,6 +82,7 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
             wandb.log({"computation_time": compute_time})
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
+            print(level, done, i)
             repeat = int(level * 1 * compute_time)
             total_reward += reward
             if repeat:
