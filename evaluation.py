@@ -45,18 +45,14 @@ parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
 args = vars(parser.parse_args())
 print("Input of argparse:", args)
 
-def play(env, trainer, times, gap, type, algorithm, level = 0):
+def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
     print('difficulty level:', level)
     total_rewards = []
     if algorithm == 'pets':
         iter_ep = 5
     else:
         iter_ep = 20
-    flag = 0
     total_ep = level/gap*iter_ep  
-    if env == 'Pusher-v2' or 'pets_pusher':
-        flag = 1
-        times = 100
     if type == 'rtrl':
         prev_action = np.zeros(env.action_space.shape[0])
     for k in range(iter_ep):
@@ -201,15 +197,18 @@ elif type == 'rllib':
 
 elif type == 'spinup':
     env,trainer = load_policy_and_env(path,device="cpu")
+
+flag = 0
+times = 100000
+if environment == 'Pusher-v2' or 'pets_pusher':
+    flag = 1
+    times = 100
     
-
-
-
 env.seed(seed)
-reward_ave = play(env, trainer, 100000, gap = gap, type = type, algorithm = algorithm)
+reward_ave = play(env, trainer, times, flag, gap = gap, type = type, algorithm = algorithm)
 record.append(reward_ave)
 for level in x[1:]:
-    reward_ave = play(env, trainer, 100000, gap = gap, type = type, algorithm = algorithm, level = level)
+    reward_ave = play(env, trainer, times, flag, gap = gap, type = type, algorithm = algorithm, level = level)
     record.append(reward_ave)
 time_ave = sum(compute_times)/len(compute_times)
 wandb.log({'average_compute_time':time_ave})
