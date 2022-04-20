@@ -87,19 +87,17 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                     total_reward += reward
                     if done:
                         total_rewards.append(total_reward)  
-                        print(total_reward)
+                        # print(total_reward)
                         break 
             else:        
                 if done:
                     total_rewards.append(total_reward)
-                    print(total_reward)
+                    # print(total_reward)
                     obs = env.reset()
                     break
             if done:
                 break 
             if i == 100 and flag == 1:
-                print(times,flag)
-                print('pusher')
                 total_rewards.append(total_reward) 
 
 
@@ -200,12 +198,11 @@ elif type == 'spinup':
 
 flag = 0
 times = 100000
-print(environment)
+
 if environment == 'Pusher-v2' or environment == 'pets_pusher':
     flag = 1
     times = 100
 
-print(flag)
 
 env.seed(seed)
 reward_ave = play(env, trainer, times, flag, gap = gap, type = type, algorithm = algorithm)
