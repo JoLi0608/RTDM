@@ -54,7 +54,7 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
         iter_ep = 20
     flag = 0
     total_ep = level/gap*iter_ep  
-    if algorithm == 'Pusher-v2' or 'pets_pusher':
+    if env == 'Pusher-v2' or 'pets_pusher':
         flag = 1
         times = 100
     if type == 'rtrl':
@@ -101,7 +101,7 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
                     break
             if done:
                 break 
-            if times == 100 and flag == 1:
+            if i == 100 and flag == 1:
                 print(times,flag)
                 print('pusher')
                 total_rewards.append(total_reward) 
