@@ -102,6 +102,7 @@ def play(env, trainer, times, gap, type, algorithm, level = 0):
             if done:
                 break 
             if times == 100 and flag == 1:
+                print(times,flag)
                 print('pusher')
                 total_rewards.append(total_reward) 
 
