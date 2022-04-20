@@ -48,7 +48,10 @@ print("Input of argparse:", args)
 def play(env, trainer, times, gap, type, algorithm, level = 0):
     print('difficulty level:', level)
     total_rewards = []
-    iter_ep = 20
+    if algorithm == 'pets':
+        iter_ep = 5
+    else:
+        iter_ep = 20
     flag = 0
     total_ep = level/gap*iter_ep  
     if algorithm == 'Pusher-v2' or 'pets_pusher':
