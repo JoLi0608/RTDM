@@ -201,7 +201,7 @@ elif type == 'spinup':
 flag = 0
 times = 100000
 print(environment)
-if environment == 'Pusher-v2' or 'pets_pusher':
+if environment == 'Pusher-v2' or environment == 'pets_pusher':
     flag = 1
     times = 100
 
