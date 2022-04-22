@@ -28,12 +28,40 @@ def dreamer(path):
     data = pd.read_json(path+"metrics.jsonl", lines=True).to_dict('records')
     data = change_key(data,"train_return","reward")
     return {"env":path.split("/")[5],"seed":float(path.split("/")[7]),"algo":"DREAMER",
-            "data":tmp}
+            "data":data}
+
+def sac(path):
+    data = pd.read_csv(path + "progress.txt", sep="\t").to_dict('records')
+    data = change_key(data,"TotalEnvInteracts","step")
+    data = change_key(data,"AverageEpRet","reward")
+    return {"env":path.split("/")[5],"seed":float(path[-2]),"algo":"SAC",
+            "data":data}
+
+def ppo(path):
+    data = pd.read_csv(path + "progress.txt", sep="\t").to_dict('records')
+    data = change_key(data,"TotalEnvInteracts","step")
+    data = change_key(data,"AverageEpRet","reward")
+    return {"env":path.split("/")[5],"seed":float(path[-2]),"algo":"PPO",
+            "data":data}
+
+def pets(path):
+    data = pd.read_csv(path + "results.csv").to_dict('records')
+    data = change_key(data,"env_step","step")
+    data = change_key(data,"train_episode_reward","reward")
+    return {"env":path.split("/")[4],"seed": float(path.split("/")[5]),"algo":"PETS",
+            "data":data}
+
+def mbpo(path):
+    data = pd.read_csv(path + "results.csv").to_dict('records')
+    data = change_key(data,"env_step","step")
+    data = change_key(data,"train_episode_reward","reward")
+    return {"env":path.split("/")[5],"seed": float(path.split("/")[7]),"algo":"MBPO",
+            "data":data}
+
 
 args = vars(parser.parse_args())
 
 data = globals()[args["algo"]](args["path"])
-
 
 
 wandb.init(project="RTDM_train", entity="pierthodo")
@@ -48,7 +76,7 @@ for i in data["data"]:
     wandb.log(i,step=int(i["step"]),commit=False)
 
 
-
-
 wandb.log({"Done":True},commit=True)
+
+
 
