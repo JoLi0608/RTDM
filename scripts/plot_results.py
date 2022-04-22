@@ -63,7 +63,7 @@ def mbpo(path):
 def ars(path):
     data = pd.read_csv(path + "progress.csv", low_memory=False).to_dict('records')
     data = change_key(data,"timesteps_total","step")
-    data = change_key(data,"train_episode_reward","reward")
+    data = change_key(data,"episode_reward_mean","reward")
     env = path.split("/")[5].split("_")[1]
     if env == "continuous":
         env = "continuous_CartPole-v0"
