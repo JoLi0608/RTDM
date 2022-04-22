@@ -16,10 +16,14 @@ def load_planet(path="/app/data/planet/default/dmcontrol_walker_walk/2022.04.11/
     return {"env":path.split("/")[5],"seed":float(path.split("/")[7]),"algo":"PLANET",
             "data":pd.read_csv(path + "results.csv").to_dict('records')}
 
+def dreamer(path):
+    return {"env":path.split("/")[5],"seed":float(path.split("/")[7]),"algo":"DREAMER",
+            "data":pd.read_json(path="metrics.jsonl", lines=True).to_dict('records')}
 
 args = vars(parser.parse_args())
-if args["algo"] == "planet":
-    data = load_planet(args["path"])
+
+data = locals()[args["algo"]](args["path"])
+
 
 
 wandb.init(project="RTDM_train", entity="pierthodo")
