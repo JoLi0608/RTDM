@@ -80,7 +80,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0):
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
             # print(level, done, i)
-            dt = 0.02
+            dt = 0.002
             repeat = 0 if compute_time < dt else int(level*(compute_time/dt))
             repeat_list.append(repeat)
             #repeat = int(level * 1 * compute_time)
