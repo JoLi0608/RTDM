@@ -180,6 +180,8 @@ elif type == 'rllib':
             config={
                 "framework": "torch",
                 # "num_workers": 4,
+                "num_cpus":0.1
+
             },
             env=environment,
         )
