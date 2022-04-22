@@ -12,17 +12,23 @@ parser.add_argument("--path",  help="Filepath to trained checkpoint")
 parser.add_argument("--algo",  help="Filepath to trained checkpoint")
 
 
-def load_planet(path="/app/data/planet/default/dmcontrol_walker_walk/2022.04.11/085157/"):
+def change_key(d,old_k,new_k):
+    for i in range(len(d)):
+        d[i][new_k] = d[i].pop(old_k)
+    return d
+
+def planet(path):
+    data = pd.read_csv(path + "results.csv").to_dict('records')
+    data = change_key(data,"env_step","step")
+    data = change_key(data,"train_episode_reward","reward")
     return {"env":path.split("/")[5],"seed":float(path.split("/")[7]),"algo":"PLANET",
-            "data":pd.read_csv(path + "results.csv").to_dict('records')}
+            "data":data}
 
 def dreamer(path):
-    tmp = pd.read_json(path+"metrics.jsonl", lines=True).to_dict('records')
-    for i in range(len(tmp)):
-        tmp[i]["env_step"] = tmp[i].pop("step")
+    data = pd.read_json(path+"metrics.jsonl", lines=True).to_dict('records')
+    data = change_key(data,"train_return","reward")
     return {"env":path.split("/")[5],"seed":float(path.split("/")[7]),"algo":"DREAMER",
             "data":tmp}
-
 
 args = vars(parser.parse_args())
 
