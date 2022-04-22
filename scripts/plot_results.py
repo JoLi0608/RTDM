@@ -17,8 +17,12 @@ def load_planet(path="/app/data/planet/default/dmcontrol_walker_walk/2022.04.11/
             "data":pd.read_csv(path + "results.csv").to_dict('records')}
 
 def dreamer(path):
+    tmp = pd.read_json(path+"metrics.jsonl", lines=True).to_dict('records')
+    for i in range(len(tmp)):
+        tmp[i]["env_step"] = tmp[i].pop("step")
     return {"env":path.split("/")[5],"seed":float(path.split("/")[7]),"algo":"DREAMER",
-            "data":pd.read_json(path+"metrics.jsonl", lines=True).to_dict('records')}
+            "data":tmp}
+
 
 args = vars(parser.parse_args())
 
