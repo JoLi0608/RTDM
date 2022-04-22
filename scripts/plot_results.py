@@ -81,13 +81,14 @@ wconfig = wandb.config
 wconfig.seed = data["seed"]
 wconfig.algo = data["algo"]
 wconfig.env = data["env"]
+
 for i in range(len(data["data"])):
     try:
-        if data["env"] == "Humanoid-v2" and data[i]["step"] > 200000:
+        if data["env"] == "Humanoid-v2" and data["data"][i]["step"] > 200000:
             break
-        wandb.log(data[i],step=int(data[i]["step"]),commit=False)
+        wandb.log(data["data"][i],step=int(data["data"][i]["step"]),commit=False)
     except:
-        print("Error at step",acc)
+        print("Error at step",i)
 
 wandb.log({"Done":True},commit=True)
 
