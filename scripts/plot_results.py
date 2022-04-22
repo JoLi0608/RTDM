@@ -84,8 +84,6 @@ wconfig.env = data["env"]
 
 for i in range(len(data["data"])):
     try:
-        if data["env"] == "Humanoid-v2" and data["data"][i]["step"] > 200000:
-            break
         wandb.log(data["data"][i],step=int(data["data"][i]["step"]),commit=False)
     except:
         print("Error at step",i)
