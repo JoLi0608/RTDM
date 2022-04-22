@@ -48,6 +48,7 @@ print("Input of argparse:", args)
 def play(env, trainer, times, flag, gap, type, algorithm, level=0):
     print('difficulty level:', level)
     total_rewards = []
+    repeat_list = []
     if algorithm == 'pets':
         iter_ep = 5
     else:
@@ -80,8 +81,8 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0):
             obs, reward, done, info = env.step(action)
             # print(level, done, i)
             dt = 0.02
-            repeat = 0 if compute_time < dt else level*int(compute_time/dt)
-            print(repeat)
+            repeat = 0 if compute_time < dt else int(level*(compute_time/dt))
+            repeat_list.append(repeat)
             #repeat = int(level * 1 * compute_time)
             total_reward += reward
             if repeat:
@@ -108,7 +109,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0):
     reward_ave = sum(total_rewards) / len(total_rewards) if len(total_rewards) else sum(total_rewards) / (
                 len(total_rewards) + 1)
 
-    wandb.log({"average_rewards": reward_ave, "difficulty_level": level})
+    wandb.log({"average_rewards": reward_ave, "difficulty_level": level,"average_repeat":np.array(repeat_list).mean()})
     return reward_ave
 
 
