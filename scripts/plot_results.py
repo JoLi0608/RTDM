@@ -43,9 +43,11 @@ wconfig.algo = data["algo"]
 wconfig.env = data["env"]
 
 for i in data["data"]:
-    if (data["env"] == "Humanoid-v2") and (i["env_step"] > 200000) and (data["algo"] == "MBPO"):
+    if data["env"] == "Humanoid-v2" and i["step"] > 200000:
         break
-    wandb.log(i,step=int(i["env_step"]),commit=False)
+    wandb.log(i,step=int(i["step"]),commit=False)
+
+
 
 
 wandb.log({"Done":True},commit=True)
