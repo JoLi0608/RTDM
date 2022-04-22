@@ -32,7 +32,7 @@ def dreamer(path):
 
 args = vars(parser.parse_args())
 
-data = locals()[args["algo"]](args["path"])
+data = globals()[args["algo"]](args["path"])
 
 
 
