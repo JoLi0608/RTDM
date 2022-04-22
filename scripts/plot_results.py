@@ -47,15 +47,27 @@ def ppo(path):
 def pets(path):
     data = pd.read_csv(path + "results.csv").to_dict('records')
     data = change_key(data,"env_step","step")
-    data = change_key(data,"train_episode_reward","reward")
+    data = change_key(data,"episode_reward","reward")
     return {"env":path.split("/")[4],"seed": float(path.split("/")[5]),"algo":"PETS",
             "data":data}
 
 def mbpo(path):
     data = pd.read_csv(path + "results.csv").to_dict('records')
     data = change_key(data,"env_step","step")
-    data = change_key(data,"episode_reward","reward")
+    data = change_key(data,"train_episode_reward","reward")
     return {"env":path.split("/")[5],"seed": float(path.split("/")[7]),"algo":"MBPO",
+            "data":data}
+
+
+
+def ars(path):
+    df = pd.read_csv(path + "progress.csv", low_memory=False).to_dict('records')
+    data = change_key(data,"timesteps_total","step")
+    data = change_key(data,"train_episode_reward","reward")
+    env = path.split("/")[5].split("_")[1]
+    if env == "continuous":
+        env = "continuous_CartPole-v0"
+    return {"env":env,"seed": float(path.split("/")[4]),"algo":"ARS",
             "data":data}
 
 
@@ -69,14 +81,13 @@ wconfig = wandb.config
 wconfig.seed = data["seed"]
 wconfig.algo = data["algo"]
 wconfig.env = data["env"]
-
-for i in data["data"]:
-    if data["env"] == "Humanoid-v2" and i["step"] > 200000:
-        break
-    wandb.log(i,step=int(i["step"]),commit=False)
-
+for i in range(len(data["data"])):
+    try:
+        if data["env"] == "Humanoid-v2" and data[i]["step"] > 200000:
+            break
+        wandb.log(data[i],step=int(data[i]["step"]),commit=False)
+    except:
+        print("Error at step",acc)
 
 wandb.log({"Done":True},commit=True)
-
-
 
