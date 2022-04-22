@@ -53,6 +53,8 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0):
         iter_ep = 5
     else:
         iter_ep = 20
+    print("CAREFUL ITER_REP IS STILL ONE")
+    iter_ep = 1
     total_ep = level / gap * iter_ep
     if type == 'rtrl':
         prev_action = np.zeros(env.action_space.shape[0])
@@ -105,7 +107,8 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0):
                 total_rewards.append(total_reward)
 
         env.close()
-
+        print(compute_times)
+        print(repeat_list)
     reward_ave = sum(total_rewards) / len(total_rewards) if len(total_rewards) else sum(total_rewards) / (
                 len(total_rewards) + 1)
 
@@ -216,7 +219,7 @@ if environment == 'Pusher-v2' or environment == 'pets_pusher':
 env.seed(seed)
 #reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm)
 #record.append(reward_ave)
-for level in [0.01,0.1,0.5,1]:
+for level in [0.01,0.1,0.2,0.3,0.4,0.5,1]:
     reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm, level=level)
     record.append(reward_ave)
 time_ave = sum(compute_times) / len(compute_times)
