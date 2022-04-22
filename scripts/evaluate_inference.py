@@ -214,8 +214,8 @@ if environment == 'Pusher-v2' or environment == 'pets_pusher':
     times = 100
 
 env.seed(seed)
-reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm)
-record.append(reward_ave)
+#reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm)
+#record.append(reward_ave)
 for level in [0.01,0.1,0.5,1]:
     reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm, level=level)
     record.append(reward_ave)
