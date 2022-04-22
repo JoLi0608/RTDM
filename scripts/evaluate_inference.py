@@ -44,8 +44,9 @@ parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
 args = vars(parser.parse_args())
 print("Input of argparse:", args)
 
+dt_dic = {"Hopper-v2":0.002, "HalfCheetah-v2":0.01,"continuous_CartPole-v0":0.02,"Humanoid-v2":0.003,"Pusher-v2":0.01}
 
-def play(env, trainer, times, flag, gap, type, algorithm, level=0):
+def play(env, trainer, times, flag, gap, type, algorithm, level=0, dt=0.01):
     print('difficulty level:', level)
     total_rewards = []
     repeat_list = []
@@ -82,7 +83,6 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0):
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
             # print(level, done, i)
-            dt = 0.002
             repeat = 0 if compute_time < dt else int(level*(compute_time/dt))
             repeat_list.append(repeat)
             #repeat = int(level * 1 * compute_time)
@@ -116,11 +116,15 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0):
     return reward_ave
 
 
+  
+
 type = args["modeltype"]
 seed = int(args["evaseed"])
 environment = args["envir"]
 path = args["modelpath"]
 algorithm = args["algorithm"]
+
+
 
 wandb.init(project="RTDM_inference", entity="pierthodo")
 wconfig = wandb.config
@@ -220,7 +224,7 @@ env.seed(seed)
 #reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm)
 #record.append(reward_ave)
 for level in [0.01,0.1,0.2,0.3,0.4,0.5,1]:
-    reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm, level=level)
+    reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm, level=level,dt=dt_dic[environment])
     record.append(reward_ave)
 time_ave = sum(compute_times) / len(compute_times)
 wandb.log({'average_compute_time': time_ave})
