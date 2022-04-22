@@ -79,7 +79,9 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0):
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
             # print(level, done, i)
-            repeat = level*floor(compute_time/0.02)
+            dt = 0.02
+            repeat = 0 if compute_time < dt else level*int(compute_time/dt)
+            print(repeat)
             #repeat = int(level * 1 * compute_time)
             total_reward += reward
             if repeat:
