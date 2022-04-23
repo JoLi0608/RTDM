@@ -72,7 +72,7 @@ for gpu in [False,True]:
         if algo == "rtrl":
             inf_time[algo+"_"+str(gpu)] = run_env(agent,env,conc_prev=True)
         else:   
-            inf_time[algo+"_"+str(gpu)] = run_env(agent,env,conc_prev=True)
+            inf_time[algo+"_"+str(gpu)] = run_env(agent,env)
             
 print(inf_time)
 
