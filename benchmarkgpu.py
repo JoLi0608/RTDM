@@ -16,7 +16,7 @@ def load(algo,gpu=False):
     if algo == "mbpo":
         env = gym.make("Hopper-v2")
         device = "cuda" if gpu else "cpu"
-        ag = load_agent("/app/data/mbpo/default/Hopper-v2/2022.04.01/100721", env,device)
+        ag = load_agent("/app/data/mbpo/default/Hopper-v2/2022.04.01/100727", env,device)
         agent = lambda obs: ag.act(obs)
     elif algo == "pets":
         path = "/app/data/pets/Hopper-v2/091637/"
