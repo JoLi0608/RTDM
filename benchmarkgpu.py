@@ -46,10 +46,10 @@ def load(algo,env_name="Hopper-v2",gpu=False):
 
     elif algo == "sac":
         device = "cuda" if gpu else "cpu"
-        env,agent = load_policy_and_env("/app/data/Hopper-v2/cmd_sac_pytorch/cmd_sac_pytorch_s1",device=device)
+        env,agent = load_policy_and_env("/app/data/spinup/sac/Hopper-v2/cmd_sac_pytorch/cmd_sac_pytorch_s1",device=device)
     elif algo == "PPO":
         device = "cuda" if gpu else "cpu"
-        env,agent = load_policy_and_env("/app/data/Hopper-v2/cmd_ppo_pytorch/cmd_ppo_pytorch_s1",device=device)
+        env,agent = load_policy_and_env("/app/data/spinup/ppo/Hopper-v2/cmd_ppo_pytorch/cmd_ppo_pytorch_s1",device=device)
     return agent,env
     
 def run_env(agent,env,num_steps=100,conc_prev=False):
