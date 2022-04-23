@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser(description='Evaluate trained model')
 
 parser.add_argument("--path", required=True, help="Filepath to trained checkpoint",
                     default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
-parser.add_argument("--algorithm", required=True, help="Algorithm used", default="ARS")
+parser.add_argument("--algo", required=True, help="Algorithm used", default="ARS")
 
 args = vars(parser.parse_args())
 
