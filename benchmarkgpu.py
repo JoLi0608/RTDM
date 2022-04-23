@@ -54,7 +54,7 @@ def load(algo,env_name="Hopper-v2",gpu=False):
         print("Algo not known", algo)
     return agent,env
     
-def run_env(agent,env,num_steps=100,conc_prev=False):
+def run_env(agent,env,num_steps=10,conc_prev=False):
     prev_action = np.zeros(env.action_space.shape[0])
     t1 = time.time()
     obs = env.reset()
