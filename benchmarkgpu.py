@@ -12,9 +12,9 @@ import mbrl.planning
 import numpy as np
 import rtrl
 
-def load(algo,gpu=False):
+def load(algo,env_name="Hopper-v2",gpu=False):
     if algo == "mbpo":
-        env = gym.make("Hopper-v2")
+        env = gym.make(env_name)
         device = "cuda" if gpu else "cpu"
         ag = load_agent("/app/data/mbpo/default/Hopper-v2/2022.04.01/034518", env,device)
         agent = lambda obs: ag.act(obs)
@@ -42,7 +42,7 @@ def load(algo,gpu=False):
         else:
             r.agent.model.to("cuda")
         agent = lambda obs: r.agent.act(obs,[],[],[],train=False)[0]
-        env = gym.make("Hopper-v2")
+        env = gym.make(env_name)
 
     elif algo == "sac":
         device = "cuda" if gpu else "cpu"
