@@ -52,7 +52,7 @@ def load(algo,env_name="Hopper-v2",gpu=False):
         env,agent = load_policy_and_env("/app/data/Hopper-v2/cmd_ppo_pytorch/cmd_ppo_pytorch_s1",device=device)
     return agent,env
     
-def run_env(agent,env,num_steps=1000,conc_prev=False):
+def run_env(agent,env,num_steps=100,conc_prev=False):
     prev_action = np.zeros(env.action_space.shape[0])
     t1 = time.time()
     obs = env.reset()
