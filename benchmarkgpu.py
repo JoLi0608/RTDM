@@ -85,9 +85,9 @@ for i in ["HalfCheetah=v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
         env_name = i
 
 
-load(args["path"],args["algo"],i)
+agent,env = load(args["path"],args["algo"],i)
 
-if algo == "rtrl":
+if args["algo"] == "rtrl":
     inf_time[algo+"_"+str(gpu)] = run_env(agent,env,conc_prev=True)
 else:   
     inf_time[algo+"_"+str(gpu)] = run_env(agent,env)
