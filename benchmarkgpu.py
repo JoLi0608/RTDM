@@ -69,6 +69,7 @@ inf_time = {}
 for gpu in [False,True]:
     for algo in ["mbpo","pets","ars","rtrl","sac","ppo"]:
         agent,env = load(algo,gpu=gpu)
+        print("Done loading")
         if algo == "rtrl":
             inf_time[algo+"_"+str(gpu)] = run_env(agent,env,conc_prev=True)
         else:   
