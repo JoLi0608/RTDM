@@ -11,8 +11,7 @@ parser = argparse.ArgumentParser(description='Evaluate trained model')
 parser.add_argument("--path", required=True, help="Filepath to trained checkpoint",
                     default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
 parser.add_argument("--algorithm", required=True, help="Algorithm used", default="ARS")
-parser.add_argument("--env", required=True, help="Environment.",
-                    default='CartPole-v0')
+
 args = vars(parser.parse_args())
 
 
@@ -81,8 +80,12 @@ def run_env(agent,env,num_steps=10,conc_prev=False):
     return (time.time()-t1)/1000
 
 
+for i in ["HalfCheetah=v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2"]:
+    if i in args["path"]:
+        env_name = i
 
-load(args["path"],args["algo"],args["env"])
+
+load(args["path"],args["algo"],i)
 
 if algo == "rtrl":
     inf_time[algo+"_"+str(gpu)] = run_env(agent,env,conc_prev=True)
