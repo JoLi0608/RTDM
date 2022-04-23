@@ -86,7 +86,7 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
         env_name = i
 
 
-agent,env = load(args["path"],args["algo"],i)
+agent,env = load(args["path"],args["algo"],env_name=env_name)
 
 if args["algo"] == "rtrl":
     t = run_env(agent,env,conc_prev=True)
