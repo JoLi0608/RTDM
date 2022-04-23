@@ -34,7 +34,7 @@ def load(algo,gpu=False):
         action = ag.act(env.reset())
         action = np.clip(action, -1.0, 1.0)  # to account for the noise
         agent = lambda obs: np.clip(ag.act(obs),-1.0,1.0)
-   elif algo == "ars"
+   elif algo == "ars":
         path = "/app/data/ray_results/1/ARS_Hopper-v2_47175_00000_0_2022-04-07_11-24-24/checkpoint_015300/checkpoint-15300"
         num_gpus = 0.2 if gpu else 0
         trainer = ars.ARSTrainer(
