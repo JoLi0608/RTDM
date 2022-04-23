@@ -3,6 +3,7 @@ import gym
 import mbrl
 import numpy as np
 import argparse
+import pickle
 
 
 # Input arguments from command line.
@@ -91,7 +92,20 @@ if args["algo"] == "rtrl":
     t = run_env(agent,env,conc_prev=True)
 else:   
     t = run_env(agent,env)
-    
+
+try:
+    f = open("/app/RTDM/scripts/inf_time.pkl","rb")
+    inf_time = pickle.load(f)
+    f.close()
+except:
+    inf_time = {}
+
+inf_time[args["algo"]+"_"+env_name] = t
+
+f = open("/app/RTDM/scripts/inf_time.pkl","wb")
+pickle.dump(inf_time,f)
+f.close()
+
 print(t)
 
         
