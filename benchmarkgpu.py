@@ -1,25 +1,34 @@
-from spinup.utils.test_policy import load_policy_and_env, run_policy
 import time
-import ray.rllib.agents.ars as ars
-from mbrl.planning.core import load_agent
 import gym
-
-import omegaconf
-import torch
-import mbrl.util.env
-import mbrl.util.common
-import mbrl.planning
+import mbrl
 import numpy as np
-import rtrl
+import argparse
 
-def load(algo,env_name="Hopper-v2",gpu=False):
+
+# Input arguments from command line.
+parser = argparse.ArgumentParser(description='Evaluate trained model')
+
+parser.add_argument("--path", required=True, help="Filepath to trained checkpoint",
+                    default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
+parser.add_argument("--algorithm", required=True, help="Algorithm used", default="ARS")
+parser.add_argument("--env", required=True, help="Environment.",
+                    default='CartPole-v0')
+args = vars(parser.parse_args())
+
+
+def load(path,algo,env_name="Hopper-v2",gpu=False):
     if algo == "mbpo":
+        from mbrl.planning.core import load_agent
         env = gym.make(env_name)
         device = "cuda" if gpu else "cpu"
-        ag = load_agent("/app/data/mbpo/default/Hopper-v2/2022.04.01/034518", env,device)
+        ag = load_agent(path, env,device)
         agent = lambda obs: ag.act(obs)
     elif algo == "pets":
-        path = "/app/data/pets/Hopper-v2/091637/"
+        import mbrl.util.env
+        import mbrl.util.common
+        import mbrl.planning
+        import omegaconf
+        import torch
         cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
         if not gpu:
             cfg["device"] = "cpu"
@@ -35,7 +44,7 @@ def load(algo,env_name="Hopper-v2",gpu=False):
         action = np.clip(action, -1.0, 1.0)  # to account for the noise
         agent = lambda obs: np.clip(ag.act(obs),-1.0,1.0)
     elif algo == "rtrl":
-        path = "/app/data/rtrl_2/exp-1-Hopper-v2-RTAC/"
+        import rtrl
         r = rtrl.load(path+"state")
         if not gpu:
             r.agent.model.to("cpu")
@@ -48,11 +57,13 @@ def load(algo,env_name="Hopper-v2",gpu=False):
         tmp = np.random.uniform(size=(env.observation_space.shape[0],env.action_space.shape[0]))
         agent = lambda obs: np.dot(obs,tmp)
     elif algo == "sac":
+        from spinup.utils.test_policy import load_policy_and_env, run_policy
         device = "cuda" if gpu else "cpu"
-        env,agent = load_policy_and_env("/app/data/spinup/sac/Hopper-v2/cmd_sac_pytorch/cmd_sac_pytorch_s1",device=device)
+        env,agent = load_policy_and_env(path,device=device)
     elif algo == "ppo":
+        from spinup.utils.test_policy import load_policy_and_env, run_policy
         device = "cuda" if gpu else "cpu"
-        env,agent = load_policy_and_env("/app/data/spinup/ppo/Hopper-v2/cmd_ppo_pytorch/cmd_ppo_pytorch_s1",device=device)
+        env,agent = load_policy_and_env(path,device=device)
     else:
         print("Algo not known", algo)
     return agent,env
@@ -70,16 +81,14 @@ def run_env(agent,env,num_steps=10,conc_prev=False):
     return (time.time()-t1)/1000
 
 
-inf_time = {}
-for gpu in [False]:
-    for algo in ["ars","mbpo","rtrl","sac","ppo"]:
-        agent,env = load(algo,gpu=gpu)
-        print("Done loading")
-        if algo == "rtrl":
-            inf_time[algo+"_"+str(gpu)] = run_env(agent,env,conc_prev=True)
-        else:   
-            inf_time[algo+"_"+str(gpu)] = run_env(agent,env)
-        print(inf_time)
+
+load(args["path"],args["algo"],args["env"])
+
+if algo == "rtrl":
+    inf_time[algo+"_"+str(gpu)] = run_env(agent,env,conc_prev=True)
+else:   
+    inf_time[algo+"_"+str(gpu)] = run_env(agent,env)
+    
 print(inf_time)
 
         
