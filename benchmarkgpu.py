@@ -81,7 +81,7 @@ def run_env(agent,env,num_steps=10,conc_prev=False):
     return (time.time()-t1)/1000
 
 
-for i in ["HalfCheetah=v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2"]:
+for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2"]:
     if i in args["path"]:
         env_name = i
 
