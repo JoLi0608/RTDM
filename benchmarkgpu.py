@@ -34,7 +34,23 @@ def load(algo,gpu=False):
         action = ag.act(env.reset())
         action = np.clip(action, -1.0, 1.0)  # to account for the noise
         agent = lambda obs: np.clip(ag.act(obs),-1.0,1.0)
+   elif algo == "ars":
+        path = "/app/data/ray_results/1/ARS_Hopper-v2_47175_00000_0_2022-04-07_11-24-24/checkpoint_015300/checkpoint-15300"
+        num_gpus = 0.2 if gpu else 0
+        trainer = ars.ARSTrainer(config={
+                "framework": "torch",
+                "num_gpus": num_gpus,},env="Hopper-v2")
+        trainer.restore(path)
+        agent = lambda obs: trainer.compute_single_action(obs)
+        env = gym.make("Hopper-v2")
 
+
+    elif algo == "sac":
+        device = "cuda" if gpu else "cpu"
+        env,agent = load_policy_and_env("/app/data/Hopper-v2/cmd_sac_pytorch/cmd_sac_pytorch_s1",device=device)
+    elif algo == "PPO":
+        device = "cuda" if gpu else "cpu"
+        env,agent = load_policy_and_env("/app/data/Hopper-v2/cmd_ppo_pytorch/cmd_ppo_pytorch_s1",device=device)
     return agent,env
     
 def run_env(agent,env,num_steps=1000,conc_prev=False):
