@@ -67,7 +67,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
 
 inf_time = {}
 for gpu in [False,True]:
-    for algo in ["mbpo","pets","ars","rtrl","sac","ppo"]:
+    for algo in ["mbpo","pets","rtrl","sac","ppo"]:
         agent,env = load(algo,gpu=gpu)
         print("Done loading")
         if algo == "rtrl":
