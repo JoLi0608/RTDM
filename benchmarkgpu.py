@@ -24,8 +24,10 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         elif env_name == "Humanoid-v2":
             import mbrl.env.humanoid_truncated_obs as humanoid
             env = humanoid.HumanoidTruncatedObsEnv()
+        else:
+            env = gym.make(env_name)
+
         from mbrl.planning.core import load_agent
-        env = gym.make(env_name)
         device = "cuda" if gpu else "cpu"
         ag = load_agent(path, env,device)
         agent = lambda obs: ag.act(obs)
