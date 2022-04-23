@@ -43,7 +43,10 @@ def load(algo,env_name="Hopper-v2",gpu=False):
             r.agent.model.to("cuda")
         agent = lambda obs: r.agent.act(obs,[],[],[],train=False)[0]
         env = gym.make(env_name)
-
+    elif algo == "ars":
+        env = gym.make(env_name)
+        tmp = np.random.uniform(size=(env.observation_space.shape[0],env.action_space.shape[0]))
+        agent = lambda obs: np.dot(obs,tmp)
     elif algo == "sac":
         device = "cuda" if gpu else "cpu"
         env,agent = load_policy_and_env("/app/data/spinup/sac/Hopper-v2/cmd_sac_pytorch/cmd_sac_pytorch_s1",device=device)
@@ -69,14 +72,14 @@ def run_env(agent,env,num_steps=10,conc_prev=False):
 
 inf_time = {}
 for gpu in [False]:
-    for algo in ["mbpo","rtrl","sac","ppo"]:
+    for algo in ["ars","mbpo","rtrl","sac","ppo"]:
         agent,env = load(algo,gpu=gpu)
         print("Done loading")
         if algo == "rtrl":
             inf_time[algo+"_"+str(gpu)] = run_env(agent,env,conc_prev=True)
         else:   
             inf_time[algo+"_"+str(gpu)] = run_env(agent,env)
-            
+        print(inf_time)
 print(inf_time)
 
         
