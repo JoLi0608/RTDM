@@ -77,8 +77,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
     return agent,env
     
 def run_env(agent,env,num_steps=1000,conc_prev=False):
-    prev_action = np.zeros(env.action_space.shape[0])
-    obs = env.reset()
+    done = True
     compute_time = []
     for i in range(num_steps):
         if done:
