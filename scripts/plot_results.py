@@ -58,6 +58,13 @@ def mbpo(path):
     return {"env":path.split("/")[5],"seed": float(path.split("/")[7]),"algo":"MBPO",
             "data":data}
 
+def rtrl(path):
+    data = pickle.load(open(path+"stats", "rb")).to_dict('records')
+    data["step"] = data.index * 1000
+    data = change_key(data,"train_episode_reward","reward")
+    name = path.split("/")[-1]
+    return {"env":name[2:-5],"seed": float(name.split("/")[0]),"algo":"RTRL",
+            "data":data}
 
 
 def ars(path):
