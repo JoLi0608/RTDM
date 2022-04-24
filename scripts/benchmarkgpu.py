@@ -31,7 +31,6 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
 
         from mbrl.planning.core import load_agent
         device = "cuda" if gpu else "cpu"
-        print(device)
         ag = load_agent(path, env,device)
         agent = lambda obs: ag.act(obs)
     elif algo == "pets":
