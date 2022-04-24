@@ -13,6 +13,7 @@ parser.add_argument("--path", required=True, help="Filepath to trained checkpoin
                     default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
 parser.add_argument("--algo", required=True, help="Algorithm used", default="ARS")
 parser.add_argument("--cpu", required=True, help="Number of CPU", default=8)
+parser.add_argument("--gpu", required=True, help="Number of CPU", default=0)
 
 args = vars(parser.parse_args())
 
@@ -99,14 +100,14 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
         env_name = i
 
 
-agent,env = load(args["path"],args["algo"],env_name=env_name)
+agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
 if args["algo"] == "rtrl":
     t = run_env(agent,env,conc_prev=True)
 else:   
     t = run_env(agent,env)
 
-path_inference = "/app/data/inference_time/"+args["cpu"]+"/"+args["algo"]+"_"+env_name+".pkl"
+path_inference = "/app/data/inference_time/"+args["cpu"]+"/"+args["algo"]+"_"+env_name+"_gpu_"+args["gpu"]+".pkl"
 try:
     f = open(path_inference,"rb")
     inf_time = pickle.load(f)
