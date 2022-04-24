@@ -59,16 +59,6 @@ def mbpo(path):
     return {"env":path.split("/")[5],"seed": float(path.split("/")[7]),"algo":"MBPO",
             "data":data}
 
-def rtrl(path):
-    data = pickle.load(open(path+"stats", "rb"))
-    data["step"] = data.index * 1000
-    data = data.to_dict('records')
-    data = change_key(data,"returns","reward")
-    name = path.split("/")[-1]
-    return {"env":name[2:-5],"seed": float(name.split("-")[0]),"algo":"RTRL",
-            "data":data}
-
-
 def ars(path):
     data = pd.read_csv(path + "progress.csv", low_memory=False).to_dict('records')
     data = change_key(data,"timesteps_total","step")
@@ -78,6 +68,18 @@ def ars(path):
         env = "continuous_CartPole-v0"
     return {"env":env,"seed": float(path.split("/")[4]),"algo":"ARS",
             "data":data}
+
+def rtrl(path):
+    data = pickle.load(open(path+"stats", "rb"))
+    data["step"] = data.index * 1000
+    data = data.to_dict('records')
+    data = change_key(data,"returns","reward")
+    name = path.split("/")[-2]
+    return {"env":name[2:-5],"seed": float(name.split("-")[0]),"algo":"RTRL",
+            "data":data}
+
+
+
 
 
 args = vars(parser.parse_args())
