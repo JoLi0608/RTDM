@@ -65,7 +65,7 @@ def rtrl(path):
     data = data.to_dict('records')
     data = change_key(data,"returns","reward")
     name = path.split("/")[-1]
-    return {"env":name[2:-5],"seed": float(name.split("/")[0]),"algo":"RTRL",
+    return {"env":name[2:-5],"seed": float(name.split("-")[0]),"algo":"RTRL",
             "data":data}
 
 
