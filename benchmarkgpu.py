@@ -76,17 +76,22 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         print("Algo not known", algo)
     return agent,env
     
-def run_env(agent,env,num_steps=10,conc_prev=False):
+def run_env(agent,env,num_steps=1000,conc_prev=False):
     prev_action = np.zeros(env.action_space.shape[0])
-    t1 = time.time()
     obs = env.reset()
+    compute_time = []
     for i in range(num_steps):
+        if done:
+            obs = env.reset()
+            prev_action = np.zeros(env.action_space.shape[0])
         if conc_prev:
             obs = (obs,prev_action)
+        t1 = time.time()
         action = agent(obs)  # Get action
-        obs,_ ,_ , _ = env.step(action)
+        compute_time.append(time.time()-t1)
+        obs,_ ,done , _ = env.step(action)
         prev_action = action
-    return (time.time()-t1)/1000
+    return np.array(compute_time)
 
 
 for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2"]:
@@ -109,12 +114,12 @@ except:
     inf_time = {}
 
 inf_time[args["algo"]+"_"+env_name] = t
+print("Algo: ",args["algo"], " env: ",env_name)
+print("Mean time: ", t.mean()," median: ",t.median())
 
 f = open("/app/RTDM/scripts/inf_time.pkl","wb")
 pickle.dump(inf_time,f)
 f.close()
-
-print(t)
 
         
 #elif algo == "ars":
