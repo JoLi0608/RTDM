@@ -107,15 +107,16 @@ if args["algo"] == "rtrl":
 else:   
     t = run_env(agent,env)
 
-path_inference = "/app/data/inference_time/"+args["cpu"]+"/"+args["algo"]+"_"+env_name+"_gpu_"+args["gpu"]+".pkl"
+path_inference = "/app/data/inference_time/data.pkl"
 try:
     f = open(path_inference,"rb")
     inf_time = pickle.load(f)
     f.close()
 except:
     inf_time = {}
-
-inf_time[args["algo"]+"_"+env_name] = t
+    
+name_experiment = "cpu_"+args["cpu"]+"_"+args["algo"]+"_"+env_name+"_gpu_"+args["gpu"]
+inf_time[name_experiment] = t
 print("Algo: ",args["algo"], " env: ",env_name)
 print("Mean time: ", t.mean()," median: ",np.median(t))
 
