@@ -106,7 +106,7 @@ if args["algo"] == "rtrl":
 else:   
     t = run_env(agent,env)
 
-path_inference = "/app/data/inference_time/"+args["cpu"]+"/"+args["algo"]+"_"+env_name+".pkl
+path_inference = "/app/data/inference_time/"+args["cpu"]+"/"+args["algo"]+"_"+env_name+".pkl"
 try:
     f = open(path_inference,"rb")
     inf_time = pickle.load(f)
