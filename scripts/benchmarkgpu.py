@@ -78,7 +78,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         print("Algo not known", algo)
     return agent,env
     
-def run_env(agent,env,num_steps=1000,conc_prev=False):
+def run_env(agent,env,num_steps=100,conc_prev=False):
     done = True
     compute_time = []
     for i in range(num_steps):
@@ -104,6 +104,8 @@ agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
 if args["algo"] == "rtrl":
     t = run_env(agent,env,conc_prev=True)
+elif args["algo"] == "pets:
+    t = run_env(agent,env,num_steps=30)
 else:   
     t = run_env(agent,env)
 
