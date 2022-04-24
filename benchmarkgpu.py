@@ -114,7 +114,7 @@ except:
 
 inf_time[args["algo"]+"_"+env_name] = t
 print("Algo: ",args["algo"], " env: ",env_name)
-print("Mean time: ", t.mean()," median: ",t.median())
+print("Mean time: ", t.mean()," median: ",np.median(t))
 
 f = open("/app/RTDM/scripts/inf_time.pkl","wb")
 pickle.dump(inf_time,f)
