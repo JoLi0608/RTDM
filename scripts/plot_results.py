@@ -54,7 +54,7 @@ def pets(path):
 def mbpo(path):
     data = pd.read_csv(path + "results.csv").to_dict('records')
     data = change_key(data,"env_step","step")
-    data = change_key(data,"train_episode_reward","reward")
+    data = change_key(data,"episode_reward","reward")
     return {"env":path.split("/")[5],"seed": float(path.split("/")[7]),"algo":"MBPO",
             "data":data}
 
