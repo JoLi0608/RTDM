@@ -92,12 +92,12 @@ wconfig = wandb.config
 wconfig.seed = data["seed"]
 wconfig.algo = data["algo"]
 wconfig.env = data["env"]
-
+print(data)
 for i in range(len(data["data"])):
-    try:
-        wandb.log(data["data"][i],step=int(data["data"][i]["step"]),commit=False)
-    except:
-        print("Error at step",i)
+    #try:
+    wandb.log(data["data"][i],step=int(data["data"][i]["step"]),commit=False)
+    #except:
+    print("Error at step",i)
 
 wandb.log({"Done":True},commit=True)
 
