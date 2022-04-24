@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser(description='Evaluate trained model')
 parser.add_argument("--path", required=True, help="Filepath to trained checkpoint",
                     default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
 parser.add_argument("--algo", required=True, help="Algorithm used", default="ARS")
+parser.add_argument("--cpu", required=True, help="Number of CPU", default=8)
 
 args = vars(parser.parse_args())
 
@@ -105,8 +106,9 @@ if args["algo"] == "rtrl":
 else:   
     t = run_env(agent,env)
 
+path_inference = "/app/data/inference_time/"+args["cpu"]+"/"+args["algo"]+"_"+env_name+".pkl
 try:
-    f = open("/app/RTDM/scripts/inf_time.pkl","rb")
+    f = open(path_inference,"rb")
     inf_time = pickle.load(f)
     f.close()
 except:
@@ -116,7 +118,7 @@ inf_time[args["algo"]+"_"+env_name] = t
 print("Algo: ",args["algo"], " env: ",env_name)
 print("Mean time: ", t.mean()," median: ",np.median(t))
 
-f = open("/app/RTDM/scripts/inf_time.pkl","wb")
+f = open(path_inference,"wb")
 pickle.dump(inf_time,f)
 f.close()
 
