@@ -72,6 +72,7 @@ def ars(path):
 def rtrl(path):
     data = pickle.load(open(path+"stats", "rb"))
     data["step"] = data.index * 1000
+    data = data.drop(["round_time_total","round_time_test","round_time"],1)
     data = data.to_dict('records')
     data = change_key(data,"returns","reward")
     name = path.split("/")[-2]
@@ -94,10 +95,10 @@ wconfig.algo = data["algo"]
 wconfig.env = data["env"]
 print(data)
 for i in range(len(data["data"])):
-    #try:
-    wandb.log(data["data"][i],step=int(data["data"][i]["step"]),commit=False)
-    #except:
-    print("Error at step",i)
+    try:
+        wandb.log(data["data"][i],step=int(data["data"][i]["step"]),commit=False)
+    except:
+        print("Error at step",i)
 
 wandb.log({"Done":True},commit=True)
 
