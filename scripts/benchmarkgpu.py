@@ -33,6 +33,29 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         device = "cuda" if gpu else "cpu"
         ag = load_agent(path, env,device)
         agent = lambda obs: ag.act(obs)
+    elif algo == "planet":
+        import omegaconf
+        import torch
+        from mbrl.models import ModelEnv, ModelTrainer
+        from mbrl.env.termination_fns import no_termination
+        from mbrl.planning import RandomAgent, create_trajectory_optim_agent_for_model
+        from mbrl.third_party.dmc2gym import make
+               
+        env = make(domain_name=env_name.split("_")[1] ,task_name=env_name.split("_")[2])
+
+        device = "cuda" if gpu else "cpu"
+        cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
+        if not gpu:
+            cfg["device"] = "cpu"
+        torch_generator = torch.Generator(device=cfg.device)
+        cfg.dynamics_model.action_size = env.action_space.shape[0]
+        planet = hydra.utils.instantiate(cfg.dynamics_model)
+        planet.load(path)
+        if gpu == False:
+            planet.to("cpu")
+        model_env = ModelEnv(env, planet, no_termination, generator=torch_generator)
+        agent = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
+
     elif algo == "pets":
         import mbrl.util.env
         import mbrl.util.common
@@ -126,7 +149,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
     return np.array(compute_time)
 
 
-for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2"]:
+for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2","dmc_walker_walk","dmc_cartpole_balance","dmc_cheetah_run"]:
     if i in args["path"]:
         env_name = i
 
