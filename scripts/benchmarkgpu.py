@@ -98,6 +98,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
         prev_action = action
         rep += 1
         if rep > 4000:
+            print(np.median(tmp_compute))
             time_c = 2/np.median(tmp_compute)
             if int((time_c/len(obs_list))) > 0:
               print("Expand obs by factor of ",int((time_c/len(obs_list)))," from ",len(obs_list))
@@ -105,7 +106,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
             break
     print(rep," samples collected in ",time.time()-t1)
     compute_time = []
-    for i in range(10):
+    for i in range(1):
         t1 = time.time()
         result = [agent(obs) for obs in obs_list]
         compute_time.append((time.time()-t1)/float(len(obs_list)))
