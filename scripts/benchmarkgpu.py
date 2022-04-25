@@ -155,27 +155,8 @@ if args["algo"] == "rtrl":
     #t = run_env(agent,env,conc_prev=True,cpu=float(args["cpu"]))
 else:   
     create_episode(agent,env,conc_prev=False,cpu=float(args["cpu"])
-
     #t = run_env(agent,env,cpu=float(args["cpu"]))
-"""
-path_inference = "/app/data/inference_time/data.pkl"
-try:
-    f = open(path_inference,"rb")
-    inf_time = pickle.load(f)
-    f.close()
-except:
-    inf_time = {}
-    
-name_experiment = "cpu_"+args["cpu"]+"_"+args["algo"]+"_"+env_name+"_gpu_"+args["gpu"]
-inf_time[name_experiment] = t
-print("Algo: ",args["algo"], " env: ",env_name)
-print("Mean time: ", t.mean()," median: ",np.median(t))
 
-f = open(path_inference,"wb")
-pickle.dump(inf_time,f)
-f.close()
-
-"""
 #elif algo == "ars":
 #     path = "/app/data/ray_results/1/ARS_Hopper-v2_47175_00000_0_2022-04-07_11-24-24/checkpoint_015300/checkpoint-15300"
 #     num_gpus = 0.2 if gpu else 0
