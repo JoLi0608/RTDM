@@ -80,7 +80,6 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
     
 def run_env(agent,env,num_steps=100,conc_prev=False):
     done = True
-    compute_time = []
     t1 = time.time()
     rep = 0
     obs_list = []
@@ -92,19 +91,15 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
             obs = (obs,prev_action)
         obs_list.append(obs)
         action = agent(obs)  # Get action
-        compute_time.append(time.time()-t1)
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
     print(rep," samples collected in ",time.time()-t1)
+    compute_time = []
     for i in range(20):
         t1 = time.time()
         result = [agent(obs) for i in obs_list]
-        print((time.time()-t1),float(len(obs_list)))
-        t = (time.time()-t1)/float(len(obs_list))
-        print(t)
-        compute_time.append(t)
-    print(compute_time)
+        compute_time.append((time.time()-t1)/float(len(obs_list)))
     return np.array(compute_time)
 
 
