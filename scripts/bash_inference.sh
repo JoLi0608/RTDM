@@ -4,7 +4,7 @@
 # RTRL
 
 
-for d in /app/data/rtrl_3/exp/*/ ;do
+for d in /app/data/rtrl_3/exp/1-*/ ;do
     echo $d
     python /app/RTDM/scripts/benchmarkgpu.py --path $d --algo rtrl --cpu $1 --gpu $2
 done
