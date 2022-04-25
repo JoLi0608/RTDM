@@ -104,7 +104,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
     tmp_2 = time.time()
     print((tmp_2-tmp_1)/len(obs_list))
     print((tmp_2-tmp_1))
-    time_c = int((1*cpu)/(tmp_2-tmp_1))
+    time_c = int((1)/(tmp_2-tmp_1))
     if time_c > 0:
       print("Expand obs by factor of ",time_c," from ",len(obs_list))
       obs_list = obs_list * time_c
