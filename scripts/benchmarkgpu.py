@@ -101,7 +101,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
         t1 = time.time()
         result = [agent(obs) for i in obs_list]
         compute_time.append((time.time()-t1)/20)
-    return compute_time
+    return np.array(compute_time)
 
 
 for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2"]:
