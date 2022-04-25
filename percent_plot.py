@@ -80,13 +80,13 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 elif type == 'spinup':
                     action = trainer(obs)
                 obs, reward, done, info = env.step(action)
-                print(1,level, done, i)
+                print(1,done, reward)
                 rest = repeat-1
                 total_reward += reward
                 if rest:
                     for j in range(rest):
                         obs, reward, done, info = env.step(action)
-                        print(2,level, done, i)
+                        print(2,done, reward)
                         total_reward += reward
                         if done:
                             total_rewards.append(total_reward)  
@@ -95,7 +95,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 else:        
                     if done:
                         total_rewards.append(total_reward)
-                        print(3,level, done, i)
+                        print(3,done, reward)
                         # print(total_reward)
                         obs = env.reset()
                         break
