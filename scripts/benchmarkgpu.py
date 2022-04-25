@@ -84,7 +84,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
     rep = 0
     obs_list = []
     tmp_compute = np.array([0])
-    while len(obs_list)*np.median(tmp_compute) < 2 or rep < 20:
+    while rep < 20:
         if done:
             obs = env.reset()
             prev_action = np.zeros(env.action_space.shape[0])    
@@ -97,16 +97,17 @@ def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
-        if rep > 20:
-            tmp_1 = time.time() 
-            _ = [agent(obs) for obs in obs_list]
-            tmp_2 = time.time()
-            print((tmp_2-tmp_1)/len(obs_list))
-            time_c = int((1*cpu)/(tmp_2-tmp_1))
-            if time_c > 0:
-              print("Expand obs by factor of ",time_c," from ",len(obs_list))
-              obs_list = obs_list * time_c
-            break
+        
+        
+    tmp_1 = time.time() 
+    _ = [agent(obs) for obs in obs_list]
+    tmp_2 = time.time()
+    print((tmp_2-tmp_1)/len(obs_list))
+    print((tmp_2-tmp_1))
+    time_c = int((1*cpu)/(tmp_2-tmp_1))
+    if time_c > 0:
+      print("Expand obs by factor of ",time_c," from ",len(obs_list))
+      obs_list = obs_list * time_c
 
       
     print(rep," samples collected in ",time.time()-t1)
