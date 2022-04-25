@@ -97,7 +97,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 if done:
                     break 
             env.close()
-        print(total_rewards)    
+        # print(total_rewards)    
         reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
         if repeat == 0:
             initial_reward = reward_ave
