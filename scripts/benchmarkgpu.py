@@ -135,13 +135,13 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
 agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
 if args["algo"] == "rtrl":
-    #create_episode(agent,env,conc_prev=True,cpu=float(args["cpu"]))
-    t = run_env(agent,env,conc_prev=True,cpu=float(args["cpu"]))
+    create_episode(agent,env,conc_prev=True,cpu=float(args["cpu"]))
+    #t = run_env(agent,env,conc_prev=True,cpu=float(args["cpu"]))
 else:   
-    #create_episode(agent,env,conc_prev=False,cpu=float(args["cpu"]))
-    t = run_env(agent,env,cpu=float(args["cpu"]))
+    create_episode(agent,env,conc_prev=False,cpu=float(args["cpu"]))
+    #t = run_env(agent,env,cpu=float(args["cpu"]))
 
-
+"""
 path_inference = "/app/data/inference_time/data.pkl"
 try:
     f = open(path_inference,"rb")
@@ -158,7 +158,7 @@ print("Mean time: ", t.mean()," median: ",np.median(t))
 f = open(path_inference,"wb")
 pickle.dump(inf_time,f)
 f.close()
-
+"""
 
 #elif algo == "ars":
 #     path = "/app/data/ray_results/1/ARS_Hopper-v2_47175_00000_0_2022-04-07_11-24-24/checkpoint_015300/checkpoint-15300"
