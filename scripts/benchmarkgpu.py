@@ -164,7 +164,7 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
 
 agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
-store_episode = True
+store_episode = False
 conc_prev = True if args["algo"] == "rtrl" else False
 
 
