@@ -79,21 +79,26 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                         action = np.clip(action, -1.0, 1.0) 
                 elif type == 'spinup':
                     action = trainer(obs)
-
-
-                for j in range(repeat):
-                    obs, reward, done, info = env.step(action)
-                    total_reward += reward
+                obs, reward, done, info = env.step(action)
+                rest = repeat-1
+                total_reward += reward
+                if rest:
+                    for j in range(rest):
+                        obs, reward, done, info = env.step(action)
+                        total_reward += reward
+                        if done:
+                            total_rewards.append(total_reward)  
+                            # print(total_reward)
+                            break 
+                else:        
                     if done:
-                        # total_rewards.append(total_reward)  
+                        total_rewards.append(total_reward)
                         # print(total_reward)
-                        break 
+                        obs = env.reset()
+                        break
                 if done:
-                    total_rewards.append(total_reward)
                     break 
-                if i == 100 and flag == 1:
-                    total_rewards.append(total_reward) 
-                    break
+            env.close()
             print(total_rewards)    
             reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
             if repeat == 0:
