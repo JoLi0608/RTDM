@@ -80,11 +80,13 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 elif type == 'spinup':
                     action = trainer(obs)
                 obs, reward, done, info = env.step(action)
+                print(1,level, done, i)
                 rest = repeat-1
                 total_reward += reward
                 if rest:
                     for j in range(rest):
                         obs, reward, done, info = env.step(action)
+                        print(2,level, done, i)
                         total_reward += reward
                         if done:
                             total_rewards.append(total_reward)  
@@ -93,6 +95,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 else:        
                     if done:
                         total_rewards.append(total_reward)
+                        print(3,level, done, i)
                         # print(total_reward)
                         obs = env.reset()
                         break
@@ -102,8 +105,8 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
             print(total_rewards)    
             reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
             if repeat == 0:
-                print('here')
-                print(reward_ave)
+                # print('here')
+                # print(reward_ave)
                 initial_reward = reward_ave
             print(initial_reward)
             percent = reward_ave/initial_reward
