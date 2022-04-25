@@ -36,6 +36,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
     elif algo == "planet":
         import omegaconf
         import torch
+        import hydra
         from mbrl.models import ModelEnv, ModelTrainer
         from mbrl.env.termination_fns import no_termination
         from mbrl.planning import RandomAgent, create_trajectory_optim_agent_for_model
