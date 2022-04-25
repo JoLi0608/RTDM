@@ -100,12 +100,11 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                     break 
                 if i == 100 and flag == 1:
                     total_rewards.append(total_reward) 
+            
             reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
             if not repeat:
                 initial_reward = reward_ave
-                percent = 1
-            else:
-                percent = reward_ave/initial_reward
+            percent = reward_ave/initial_reward
             wandb.log({"percent": percent, "action_repeated": repeat})
 
 
