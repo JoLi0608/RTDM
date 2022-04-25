@@ -54,6 +54,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         ag = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
 
         def agent(obs,done=False):
+            import numpy as np
             if done:
                 print("reset agent")
                 ag.reset()
