@@ -84,7 +84,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 rest = repeat-1
                 print(rest)
                 total_reward += reward
-                if rest:
+                if rest >= 0:
                     for j in range(rest):
                         obs, reward, done, info = env.step(action)
                         print(2,done,times)
