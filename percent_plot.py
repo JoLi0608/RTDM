@@ -102,15 +102,15 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 if done:
                     break 
             env.close()
-            print(total_rewards)    
-            reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
-            if repeat == 0:
-                # print('here')
-                # print(reward_ave)
-                initial_reward = reward_ave
-            print(initial_reward)
-            percent = reward_ave/initial_reward
-            wandb.log({"percent": percent, "action_repeated": repeat})
+        print(total_rewards)    
+        reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
+        if repeat == 0:
+            # print('here')
+            # print(reward_ave)
+            initial_reward = reward_ave
+        print(initial_reward)
+        percent = reward_ave/initial_reward
+        wandb.log({"percent": percent, "action_repeated": repeat})
 
 
 
