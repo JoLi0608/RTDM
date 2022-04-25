@@ -98,6 +98,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
         prev_action = action
         rep += 1
         if rep > 4000:
+            print(tmp_compute)
             print(np.median(tmp_compute))
             time_c = 2/np.median(tmp_compute)
             if int((time_c/len(obs_list))) > 0:
