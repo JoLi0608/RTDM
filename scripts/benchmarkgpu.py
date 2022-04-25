@@ -98,16 +98,16 @@ def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
         prev_action = action
         rep += 1
         
-        
-    tmp_1 = time.time() 
-    _ = [agent(obs) for obs in obs_list]
-    tmp_2 = time.time()
-    print((tmp_2-tmp_1)/len(obs_list))
-    print((tmp_2-tmp_1))
-    time_c = int((1)/(tmp_2-tmp_1))
-    if time_c > 0:
-      print("Expand obs by factor of ",time_c," from ",len(obs_list))
-      obs_list = obs_list * time_c
+    t1 = time.time()
+    acc = 0
+    while time.time()-t1 < 1:
+        _ = [agent(obs) for obs in obs_list]
+        acc += 1
+    
+    print(acc)
+    if acc > 0:
+      print("Expand obs by factor of ",acc," from ",len(obs_list))
+      obs_list = obs_list * acc
 
       
     print(rep," samples collected in ",time.time()-t1)
