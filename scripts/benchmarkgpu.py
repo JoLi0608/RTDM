@@ -84,7 +84,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
     rep = 0
     obs_list = []
     tmp_compute = np.array([0])
-    while len(obs)*np.median(tmp_compute) < 2 or rep < 20:
+    while len(obs_list)*np.median(tmp_compute) < 2 or rep < 20:
         if done:
             obs = env.reset()
             prev_action = np.zeros(env.action_space.shape[0])    
