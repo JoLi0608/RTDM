@@ -97,7 +97,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
-        if rep > 100:
+        if rep > 20:
             tmp_1 = time.time() 
             _ = [agent(obs) for obs in obs_list]
             tmp_2 = time.time()
