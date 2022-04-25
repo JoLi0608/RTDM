@@ -102,7 +102,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
             _ = [agent(obs) for obs in obs_list]
             tmp_2 = time.time()
             print((tmp_2-tmp_1)/len(obs_list))
-            time_c = int(2/(tmp_2-tmp_1))
+            time_c = int(1/(tmp_2-tmp_1))
             if time_c > 0:
               print("Expand obs by factor of ",time_c," from ",len(obs_list))
               obs_list = obs_list * time_c
@@ -111,7 +111,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
       
     print(rep," samples collected in ",time.time()-t1)
     compute_time = []
-    for i in range(1):
+    for i in range(10):
         t1 = time.time()
         result = [agent(obs) for obs in obs_list]
         compute_time.append((time.time()-t1)/float(len(obs_list)))
