@@ -5,6 +5,7 @@ import numpy as np
 import argparse
 import pickle
 import copy
+import math
 # Input arguments from command line.
 parser = argparse.ArgumentParser(description='Evaluate trained model')
 
@@ -96,11 +97,11 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
-        if rep > 5000:
+        if rep > 4000:
             time_c = 2/np.median(tmp_compute)
-            if floor((time_c/len(obs_list))) > 0:
-              print("Expand obs by factor of ",floor((time_c/len(obs_list)))," from ",len(obs_list))
-              obs_list = obs_list * floor((time_c/len(obs_list)))
+            if int((time_c/len(obs_list))) > 0:
+              print("Expand obs by factor of ",int((time_c/len(obs_list)))," from ",len(obs_list))
+              obs_list = obs_list * int((time_c/len(obs_list)))
             break
     print(rep," samples collected in ",time.time()-t1)
     compute_time = []
