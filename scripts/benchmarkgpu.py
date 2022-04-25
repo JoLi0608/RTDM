@@ -19,6 +19,7 @@ args = vars(parser.parse_args())
 
 
 def load(path,algo,env_name="Hopper-v2",gpu=False):
+    import numpy as np
     if algo == "mbpo":
         if env_name == "Pusher-v2":
             import mbrl.env.pets_pusher as pusher
