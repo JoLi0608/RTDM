@@ -52,14 +52,14 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         planet = hydra.utils.instantiate(cfg.dynamics_model)
         planet.load(path)
         model_env = ModelEnv(env, planet, no_termination, generator=torch_generator)
-        agent = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
+        ag = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
 
         def agent(obs,done=False):
             if done:
-                agent.reset()
+                ag.reset()
                 planet.reset_posterior()
                 planet.update_posterior(obs, action=None, rng=torch_generator)
-            return np.clip(agent.act(obs),-1,1)
+            return np.clip(ag.act(obs),-1,1)
 
     elif algo == "pets":
         import mbrl.util.env
