@@ -117,7 +117,6 @@ def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
       obs_list = obs_list * acc
 
       
-    print(rep," samples collected in ",time.time()-t1)
     compute_time = []
     for i in range(10):
         t1 = time.time()
