@@ -84,17 +84,21 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
     rep = 0
     obs_list = []
     tmp_compute = np.array([0])
-    while time.time()-t1 < 2 or rep < 20:
+    while len(obs_list)*np.median(tmp_compute) < 2 or rep < 20:
         if done:
             obs = env.reset()
             prev_action = np.zeros(env.action_space.shape[0])    
         if conc_prev:
             obs = (obs,prev_action)
         obs_list.append(copy.deepcopy(obs))
+        tmp_t1 = time.time()
         action = agent(obs)  # Get action
+        tmp_compute = np.append(tmp_compute,[time.time()-tmp_t1])
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
+        if rep > 20000:
+            break
     print(rep," samples collected in ",time.time()-t1)
     compute_time = []
     for i in range(10):
