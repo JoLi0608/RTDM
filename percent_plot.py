@@ -80,29 +80,21 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 elif type == 'spinup':
                     action = trainer(obs)
 
-                obs, reward, done, info = env.step(action)
-                # print(level, done, i)
-                if repeat:
-                    for j in range(repeat):
-                        obs, reward, done, info = env.step(action)
-                        total_reward += reward
-                        if done:
-                            total_rewards.append(total_reward)  
-                            # print(total_reward)
-                            break 
-                else:        
+
+                for j in range(repeat):
+                    obs, reward, done, info = env.step(action)
+                    total_reward += reward
                     if done:
-                        total_rewards.append(total_reward)
+                        total_rewards.append(total_reward)  
                         # print(total_reward)
-                        obs = env.reset()
-                        break
-                if done:
-                    break 
+                        break 
+                # if done:
+                #     break 
                 if i == 100 and flag == 1:
                     total_rewards.append(total_reward) 
             
             reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
-            if not repeat:
+            if repeat == 0:
                 initial_reward = reward_ave
             percent = reward_ave/initial_reward
             wandb.log({"percent": percent, "action_repeated": repeat})
