@@ -96,6 +96,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
+    print(rep," samples collected in ",time.time()-t1)
     for i in range(20):
         t1 = time.time()
         result = [agent(obs) for i in obs_list]
