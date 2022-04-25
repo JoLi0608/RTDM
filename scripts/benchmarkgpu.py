@@ -170,7 +170,7 @@ conc_prev = True if args["algo"] == "rtrl" else False
 if store_episode:
     create_episode(agent,env,conc_prev=conc_prev,cpu=float(args["cpu"]))
 else:
-    t = run_env(agent,env,conc_prev=conv_prev,cpu=float(args["cpu"]))
+    t = run_env(agent,env,conc_prev=conc_prev,cpu=float(args["cpu"]))
     path_inference = "/app/data/inference_time/data.pkl"
     try:
         f = open(path_inference,"rb")
