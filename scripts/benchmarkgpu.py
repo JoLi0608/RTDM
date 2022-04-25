@@ -45,8 +45,6 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         import os
         os.environ["MUJOCO_GL"] = "osmesa"
 
-        path = "/app/data/planet/default/dmc_walker_walk/2022.04.11/080432/"
-
         cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
         env, term_fn, reward_fn = EnvHandler.make_env(cfg)
         torch_generator = torch.Generator(device=cfg.device)
