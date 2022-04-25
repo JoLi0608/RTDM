@@ -57,7 +57,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
     if type == 'rtrl':
         prev_action = np.zeros(env.action_space.shape[0])
 
-    for repeat in range(1,11):
+    for repeat in range(11):
         print('action repeated:', repeat)
         
         for k in range(iter_ep):
@@ -65,7 +65,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
             obs = env.reset()
             total_reward = 0
             total_ep += 1
-            wandb.log({"episode": total_ep, "difficulty_level": level})
+            # wandb.log({"episode": total_ep, "difficulty_level": level})
 
             for i in range(times):
 
