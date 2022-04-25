@@ -119,7 +119,7 @@ environment = args["envir"]
 path = args["modelpath"]
 algorithm = args["algorithm"]
 
-wandb.init(project="RTDM", entity="rt_dm_percentage")
+wandb.init(project="RTDM_percentage", entity="rt_dm")
 wconfig = wandb.config
 wconfig.model_type = type
 wconfig.algorithm = algorithm
