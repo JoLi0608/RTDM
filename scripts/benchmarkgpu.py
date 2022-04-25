@@ -114,7 +114,7 @@ def create_episode(agent,env,num_steps=100,conc_prev=False,cpu=1):
     rep = 0
     obs_list = []
     tmp_compute = np.array([0])
-    while rep < 50:
+    while rep < 10:
         if done:
             obs = env.reset()
             prev_action = np.zeros(env.action_space.shape[0])    
@@ -167,7 +167,7 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
 
 agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
-store_episode = False
+store_episode = True
 conc_prev = True if args["algo"] == "rtrl" else False
 
 
