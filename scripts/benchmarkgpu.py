@@ -78,7 +78,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         print("Algo not known", algo)
     return agent,env
     
-def run_env(agent,env,num_steps=100,conc_prev=False):
+def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
     done = True
     t1 = time.time()
     rep = 0
@@ -97,12 +97,12 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
-        if rep > 3000:
+        if rep > 100:
             tmp_1 = time.time() 
             _ = [agent(obs) for obs in obs_list]
             tmp_2 = time.time()
             print((tmp_2-tmp_1)/len(obs_list))
-            time_c = int(1/(tmp_2-tmp_1))
+            time_c = int((1*cpu)/(tmp_2-tmp_1))
             if time_c > 0:
               print("Expand obs by factor of ",time_c," from ",len(obs_list))
               obs_list = obs_list * time_c
@@ -127,11 +127,9 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
 agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
 if args["algo"] == "rtrl":
-    t = run_env(agent,env,conc_prev=True)
-elif args["algo"] == "pets":
-    t = run_env(agent,env,num_steps=30)
+    t = run_env(agent,env,conc_prev=True,cpu=float(args["cpu"]))
 else:   
-    t = run_env(agent,env)
+    t = run_env(agent,env,cpu=float(args["cpu"]))
 
 path_inference = "/app/data/inference_time/data.pkl"
 try:
