@@ -1,6 +1,15 @@
 
 #!/bin/bash
 
+# RTRL
+
+
+for d in /app/data/rtrl_2/*/ ;do
+    echo $d
+    python /app/RTDM/scripts/benchmarkgpu.py --path $d --algo rtrl --cpu $1 --gpu $2
+done
+
+
 # SAC
 for d in /app/data/spinup/sac/* ;do
     for n in $d/cmd_sac_pytorch/*/; do
@@ -48,13 +57,6 @@ do
 done
 
 
-# RTRL
-
-
-for d in /app/data/rtrl_2/*/ ;do
-    echo $d
-    python /app/RTDM/scripts/benchmarkgpu.py --path $d --algo rtrl --cpu $1 --gpu $2
-done
 
 
 # PETS
