@@ -77,6 +77,29 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
     else:
         print("Algo not known", algo)
     return agent,env
+
+  
+def create_episode(agent,env,num_steps=100,conc_prev=False,cpu=1):
+    done = True
+    t1 = time.time()
+    rep = 0
+    obs_list = []
+    tmp_compute = np.array([0])
+    while rep < 50:
+        if done:
+            obs = env.reset()
+            prev_action = np.zeros(env.action_space.shape[0])    
+        if conc_prev:
+            obs = (obs,prev_action)
+        obs_list.append(copy.deepcopy(obs))
+        tmp_t1 = time.time()
+        action = agent(obs)  # Get action
+        tmp_compute = np.append(tmp_compute,[time.time()-tmp_t1])
+        obs,_ ,done , _ = env.step(action)
+        prev_action = action
+        rep += 1    
+    pickle.dump(open(path+"dump_episode.pkl","wb"),obs_list)
+    
     
 def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
     done = True
@@ -128,10 +151,13 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
 agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
 if args["algo"] == "rtrl":
-    t = run_env(agent,env,conc_prev=True,cpu=float(args["cpu"]))
+    create_episode(agent,env,conc_prev=True,cpu=float(args["cpu"])
+    #t = run_env(agent,env,conc_prev=True,cpu=float(args["cpu"]))
 else:   
-    t = run_env(agent,env,cpu=float(args["cpu"]))
+    create_episode(agent,env,conc_prev=False,cpu=float(args["cpu"])
 
+    #t = run_env(agent,env,cpu=float(args["cpu"]))
+"""
 path_inference = "/app/data/inference_time/data.pkl"
 try:
     f = open(path_inference,"rb")
@@ -149,7 +175,7 @@ f = open(path_inference,"wb")
 pickle.dump(inf_time,f)
 f.close()
 
-        
+"""
 #elif algo == "ars":
 #     path = "/app/data/ray_results/1/ARS_Hopper-v2_47175_00000_0_2022-04-07_11-24-24/checkpoint_015300/checkpoint-15300"
 #     num_gpus = 0.2 if gpu else 0
