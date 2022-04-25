@@ -156,30 +156,31 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
 
 agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
-if args["algo"] == "rtrl":
-    #create_episode(agent,env,conc_prev=True,cpu=float(args["cpu"]))
-    t = run_env(agent,env,conc_prev=True,cpu=float(args["cpu"]))
-else:   
-    #create_episode(agent,env,conc_prev=False,cpu=float(args["cpu"]))
-    t = run_env(agent,env,cpu=float(args["cpu"]))
+create_episode = True
+conc_prev = True if args["algo"] == "rtrl" else False
 
 
-path_inference = "/app/data/inference_time/data.pkl"
-try:
-    f = open(path_inference,"rb")
-    inf_time = pickle.load(f)
+if create_episode:
+    create_episode(agent,env,conc_prev=True,cpu=float(args["cpu"]))
+    create_episode(agent,env,conc_prev=False,cpu=float(args["cpu"]))
+else:
+    t = run_env(agent,env,conc_prev=conv_prev,cpu=float(args["cpu"]))
+    path_inference = "/app/data/inference_time/data.pkl"
+    try:
+        f = open(path_inference,"rb")
+        inf_time = pickle.load(f)
+        f.close()
+    except:
+        inf_time = {}
+
+    name_experiment = "cpu_"+args["cpu"]+"_"+args["algo"]+"_"+env_name+"_gpu_"+args["gpu"]
+    inf_time[name_experiment] = t
+    print("Algo: ",args["algo"], " env: ",env_name)
+    print("Mean time: ", t.mean()," median: ",np.median(t))
+
+    f = open(path_inference,"wb")
+    pickle.dump(inf_time,f)
     f.close()
-except:
-    inf_time = {}
-    
-name_experiment = "cpu_"+args["cpu"]+"_"+args["algo"]+"_"+env_name+"_gpu_"+args["gpu"]
-inf_time[name_experiment] = t
-print("Algo: ",args["algo"], " env: ",env_name)
-print("Mean time: ", t.mean()," median: ",np.median(t))
-
-f = open(path_inference,"wb")
-pickle.dump(inf_time,f)
-f.close()
 
 
 #elif algo == "ars":
