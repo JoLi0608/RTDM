@@ -45,7 +45,7 @@ parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
 args = vars(parser.parse_args())
 print("Input of argparse:", args)
 
-def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
+def play(env, trainer, times, flag, gap, type, algorithm, repeat = 16, level = 0):
     initial_reward = 0
     percent = 0
     total_rewards = []
@@ -57,7 +57,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
     if type == 'rtrl':
         prev_action = np.zeros(env.action_space.shape[0])
 
-    for repeat in range(11):
+    for repeat in range(repeat):
         print('action repeated:', repeat)
         
         for k in range(iter_ep):
