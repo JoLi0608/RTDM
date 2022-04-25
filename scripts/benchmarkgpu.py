@@ -157,13 +157,12 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
 
 agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
 
-create_episode = True
+store_episode = True
 conc_prev = True if args["algo"] == "rtrl" else False
 
 
-if create_episode:
-    create_episode(agent,env,conc_prev=True,cpu=float(args["cpu"]))
-    create_episode(agent,env,conc_prev=False,cpu=float(args["cpu"]))
+if store_episode:
+    create_episode(agent,env,conc_prev=conc_prev,cpu=float(args["cpu"]))
 else:
     t = run_env(agent,env,conc_prev=conv_prev,cpu=float(args["cpu"]))
     path_inference = "/app/data/inference_time/data.pkl"
