@@ -4,7 +4,7 @@ import mbrl
 import numpy as np
 import argparse
 import pickle
-
+import copy
 
 # Input arguments from command line.
 parser = argparse.ArgumentParser(description='Evaluate trained model')
@@ -89,7 +89,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
             prev_action = np.zeros(env.action_space.shape[0])    
         if conc_prev:
             obs = (obs,prev_action)
-        obs_list.append(obs)
+        obs_list.append(copy.deepcopy(obs))
         action = agent(obs)  # Get action
         obs,_ ,done , _ = env.step(action)
         prev_action = action
