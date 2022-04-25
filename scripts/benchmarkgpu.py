@@ -81,18 +81,26 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
 def run_env(agent,env,num_steps=100,conc_prev=False):
     done = True
     compute_time = []
-    for i in range(num_steps):
+    t1 = time.time()
+    rep = 0
+    obs_list = []
+    while time.time()-t1 < 2 or rep < 20:
         if done:
             obs = env.reset()
-            prev_action = np.zeros(env.action_space.shape[0])
+            prev_action = np.zeros(env.action_space.shape[0])    
         if conc_prev:
             obs = (obs,prev_action)
-        t1 = time.time()
+        obs_list.append(obs)
         action = agent(obs)  # Get action
         compute_time.append(time.time()-t1)
         obs,_ ,done , _ = env.step(action)
         prev_action = action
-    return np.array(compute_time)
+        rep += 1
+    for i in range(20):
+        t1 = time.time()
+        result = [agent(obs) for i in obs_list]
+        compute_time.append((time.time()-t1)/20)
+    return compute_time
 
 
 for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2"]:
