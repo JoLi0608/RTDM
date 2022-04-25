@@ -148,7 +148,8 @@ else:
 
 if type == 'mbrl':
     if algorithm == 'mbpo':
-        trainer = load_agent(path,env,"cuda")
+        # trainer = load_agent(path,env,"cuda")
+        trainer = load_agent(path,env)
     elif algorithm == 'pets':
         cfg = omegaconf.OmegaConf.load(path+"/.hydra/config.yaml")
         #cfg["device"] = "cpu"
