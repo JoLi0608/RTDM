@@ -25,6 +25,7 @@ import mbrl.env.cartpole_continuous as cart
 import argparse
 from mbrl.planning.core import load_agent
 from spinup.utils.test_policy import load_policy_and_env, run_policy
+from utils import load
 
 # Input arguments from command line.
 parser = argparse.ArgumentParser(description='Evaluate trained model')
@@ -46,10 +47,9 @@ print("Input of argparse:", args)
 
 dt_dic = {"Hopper-v2":0.002, "HalfCheetah-v2":0.01,"continuous_CartPole-v0":0.02,"Humanoid-v2":0.003,"Pusher-v2":0.01}
 
-def play(env, trainer, times, flag, gap, type, algorithm, level=0, dt=0.01):
+def play(env, trainer, times, flag, gap, type, algorithm, repeat=0, dt=0.01):
     print('difficulty level:', level)
     total_rewards = []
-    repeat_list = []
     if algorithm == 'pets':
         iter_ep = 5
     else:
@@ -83,8 +83,8 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0, dt=0.01):
             compute_times.append(compute_time)
             obs, reward, done, info = env.step(action)
             # print(level, done, i)
-            repeat = 0 if compute_time < dt else int(level*(compute_time/dt))
-            repeat_list.append(repeat)
+            #repeat = 0 if compute_time < dt else int(level*(compute_time/dt))
+            #repeat_list.append(repeat)
             #repeat = int(level * 1 * compute_time)
             total_reward += reward
             if repeat:
@@ -108,11 +108,11 @@ def play(env, trainer, times, flag, gap, type, algorithm, level=0, dt=0.01):
 
         env.close()
         print(compute_times)
-        print(repeat_list)
+        #print(repeat_list)
     reward_ave = sum(total_rewards) / len(total_rewards) if len(total_rewards) else sum(total_rewards) / (
                 len(total_rewards) + 1)
 
-    wandb.log({"average_rewards": reward_ave, "difficulty_level": level,"average_repeat":np.array(repeat_list).mean()})
+    wandb.log({"average_rewards": reward_ave, "difficulty_level": repeat})
     return reward_ave
 
 
@@ -144,72 +144,6 @@ end = 10000
 x = np.arange(begin, end, gap)
 compute_times = []
 
-
-
-if environment == 'pets_pusher':
-    env = pusher.PusherEnv()
-elif environment == 'humanoid_truncated_obs':
-    env = humanoid.HumanoidTruncatedObsEnv()
-elif environment == 'cartpole_continuous':
-    env = cart.CartPoleEnv()
-else:
-    env = gym.make(environment)
-
-
-if type == 'mbrl':
-    if algorithm == 'mbpo':
-        trainer = load_agent(path, env, "cuda")
-    elif algorithm == 'pets':
-        cfg = omegaconf.OmegaConf.load(path + "/.hydra/config.yaml")
-        # cfg["device"] = "cpu"
-        torch_generator = torch.Generator(device=cfg.device)
-        env, term_fn, reward_fn = mbrl.util.env.EnvHandler.make_env(cfg)
-        obs_shape = env.observation_space.shape
-        act_shape = env.action_space.shape
-        dynamics_model = mbrl.util.common.create_one_dim_tr_model(cfg, obs_shape, act_shape)
-        dynamics_model.load(path)
-        model_env = mbrl.models.ModelEnv(env, dynamics_model, term_fn, reward_fn)
-        trainer = mbrl.planning.create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent,
-                                                                        num_particles=cfg.algorithm.num_particles)
-
-
-
-
-elif type == 'rtrl':
-    r = rtrl.load(path + "/store")
-    trainer = r.agent
-
-
-elif type == 'rllib':
-    algorithm = args["algorithm"]
-    if algorithm == "ARS":
-        trainer = ars.ARSTrainer(
-            config={
-                "framework": "torch",
-                # "num_workers": 4,
-                "num_cpus":0.1
-
-            },
-            env=environment,
-        )
-    elif algorithm == "PPO":
-        trainer = ppo.PPOTrainer(
-            config={
-                "framework": "torch",
-                # "num_workers": 4,
-            },
-            env=environment,
-        )
-    elif algorithm == "SAC":
-        trainer = sac.SACTrainer(
-            config={
-                "framework": "torch",
-                # "num_workers": 4,
-            },
-            env=environment,
-        )
-    trainer.restore(path)
-
 elif type == 'spinup':
     env, trainer = load_policy_and_env(path, device="cpu")
 
@@ -223,8 +157,8 @@ if environment == 'Pusher-v2' or environment == 'pets_pusher':
 env.seed(seed)
 #reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm)
 #record.append(reward_ave)
-for level in [0.01,0.1,0.2,0.3,0.4,0.5,1]:
-    reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm, level=level,dt=dt_dic[environment])
+for repeat in range(10):
+    reward_ave = play(env, trainer, times, flag, gap=gap, type=type, algorithm=algorithm, repeat=repeat,dt=dt_dic[environment])
     record.append(reward_ave)
 time_ave = sum(compute_times) / len(compute_times)
 wandb.log({'average_compute_time': time_ave})
