@@ -93,7 +93,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
         obs_list.append(copy.deepcopy(obs))
         tmp_t1 = time.time()
         action = agent(obs)  # Get action
-        tmp_compute.append(time.time()-tmp_t1)
+        tmp_compute = np.append(tmp_compute,[time.time()-tmp_t1])
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
