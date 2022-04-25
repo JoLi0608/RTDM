@@ -40,23 +40,28 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         from mbrl.models import ModelEnv, ModelTrainer
         from mbrl.env.termination_fns import no_termination
         from mbrl.planning import RandomAgent, create_trajectory_optim_agent_for_model
-        from mbrl.third_party.dmc2gym import make
-               
-        env = make(domain_name=env_name.split("_")[1] ,task_name=env_name.split("_")[2])
+        from mbrl.util.env import EnvHandler
+        import numpy as np
+        import os
+        os.environ["MUJOCO_GL"] = "osmesa"
 
-        device = "cuda" if gpu else "cpu"
+        path = "/app/data/planet/default/dmc_walker_walk/2022.04.11/080432/"
+
         cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
-        if not gpu:
-            cfg["device"] = "cpu"
+        env, term_fn, reward_fn = EnvHandler.make_env(cfg)
         torch_generator = torch.Generator(device=cfg.device)
         cfg.dynamics_model.action_size = env.action_space.shape[0]
         planet = hydra.utils.instantiate(cfg.dynamics_model)
         planet.load(path)
-        if gpu == False:
-            planet.to("cpu")
         model_env = ModelEnv(env, planet, no_termination, generator=torch_generator)
-        ag = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
-        agent = lambda obs: ag.act(obs)
+        agent = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
+
+        def agent(obs,done=False):
+            if done:
+                agent.reset()
+                planet.reset_posterior()
+                planet.update_posterior(obs, action=None, rng=torch_generator)
+            return np.clip(agent.act(obs),-1,1)
 
     elif algo == "pets":
         import mbrl.util.env
@@ -118,7 +123,10 @@ def create_episode(agent,env,num_steps=100,conc_prev=False,cpu=1):
             obs = (obs,prev_action)
         obs_list.append(copy.deepcopy(obs))
         tmp_t1 = time.time()
-        action = agent(obs)  # Get action
+        if args["algo"] == "planet":
+            action = agent(obs,done)  # Get action
+        else:
+            action = agent(obs)  # Get action
         tmp_compute = np.append(tmp_compute,[time.time()-tmp_t1])
         obs,_ ,done , _ = env.step(action)
         prev_action = action
