@@ -100,6 +100,8 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
     for i in range(20):
         t1 = time.time()
         result = [agent(obs) for i in obs_list]
+        print((time.time()-t1),float(len(obs_list)))
+        print((time.time()-t1)/float(len(obs_list)))
         compute_time.append((time.time()-t1)/float(len(obs_list)))
     return np.array(compute_time)
 
