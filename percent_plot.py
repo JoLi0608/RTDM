@@ -65,7 +65,6 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
             obs = env.reset()
             total_reward = 0
             total_ep += 1
-            # wandb.log({"episode": total_ep, "difficulty_level": level})
 
             for i in range(times):
 
@@ -80,14 +79,10 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 elif type == 'spinup':
                     action = trainer(obs)
                 obs, reward, done, info = env.step(action)
-                print(1,done,times)
-                rest = repeat-1
-                print(rest)
                 total_reward += reward
-                if rest >= 0:
-                    for j in range(rest):
+                if repeat:
+                    for j in range(repeat):
                         obs, reward, done, info = env.step(action)
-                        print(2,done,times)
                         total_reward += reward
                         if done:
                             total_rewards.append(total_reward)  
@@ -96,7 +91,6 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
                 else:        
                     if done:
                         total_rewards.append(total_reward)
-                        print('here')
                         # print(total_reward)
                         obs = env.reset()
                         break
@@ -106,8 +100,6 @@ def play(env, trainer, times, flag, gap, type, algorithm, level = 0):
         print(total_rewards)    
         reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
         if repeat == 0:
-            # print('here')
-            # print(reward_ave)
             initial_reward = reward_ave
         print(initial_reward)
         percent = reward_ave/initial_reward
@@ -127,7 +119,7 @@ environment = args["envir"]
 path = args["modelpath"]
 algorithm = args["algorithm"]
 
-wandb.init(project="RTDM", entity="rt_dm")
+wandb.init(project="RTDM", entity="rt_dm_percentage")
 wconfig = wandb.config
 wconfig.model_type = type
 wconfig.algorithm = algorithm
