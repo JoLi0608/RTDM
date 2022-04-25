@@ -97,7 +97,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False):
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1
-        if rep > 20000:
+        if rep > 10000:
             break
     print(rep," samples collected in ",time.time()-t1)
     compute_time = []
