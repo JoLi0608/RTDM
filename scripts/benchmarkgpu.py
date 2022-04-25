@@ -55,7 +55,8 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         if gpu == False:
             planet.to("cpu")
         model_env = ModelEnv(env, planet, no_termination, generator=torch_generator)
-        agent = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
+        ag = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
+        agent = lambda obs: ag.act(obs)
 
     elif algo == "pets":
         import mbrl.util.env
