@@ -44,7 +44,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         import numpy as np
         import os
         os.environ["MUJOCO_GL"] = "osmesa"
-
+        print(path)
         cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
         env, term_fn, reward_fn = EnvHandler.make_env(cfg)
         torch_generator = torch.Generator(device=cfg.device)
