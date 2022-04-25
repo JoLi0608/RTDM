@@ -161,7 +161,7 @@ if type == 'mbrl':
 
 
 elif type == 'rtrl':
-    r = rtrl.load(path+"/store")
+    r = rtrl.load(path+"/state")
     trainer = r.agent
 
 
