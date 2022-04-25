@@ -1,6 +1,22 @@
 
 #!/bin/bash
 
+
+# ARS
+
+for d in /app/data/ray_results/*
+do
+    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
+    do
+        for n in $d/ARS_$env*/ ; do
+          python /app/RTDM/scripts/benchmarkgpu.py --path $n --algo ars --cpu $1 --gpu $2
+          echo $n
+        done
+    done
+    break
+done
+
+
 # RTRL
 
 
@@ -42,19 +58,6 @@ do
     done
 done
 
-# ARS
-
-for d in /app/data/ray_results/*
-do
-    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
-    do
-        for n in $d/ARS_$env*/ ; do
-          python /app/RTDM/scripts/benchmarkgpu.py --path $n --algo ars --cpu $1 --gpu $2
-          echo $n
-        done
-    done
-    break
-done
 
 
 
