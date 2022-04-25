@@ -136,6 +136,7 @@ def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
     
     obs_list = pickle.load(open(args["path"]+"dump_episode.pkl","rb"))
     
+    _ = agent(env.reset(),True)
     t1 = time.time()
     acc = 0
     while time.time()-t1 < 1:
