@@ -98,7 +98,7 @@ def create_episode(agent,env,num_steps=100,conc_prev=False,cpu=1):
         obs,_ ,done , _ = env.step(action)
         prev_action = action
         rep += 1    
-    pickle.dump(obs_list,open(args["path"]+"dump_episode.pkl","wb"))
+    pickle.dump(obs_list,open(args["path"]+"dump_episode.pkl","rb"))
     
     
 def run_env(agent,env,num_steps=100,conc_prev=False,cpu=1):
