@@ -9,8 +9,8 @@ do
     for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
     do
         for n in $d/ARS_$env*/ ; do
-          python /app/RTDM/scripts/benchmarkgpu.py --path $n --algo ars --cpu $1 --gpu $2
           echo $n
+          python /app/RTDM/scripts/benchmarkgpu.py --path $n --algo ars --cpu $1 --gpu $2
         done
     done
     break
