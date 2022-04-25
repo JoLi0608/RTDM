@@ -55,6 +55,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
 
         def agent(obs,done=False):
             if done:
+                print("reset agent")
                 ag.reset()
                 planet.reset_posterior()
                 planet.update_posterior(obs, action=None, rng=torch_generator)
