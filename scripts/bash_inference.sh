@@ -2,6 +2,18 @@
 #!/bin/bash
 
 
+# Plot planet
+for d in /app/data/planet/default/* ;do
+    for n in $d/*; do
+        for s in $n/*/; do
+            echo $s
+            python /app/RTDM/scripts/benchmarkgpu.py --path $s --algo planet --cpu 5 --gpu 0
+            break
+        done
+    done
+done
+
+
 # ARS
 
 for d in /app/data/ray_results/*
