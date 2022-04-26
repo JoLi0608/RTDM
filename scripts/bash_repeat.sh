@@ -20,7 +20,7 @@ do
     for d in /app/data/spinup/sac/* ;do
         for n in $d/cmd_sac_pytorch/*/; do
             echo $n
-            python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo sac --evaseed $seed &
+            python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo sac --evaseed $seed --gpu 1&
         done
         wait
     done
@@ -56,7 +56,7 @@ do
         do
             for n in $d/ARS_$env*/ ; do
               echo $n
-              python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed $seed &
+              python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed $seed --gpu 1 &
             done
         done
         wait
@@ -68,7 +68,7 @@ do
         for n in $d/cmd_ppo_pytorch/*/
         do
             echo $n
-            python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ppo --evaseed $seed &
+            python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ppo --evaseed $seed --gpu 1 &
         done
         wait
     done
@@ -79,7 +79,7 @@ do
 
     for d in /app/data/rtrl_3/exp/*/ ;do
         echo $d
-        python /app/RTDM/scripts/evaluate_repeat.py --path $d --algo rtrl --evaseed $seed
+        python /app/RTDM/scripts/evaluate_repeat.py --path $d --algo rtrl --evaseed $seed --gpu 1
     done
 done
 
