@@ -111,7 +111,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
                 },
                 env=env_name,
             )
-        trainer.restore(path+"checkpoint_000"+checkpoint_num[env_name])
+        trainer.restore(path+"checkpoint_000"+checkpoint_num[env_name]+"/"+"checkpoint_000"+checkpoint_num[env_name])
     elif algo == "sac":
         from spinup.utils.test_policy import load_policy_and_env, run_policy
         device = "cuda" if gpu else "cpu"
