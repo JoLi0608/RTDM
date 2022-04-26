@@ -231,6 +231,6 @@ if __name__ == "__main__":
             percent = 1
         else:
             percent = (maxi - rewards[i])/reward_range
-        wandb.log({"Percentage of Reward Decreased": percent, "Action Repeated": i})
+        wandb.log({"Percentage of Reward Decreased": percent, "Action Repeated": i,"Reward":rewards[i]})
 
 
