@@ -218,9 +218,9 @@ mini = rewards[-1]
 reward_range = maxi - mini
 for i in range (repeat):
     if i == 0:
-        percent = 1
-    elif i == repeat-1:
         percent = 0
+    elif i == repeat-1:
+        percent = 1
     else:
         percent = (maxi - rewards[i])/reward_range
     wandb.log({"percent": percent, "action_repeated": i})
