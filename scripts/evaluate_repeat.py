@@ -107,12 +107,6 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         env = gym.make(env_name)
         if env_name == "Hopper-v2":
             ag = ars.ARSTrainer(
-                    config={
-                        "framework": "torch",
-                        "num_rollouts":8,
-                        "noise_stdev":0.025,
-                        "lr":0.02,
-                    },
                     env=env_name,
                 )
         else:
