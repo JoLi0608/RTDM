@@ -28,6 +28,10 @@ from spinup.utils.test_policy import load_policy_and_env, run_policy
 
 
 def load(path,algo,env_name="Hopper-v2",gpu=False):
+    if gpu:
+        print("Using GPU")
+    else:
+        print("Using CPU")
     import numpy as np
     if algo == "mbpo":
         if env_name == "Pusher-v2":
