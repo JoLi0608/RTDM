@@ -30,7 +30,7 @@ for d in /app/data/mbpo/default/*/ ;do
     for n in $d*/; do
         for s in $n*/; do
             echo $s
-            python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo mbpo --evaseed 1 &
+            python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo mbpo --evaseed 1 &
         done
         wait
     done
@@ -66,7 +66,7 @@ done
 
 for d in /app/data/rtrl_3/exp/1-*/ ;do
     echo $d
-    python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo rtrl --evaseed 1
+    python /app/RTDM/scripts/evaluate_repeat.py --path $d --algo rtrl --evaseed 1
 done
 
 
