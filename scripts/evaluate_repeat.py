@@ -173,17 +173,19 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
             env.close()
         # print(total_rewards)    
         reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
-        if repeat == 0:
-            initial_reward = reward_ave
-        percent = reward_ave/initial_reward
-        wandb.log({"reward_ave":reward_ave, "percent": percent, "action_repeated": repeat},step=repeat)
+        # if repeat == 0:
+        #     initial_reward = reward_ave
+        # percent = reward_ave/initial_reward
+        rewards.append(reward_ave)
+        # wandb.log({"percent": percent, "action_repeated": repeat})
 
 
 
     
         env.close()
 
-    return 
+
+    return rewards
 
   
 if __name__ == "__main__":
@@ -217,4 +219,18 @@ if __name__ == "__main__":
         
     agent,env = load(args["path"],args["algo"],env_name)
     env.seed(int(args["evaseed"]))
-    play(env, agent, times, algorithm = args["algo"])
+    
+    rewards = play(env, agent, times, algorithm = args["algo"])
+    maxi = rewards[0]
+    mini = rewards[-1]
+    reward_range = maxi - mini
+    for i in range (repeat):
+        if i == 0:
+            percent = 0
+        elif i == repeat-1:
+            percent = 1
+        else:
+            percent = (maxi - rewards[i])/reward_range
+        wandb.log({"Percentage of Reward Decreased": percent, "Action Repeated": i})
+
+
