@@ -75,11 +75,11 @@ done
 
 
 # PETS
-for d in /app/data/pets/*/ ;do
-    for n in $d*/; do
-        echo $n
-        python /app/RTDM/scripts/benchmarkgpu.py --path $n --algo pets --cpu $1 --gpu $2
-        break
-    done
-done
+#for d in /app/data/pets/*/ ;do
+#    for n in $d*/; do
+#        echo $n
+#        python /app/RTDM/scripts/benchmarkgpu.py --path $n --algo pets --cpu $1 --gpu $2
+#        break
+#    done
+#done
 
