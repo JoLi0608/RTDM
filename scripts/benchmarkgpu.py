@@ -91,10 +91,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         import rtrl
         r = rtrl.load(path+"state")
         print("GPU : ",gpu)
-        if gpu:
-            print("WEEIRD")
-        if not int(gpu):
-            print("EVEN WEIRDER")
+
         if int(gpu):
             r.agent.model.to("cuda")
         else:
