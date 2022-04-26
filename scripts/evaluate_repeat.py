@@ -205,6 +205,8 @@ if __name__ == "__main__":
     parser.add_argument("--algo", required=True, help="Algorithm used", default="ars")
     parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
                         default=1)
+    parser.add_argument("--gpu", required=True, help="Evaluation seed.",
+                        default=0)
     args = vars(parser.parse_args())
     for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2","dmc_walker_walk","dmc_cartpole_balance","dmc_cheetah_run"]:
         if i in args["path"]:
@@ -226,7 +228,7 @@ if __name__ == "__main__":
     if env_name == 'Pusher-v2' or env_name == 'pets_pusher':
         times = 100
         
-    agent,env = load(args["path"],args["algo"],env_name)
+    agent,env = load(args["path"],args["algo"],env_name,gpu=int(args["gpu"]))
     env.seed(int(args["evaseed"]))
     rewards = play(env, agent, times, algorithm = args["algo"],repeat = repeat)
     maxi = rewards[0]
