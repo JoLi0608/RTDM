@@ -19,6 +19,10 @@ args = vars(parser.parse_args())
 
 
 def load(path,algo,env_name="Hopper-v2",gpu=False):
+    if gpu:
+        print("Using GPU")
+    else:
+        print("Using CPU")
     import numpy as np
     if algo == "mbpo":
         if env_name == "Pusher-v2":
@@ -172,7 +176,7 @@ for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","P
         env_name = i
 
 
-agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=args["gpu"])
+agent,env = load(args["path"],args["algo"],env_name=env_name,gpu=int(args["gpu"]))
 
 store_episode = True
 conc_prev = True if args["algo"] == "rtrl" else False
