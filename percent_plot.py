@@ -216,8 +216,13 @@ rewards = play(env, trainer, times, flag, gap = gap, type = type, algorithm = al
 maxi = rewards[0]
 mini = rewards[-1]
 reward_range = maxi - mini
-for i in range (1,repeat-1):
-    percent = 1- (maxi - rewards[i])/reward_range
+for i in range (repeat):
+    if i == 0:
+        percent = 1
+    elif i == repeat-1:
+        percent = 0
+    else:
+        percent = 1- (maxi - rewards[i])/reward_range
     wandb.log({"percent": percent, "action_repeated": i})
 
 
