@@ -31,6 +31,7 @@ for d in /app/data/mbpo/default/*/ ;do
         for s in $n*/; do
             echo $s
             python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo mbpo --evaseed 1 --gpu 1 
+            break
         done
     done
 done
