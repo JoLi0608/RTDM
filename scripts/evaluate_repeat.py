@@ -105,7 +105,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         checkpoint_num = {"continuous_CartPole-v0":"050","HalfCheetah-v2":"300","Hopper-v2":"300","Humanoid-v2":"500","Pusher-v2":"100"}
         import mbrl
         env = gym.make(env_name)
-        agent = ars.ARSTrainer(
+        ag = ars.ARSTrainer(
                 config={
                     "framework": "torch",
                     # "num_workers": 4,
@@ -113,7 +113,8 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
                 env=env_name,
             )
         tmp_n = checkpoint_num[env_name][1:] if checkpoint_num[env_name][0]=="0" else checkpoint_num[env_name]
-        agent.restore(path+"checkpoint_000"+checkpoint_num[env_name]+"/"+"checkpoint-"+tmp_n)
+        ag.restore(path+"checkpoint_000"+checkpoint_num[env_name]+"/"+"checkpoint-"+tmp_n)
+        agent = lambda obs: ag.compute_single_action(obs)
     elif algo == "sac":
         from spinup.utils.test_policy import load_policy_and_env, run_policy
         device = "cuda" if gpu else "cpu"
