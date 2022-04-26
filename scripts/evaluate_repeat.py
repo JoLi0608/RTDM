@@ -143,7 +143,7 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
     if algorithm == 'pets':
         iter_ep = 5
     else:
-        iter_ep = 20
+        iter_ep = 10
     if algorithm == 'rtrl':
         prev_action = np.zeros(env.action_space.shape[0])
 
