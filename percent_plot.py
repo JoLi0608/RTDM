@@ -46,9 +46,10 @@ args = vars(parser.parse_args())
 print("Input of argparse:", args)
 
 def play(env, trainer, times, flag, gap, type, algorithm, repeat = 16, level = 0):
-    initial_reward = 0
-    percent = 0
+    # initial_reward = 0
+    # percent = 0
     total_rewards = []
+    rewards = []
     if algorithm == 'pets':
         iter_ep = 5
     else:
@@ -100,10 +101,11 @@ def play(env, trainer, times, flag, gap, type, algorithm, repeat = 16, level = 0
             env.close()
         # print(total_rewards)    
         reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
-        if repeat == 0:
-            initial_reward = reward_ave
-        percent = reward_ave/initial_reward
-        wandb.log({"percent": percent, "action_repeated": repeat})
+        # if repeat == 0:
+        #     initial_reward = reward_ave
+        # percent = reward_ave/initial_reward
+        rewards.append(reward_ave)
+        # wandb.log({"percent": percent, "action_repeated": repeat})
 
 
 
@@ -111,7 +113,7 @@ def play(env, trainer, times, flag, gap, type, algorithm, repeat = 16, level = 0
         env.close()
 
 
-    return 
+    return rewards
 
 type = args["modeltype"]
 seed = int(args["evaseed"])
@@ -209,6 +211,17 @@ if environment == 'Pusher-v2' or environment == 'pets_pusher':
 
 
 env.seed(seed)
-play(env, trainer, times, flag, gap = gap, type = type, algorithm = algorithm)
+repeat = 16
+rewards = play(env, trainer, times, flag, gap = gap, type = type, algorithm = algorithm, repeat = repeat)
+maxi = rewards[0]
+mini = rewards[-1]
+reward_range = maxi - mini
+for i in range (1,repeat-1):
+    percent = 1- (maxi - rewards[i])/reward_range
+    wandb.log({"percent": percent, "action_repeated": i})
+
+
+
+
 # time_ave = sum(compute_times)/len(compute_times)
 # wandb.log({'average_compute_time':time_ave})
