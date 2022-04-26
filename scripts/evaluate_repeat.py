@@ -34,14 +34,9 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         print("Using CPU")
     import numpy as np
     if algo == "mbpo":
-        if env_name == "Pusher-v2":
-            import mbrl.env.pets_pusher as pusher
-            env = pusher.PusherEnv()
-        elif env_name == "Humanoid-v2":
-            import mbrl.env.humanoid_truncated_obs as humanoid
-            env = humanoid.HumanoidTruncatedObsEnv()
-        else:
-            env = gym.make(env_name)
+        import omegaconf
+        cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
+        env, _, _ = mbrl.util.env.EnvHandler.make_env(cfg)
 
         from mbrl.planning.core import load_agent
         device = "cuda" if gpu else "cpu"
