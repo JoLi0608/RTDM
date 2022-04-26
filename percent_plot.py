@@ -223,7 +223,7 @@ for i in range (repeat):
         percent = 1
     else:
         percent = (maxi - rewards[i])/reward_range
-    wandb.log({"percent": percent, "action_repeated": i})
+    wandb.log({"Percentage of Reward Decreased": percent, "Action Repeated": i})
 
 
 
