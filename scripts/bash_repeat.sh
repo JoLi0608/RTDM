@@ -12,6 +12,18 @@
 #    done
 #done
 
+for d in /app/data/ray_results/*
+do
+    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
+    do
+        for n in $d/ARS_$env*/ ; do
+          echo $n
+          python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed 1 &
+        done
+        wait
+    done
+done
+
 
 
 # SAC
@@ -70,16 +82,4 @@ done
 
 
 # ARS
-
-#for d in /app/data/ray_results/*
-#do
-#    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
-#    do
-#        for n in $d/ARS_$env*/ ; do
-#          echo $n
-#          python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed 1 &
-#        done
-#        wait
-#    done
-#done
 
