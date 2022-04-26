@@ -27,107 +27,25 @@ from mbrl.planning.core import load_agent
 from spinup.utils.test_policy import load_policy_and_env, run_policy
 
 
-def load(path,algo,env_name="Hopper-v2",gpu=False):
-    import numpy as np
-    if algo == "mbpo":
-        if env_name == "Pusher-v2":
-            import mbrl.env.pets_pusher as pusher
-            env = pusher.PusherEnv()
-        elif env_name == "Humanoid-v2":
-            import mbrl.env.humanoid_truncated_obs as humanoid
-            env = humanoid.HumanoidTruncatedObsEnv()
-        else:
-            env = gym.make(env_name)
+# Input arguments from command line.
+parser = argparse.ArgumentParser(description='Evaluate trained model')
+parser.add_argument("--modeltype", required=True, help="type of model: rtrl mbrl or rllib",
+                    default="rllib")
+parser.add_argument("--modelpath", required=True, help="Filepath to trained checkpoint",
+                    default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
+parser.add_argument("--trainseed", required=True, help="Training seed.",
+                    default='2')
+parser.add_argument("--algorithm", required=True, help="Algorithm used", default="ARS")
+parser.add_argument("--envir", required=True, help="Environment.",
+                    default='CartPole-v0')
+parser.add_argument("--checkpoint", required=False, help="checkpoint to evaluate",
+                    default="1")
+parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
+                    default=1)
+args = vars(parser.parse_args())
+print("Input of argparse:", args)
 
-        from mbrl.planning.core import load_agent
-        device = "cuda" if gpu else "cpu"
-        ag = load_agent(path, env,device)
-        agent = lambda obs: ag.act(obs, deterministic=True)
-    elif algo == "planet":
-        import omegaconf
-        import torch
-        import hydra
-        from mbrl.models import ModelEnv, ModelTrainer
-        from mbrl.env.termination_fns import no_termination
-        from mbrl.planning import RandomAgent, create_trajectory_optim_agent_for_model
-        from mbrl.util.env import EnvHandler
-        import numpy as np
-        import os
-        os.environ["MUJOCO_GL"] = "osmesa"
-        cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
-        env, term_fn, reward_fn = EnvHandler.make_env(cfg)
-        torch_generator = torch.Generator(device=cfg.device)
-        cfg.dynamics_model.action_size = env.action_space.shape[0]
-        planet = hydra.utils.instantiate(cfg.dynamics_model)
-        planet.load(path)
-        model_env = ModelEnv(env, planet, no_termination, generator=torch_generator)
-        ag = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
-
-        def agent(obs,done=False):
-            import numpy as np
-            if done:
-                print("reset agent")
-                ag.reset()
-                planet.reset_posterior()
-                planet.update_posterior(obs, action=None, rng=torch_generator)
-            return np.clip(ag.act(obs),-1,1)
-
-    elif algo == "pets":
-        import mbrl.util.env
-        import mbrl.util.common
-        import mbrl.planning
-        import omegaconf
-        import torch
-        cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
-        if not gpu:
-            cfg["device"] = "cpu"
-        torch_generator = torch.Generator(device=cfg.device)
-        env, term_fn, reward_fn = mbrl.util.env.EnvHandler.make_env(cfg)
-        dynamics_model = mbrl.util.common.create_one_dim_tr_model(cfg, env.observation_space.shape, env.action_space.shape)
-        dynamics_model.load(path)
-        if gpu == False:
-            dynamics_model.to("cpu")
-        model_env = mbrl.models.ModelEnv(env, dynamics_model, term_fn, reward_fn)
-        ag = mbrl.planning.create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent, num_particles=cfg.algorithm.num_particles)
-        action = ag.act(env.reset())
-        action = np.clip(action, -1.0, 1.0)  # to account for the noise
-        agent = lambda obs: np.clip(ag.act(obs, deterministic=True),-1.0,1.0)
-    elif algo == "rtrl":
-        import rtrl
-        r = rtrl.load(path+"state")
-        if not gpu:
-            r.agent.model.to("cpu")
-        else:
-            r.agent.model.to("cuda")
-        agent = lambda obs: r.agent.act(obs,[],[],[],train=False)[0]
-        env = gym.make(env_name)
-    elif algo == "ars":
-        checkpoint_num = {"continuous_CartPole-v0":"050","HalfCheetah-v2":"300","Hopper-v2":"300","Humanoid-v2":"500","Pusher-v2":"100"}
-        env = gym.make(env_name)
-        trainer = ars.ARSTrainer(
-                config={
-                    "framework": "torch",
-                    # "num_workers": 4,
-                },
-                env=environment,
-            )
-        trainer.restore(path+"checkpoint_000"+checkpoint_num[env_name])
-    elif algo == "sac":
-        from spinup.utils.test_policy import load_policy_and_env, run_policy
-        device = "cuda" if gpu else "cpu"
-        env,agent = load_policy_and_env(path,device=device)
-    elif algo == "ppo":
-        from spinup.utils.test_policy import load_policy_and_env, run_policy
-        device = "cuda" if gpu else "cpu"
-        env,agent = load_policy_and_env(path,device=device)
-    else:
-        print("Algo not known", algo)
-        raise("Algo not known")
-    return agent,env
-
-
-
-def play(env, trainer, times, algorithm, repeat = 16, level = 0):
+def play(env, trainer, times, flag, gap, type, algorithm, repeat = 16, level = 0):
     initial_reward = 0
     percent = 0
     total_rewards = []
@@ -135,22 +53,32 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
         iter_ep = 5
     else:
         iter_ep = 20
-    if algorithm == 'rtrl':
+    total_ep = level/gap*iter_ep  
+    if type == 'rtrl':
         prev_action = np.zeros(env.action_space.shape[0])
 
     for repeat in range(repeat):
         print('action repeated:', repeat)
         total_rewards = []
+        
         for k in range(iter_ep):
+
             obs = env.reset()
             total_reward = 0
             total_ep += 1
+
             for i in range(times):
-                if algorithm == "rtrl":
-                    action = trainer((obs,prev_action))
-                else:
+
+                if type == 'rllib':
+                    action = trainer.compute_single_action(obs)
+                elif type == 'rtrl':
+                    action = trainer.act((obs,prev_action),[],[],[],train=False)[0]
+                elif type == 'mbrl':
+                    action = trainer.act(obs, deterministic=True)
+                    if algorithm == 'pets':
+                        action = np.clip(action, -1.0, 1.0) 
+                elif type == 'spinup':
                     action = trainer(obs)
-                    
                 obs, reward, done, info = env.step(action)
                 total_reward += reward
                 if repeat:
@@ -175,46 +103,112 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
         if repeat == 0:
             initial_reward = reward_ave
         percent = reward_ave/initial_reward
-        wandb.log({"reward_ave":reward_ave, "percent": percent, "action_repeated": repeat})
+        wandb.log({"percent": percent, "action_repeated": repeat})
 
 
 
     
         env.close()
 
+
     return 
 
-  
-if __name__ == "__main__":
+type = args["modeltype"]
+seed = int(args["evaseed"])
+environment = args["envir"]
+path = args["modelpath"]
+algorithm = args["algorithm"]
 
-    # Input arguments from command line.
-    parser = argparse.ArgumentParser(description='Evaluate trained model')
-    parser.add_argument("--path", required=True, help="Filepath to trained checkpoint",
-                        default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
-    parser.add_argument("--algo", required=True, help="Algorithm used", default="ars")
-    parser.add_argument("--evaseed", required=True, help="Evaluation seed.",
-                        default=1)
-    
-    for i in ["HalfCheetah-v2","Hopper-v2","continuous_CartPole-v0","Humanoid-v2","Pusher-v2","dmc_walker_walk","dmc_cartpole_balance","dmc_cheetah_run"]:
-        if i in args["path"]:
-            env_name = i
+wandb.init(project="RTDM_percentage", entity="rt_dm")
+wconfig = wandb.config
+wconfig.model_type = type
+wconfig.algorithm = algorithm
+wconfig.eva_seed = args["evaseed"]
+wconfig.train_seed = args["trainseed"]
+wconfig.env = environment
+wconfig.checkpoint = args["checkpoint"]
 
-    args = vars(parser.parse_args())
-    print("Input of argparse:", args)
+# serve.start()
+
+record = []
+begin = 0
+gap = 500
+end = 10000
+x = np.arange(begin, end, gap)
+compute_times = []
+
+if environment == 'pets_pusher':
+    env = pusher.PusherEnv()
+elif environment == 'humanoid_truncated_obs':
+    env = humanoid.HumanoidTruncatedObsEnv()
+elif environment == 'cartpole_continuous':
+    env = cart.CartPoleEnv()
+else:
+    env = gym.make(environment)
+
+if type == 'mbrl':
+    if algorithm == 'mbpo':
+        trainer = load_agent(path,env,"cuda")
+    elif algorithm == 'pets':
+        cfg = omegaconf.OmegaConf.load(path+"/.hydra/config.yaml")
+        #cfg["device"] = "cpu"
+        torch_generator = torch.Generator(device=cfg.device)
+        env, term_fn, reward_fn = mbrl.util.env.EnvHandler.make_env(cfg)
+        obs_shape = env.observation_space.shape
+        act_shape = env.action_space.shape
+        dynamics_model = mbrl.util.common.create_one_dim_tr_model(cfg, obs_shape, act_shape)
+        dynamics_model.load(path)
+        model_env = mbrl.models.ModelEnv(env, dynamics_model, term_fn, reward_fn)
+        trainer = mbrl.planning.create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent, num_particles=cfg.algorithm.num_particles)
 
 
-    wandb.init(project="RTDM_percentage", entity="rt_dm")
-    wconfig = wandb.config
-    wconfig.algorithm = args["algo"]
-    wconfig.eva_seed = args["evaseed"]
-    wconfig.env = env_name
-    wconfig.new = 1
-             
-    times = 100000
 
-    if env_name == 'Pusher-v2' or env_name == 'pets_pusher':
-        times = 100
-        
-    agent,env = load(args["path"],args["algo"],env_name)
-    env.seed(seed)
-    play(env, agent, times, algorithm = args["algo"])
+
+elif type == 'rtrl':
+    r = rtrl.load(path+"/state")
+    trainer = r.agent
+
+
+elif type == 'rllib':
+    algorithm = args["algorithm"]
+    if algorithm == "ARS":
+        trainer = ars.ARSTrainer(
+            config={
+                "framework": "torch",
+                # "num_workers": 4,
+            },
+            env=environment,
+        )
+    elif algorithm == "PPO":
+        trainer = ppo.PPOTrainer(
+            config={
+                "framework": "torch",
+                # "num_workers": 4,
+            },
+            env=environment,
+        )
+    elif algorithm == "SAC":
+        trainer = sac.SACTrainer(
+            config={
+                "framework": "torch",
+                # "num_workers": 4,
+            },
+            env=environment,
+        )
+    trainer.restore(path)
+
+elif type == 'spinup':
+    env,trainer = load_policy_and_env(path,device="cpu")
+
+flag = 0
+times = 100000
+
+if environment == 'Pusher-v2' or environment == 'pets_pusher':
+    flag = 1
+    times = 100
+
+
+env.seed(seed)
+play(env, trainer, times, flag, gap = gap, type = type, algorithm = algorithm)
+# time_ave = sum(compute_times)/len(compute_times)
+# wandb.log({'average_compute_time':time_ave})
