@@ -221,7 +221,7 @@ if __name__ == "__main__":
     wconfig.new = 1
              
     times = 100000
-    repeat = 15
+    repeat = 50
 
     if env_name == 'Pusher-v2' or env_name == 'pets_pusher':
         times = 100
