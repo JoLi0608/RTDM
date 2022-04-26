@@ -17,13 +17,13 @@
 
 
 ## SAC
-#for d in /app/data/spinup/sac/* ;do
-#    for n in $d/cmd_sac_pytorch/*/; do
-#        echo $n
-#        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo sac --evaseed 1 &
-#    done
-#    wait
-#done
+for d in /app/data/spinup/sac/* ;do
+    for n in $d/cmd_sac_pytorch/*/; do
+        echo $n
+        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo sac --evaseed 1 &
+    done
+    wait
+done
 
 # MBPO
 for d in /app/data/mbpo/default/*/ ;do
@@ -38,49 +38,49 @@ done
 
 
 # PETS
-for d in /app/data/pets/*/ ;do
-    for n in $d*/; do
-        echo $n
-        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo pets --evaseed 1 --gpu 1 &
-    done
-    wait
-done
+#for d in /app/data/pets/*/ ;do
+#    for n in $d*/; do
+#        echo $n
+#        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo pets --evaseed 1 --gpu 1 &
+#    done
+#    wait
+#done
 
 
 
 # ARS
 
-#for d in /app/data/ray_results/*
-#do
-#    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
-#    do
-#        for n in $d/ARS_$env*/ ; do
-#          echo $n
-#          python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed 1 &
-#        done
-#    done
-#    wait
-#done
+for d in /app/data/ray_results/*
+do
+    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
+    do
+        for n in $d/ARS_$env*/ ; do
+          echo $n
+          python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed 1 &
+        done
+    done
+    wait
+done
 
 # PPO
-#for d in /app/data/spinup/ppo/*
-#do
-#    for n in $d/cmd_ppo_pytorch/*/
-#    do
-#        echo $n
-#        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ppo --evaseed 1 &
-#    done
-#    wait
-#done
+for d in /app/data/spinup/ppo/*
+do
+    for n in $d/cmd_ppo_pytorch/*/
+    do
+        echo $n
+        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ppo --evaseed 1 &
+    done
+    wait
+done
 
 
 # RTRL
 
 
-#for d in /app/data/rtrl_3/exp/1-*/ ;do
-#    echo $d
-#    python /app/RTDM/scripts/evaluate_repeat.py --path $d --algo rtrl --evaseed 1
-#done
+for d in /app/data/rtrl_3/exp/1-*/ ;do
+    echo $d
+    python /app/RTDM/scripts/evaluate_repeat.py --path $d --algo rtrl --evaseed 1
+done
 
 
 
