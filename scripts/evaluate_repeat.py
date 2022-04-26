@@ -176,7 +176,7 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
         if repeat == 0:
             initial_reward = reward_ave
         percent = reward_ave/initial_reward
-        wandb.log({"reward_ave":reward_ave, "percent": percent, "action_repeated": repeat})
+        wandb.log({"reward_ave":reward_ave, "percent": percent, "action_repeated": repeat},step=repeat)
 
 
 
