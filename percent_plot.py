@@ -98,14 +98,10 @@ def play(env, trainer, times, flag, gap, type, algorithm, repeat = 16, level = 0
                         break
                 if done:
                     break 
-            env.close()
-        # print(total_rewards)    
+            env.close()  
         reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
-        # if repeat == 0:
-        #     initial_reward = reward_ave
-        # percent = reward_ave/initial_reward
         rewards.append(reward_ave)
-        # wandb.log({"percent": percent, "action_repeated": repeat})
+
 
 
 
@@ -218,15 +214,14 @@ mini = rewards[-1]
 reward_range = maxi - mini
 for i in range (repeat):
     if i == 0:
-        percent = 0
-    elif i == repeat-1:
         percent = 1
+    elif i == repeat-1:
+        percent = 0
     else:
-        percent = (maxi - rewards[i])/reward_range
+        percent = 1-(maxi - rewards[i])/reward_range
     wandb.log({"Percentage of Reward Decreased": percent, "Action Repeated": i})
 
 
 
 
-# time_ave = sum(compute_times)/len(compute_times)
-# wandb.log({'average_compute_time':time_ave})
+
