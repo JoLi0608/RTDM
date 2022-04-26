@@ -215,5 +215,5 @@ if __name__ == "__main__":
         times = 100
         
     agent,env = load(args["path"],args["algo"],env_name)
-    env.seed(args["evaseed"])
+    env.seed(int(args["evaseed"]))
     play(env, agent, times, algorithm = args["algo"])
