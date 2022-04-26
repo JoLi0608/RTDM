@@ -134,6 +134,7 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
     percent = 0
     total_rewards = []
     total_ep = 0
+    rewards = []
     if algorithm == 'pets':
         iter_ep = 5
     else:
