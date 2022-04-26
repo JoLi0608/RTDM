@@ -53,18 +53,6 @@ do
 done
 
 
-
-
-
-# PETS
-for d in /app/data/pets/*/ ;do
-    for n in $d*/; do
-        echo $n
-        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo pets --evaseed 1 &
-    done
-    wait
-done
-
 # RTRL
 
 
@@ -72,8 +60,6 @@ for d in /app/data/rtrl_3/exp/1-*/ ;do
     echo $d
     python /app/RTDM/scripts/evaluate_repeat.py --path $d --algo rtrl --evaseed 1
 done
-
-
 
 
 # MBPO
@@ -86,3 +72,17 @@ for d in /app/data/mbpo/default/*/ ;do
         wait
     done
 done
+
+
+# PETS
+for d in /app/data/pets/*/ ;do
+    for n in $d*/; do
+        echo $n
+        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo pets --evaseed 1 &
+    done
+    wait
+done
+
+
+
+
