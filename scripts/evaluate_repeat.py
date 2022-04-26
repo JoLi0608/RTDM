@@ -9,7 +9,6 @@ import ray.rllib.agents.ars as ars
 import ray.rllib.agents.sac as sac
 import math
 import rtrl
-import mbrl
 import os
 import time
 from rtrl import Training, run
@@ -104,6 +103,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         env = gym.make(env_name)
     elif algo == "ars":
         checkpoint_num = {"continuous_CartPole-v0":"050","HalfCheetah-v2":"300","Hopper-v2":"300","Humanoid-v2":"500","Pusher-v2":"100"}
+        import mbrl
         env = gym.make(env_name)
         trainer = ars.ARSTrainer(
                 config={
