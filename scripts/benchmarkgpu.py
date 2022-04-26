@@ -13,7 +13,7 @@ parser.add_argument("--path", required=True, help="Filepath to trained checkpoin
                     default="/app/data/ray_results/2/ARS_CartPole-v0_661d3_00000_0_2022-03-31_10-07-40/checkpoint_000100/checkpoint-100")
 parser.add_argument("--algo", required=True, help="Algorithm used", default="ARS")
 parser.add_argument("--cpu", required=True, help="Number of CPU", default=8)
-parser.add_argument("--gpu", required=True, help="Number of CPU", default=0)
+parser.add_argument("--gpu", required=True, help="Number of GPU", default=0)
 
 args = vars(parser.parse_args())
 
@@ -86,10 +86,12 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
     elif algo == "rtrl":
         import rtrl
         r = rtrl.load(path+"state")
-        if not gpu:
-            r.agent.model.to("cpu")
-        else:
+        print("GPU : ",gpu)
+        if gpu:
             r.agent.model.to("cuda")
+        else:
+            r.agent.model.to("cpu")
+
         agent = lambda obs: r.agent.act(obs,[],[],[],train=False)[0]
         env = gym.make(env_name)
     elif algo == "ars":
