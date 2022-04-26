@@ -216,14 +216,14 @@ if __name__ == "__main__":
     wconfig.new = 1
              
     times = 100000
+    repeat = 10
 
     if env_name == 'Pusher-v2' or env_name == 'pets_pusher':
         times = 100
         
     agent,env = load(args["path"],args["algo"],env_name)
     env.seed(int(args["evaseed"]))
-    
-    rewards = play(env, agent, times, algorithm = args["algo"])
+    rewards = play(env, agent, times, algorithm = args["algo"],repeat = repeat)
     maxi = rewards[0]
     mini = rewards[-1]
     reward_range = maxi - mini
