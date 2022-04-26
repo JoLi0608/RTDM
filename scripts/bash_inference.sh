@@ -3,15 +3,15 @@
 
 
 # Plot planet
-for d in /app/data/planet/default/* ;do
-    for n in $d/*; do
-        for s in $n/*/; do
-            echo $s
-            python /app/RTDM/scripts/benchmarkgpu.py --path $s --algo planet --cpu $1 --gpu $2
-            break
-        done
-    done
-done
+#for d in /app/data/planet/default/* ;do
+#    for n in $d/*; do
+#        for s in $n/*/; do
+#            echo $s
+#            python /app/RTDM/scripts/benchmarkgpu.py --path $s --algo planet --cpu $1 --gpu $2
+#            break
+#        done
+#    done
+#done
 
 
 # ARS
