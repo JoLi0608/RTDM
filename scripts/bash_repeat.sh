@@ -16,26 +16,30 @@
 
 
 
-# SAC
-for d in /app/data/spinup/sac/* ;do
-    for n in $d/cmd_sac_pytorch/*/; do
-        echo $n
-        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo sac --evaseed 1 &
+## SAC
+#for d in /app/data/spinup/sac/* ;do
+#    for n in $d/cmd_sac_pytorch/*/; do
+#        echo $n
+#        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo sac --evaseed 1 &
+#    done
+#    wait
+#done
+
+
+
+# ARS
+
+for d in /app/data/ray_results/*
+do
+    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
+    do
+        for n in $d/ARS_$env*/ ; do
+          echo $n
+          python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed 1 &
+        done
     done
     wait
 done
-
-# MBPO
-for d in /app/data/mbpo/default/*/ ;do
-    for n in $d*/; do
-        for s in $n*/; do
-            echo $s
-            python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo mbpo --evaseed 1 &
-        done
-        wait
-    done
-done
-
 
 # PPO
 for d in /app/data/spinup/ppo/*
@@ -71,16 +75,14 @@ done
 
 
 
-# ARS
 
-for d in /app/data/ray_results/*
-do
-    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
-    do
-        for n in $d/ARS_$env*/ ; do
-          echo $n
-          python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed 1 &
+# MBPO
+for d in /app/data/mbpo/default/*/ ;do
+    for n in $d*/; do
+        for s in $n*/; do
+            echo $s
+            python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo mbpo --evaseed 1 &
         done
+        wait
     done
-    wait
 done
