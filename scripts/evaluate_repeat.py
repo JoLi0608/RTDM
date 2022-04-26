@@ -110,6 +110,8 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
                     config={
                         "framework": "torch",
                         "num_rollouts":8,
+                        "noise_stdev":0.025,
+                        "lr":0.02,
                     },
                     env=env_name,
                 )
@@ -217,7 +219,7 @@ if __name__ == "__main__":
     print("Input of argparse:", args)
 
 
-    wandb.init(project="RTDM_percentage", entity="rt_dm")
+    wandb.init(project="RTDM_performance", entity="pierthodo")
     wconfig = wandb.config
     wconfig.algorithm = args["algo"]
     wconfig.eva_seed = args["evaseed"]
