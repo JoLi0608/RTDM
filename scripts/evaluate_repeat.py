@@ -109,7 +109,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
                     "framework": "torch",
                     # "num_workers": 4,
                 },
-                env=environment,
+                env=env_name,
             )
         trainer.restore(path+"checkpoint_000"+checkpoint_num[env_name])
     elif algo == "sac":
