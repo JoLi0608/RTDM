@@ -9,6 +9,7 @@ import ray.rllib.agents.ars as ars
 import ray.rllib.agents.sac as sac
 import math
 import rtrl
+import mbrl
 import os
 import time
 from rtrl import Training, run
