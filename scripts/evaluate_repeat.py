@@ -35,6 +35,7 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
     import numpy as np
     if algo == "mbpo":
         import omegaconf
+        import mbrl
         cfg = omegaconf.OmegaConf.load(path+".hydra/config.yaml")
         env, _, _ = mbrl.util.env.EnvHandler.make_env(cfg)
 
