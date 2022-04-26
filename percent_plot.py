@@ -222,7 +222,7 @@ for i in range (repeat):
     elif i == repeat-1:
         percent = 0
     else:
-        percent = 1- (maxi - rewards[i])/reward_range
+        percent = (maxi - rewards[i])/reward_range
     wandb.log({"percent": percent, "action_repeated": i})
 
 
