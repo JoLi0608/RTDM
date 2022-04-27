@@ -17,24 +17,24 @@
 for seed in 1 2 3 4 5
 do
     ## SAC
-    for d in /app/data/spinup/sac/* ;do
-        for n in $d/cmd_sac_pytorch/*/; do
-            echo $n
-            python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo sac --evaseed $seed --gpu 1&
-        done
-        wait
-    done
+    #for d in /app/data/spinup/sac/* ;do
+    #    for n in $d/cmd_sac_pytorch/*/; do
+    #        echo $n
+    #        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo sac --evaseed $seed --gpu 1&
+    #    done
+    #    wait
+    #done
 
     # MBPO
-    for d in /app/data/mbpo/default/*/ ;do
-        for n in $d*/; do
-            for s in $n*/; do
-                echo $s
-                python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo mbpo --evaseed $seed --gpu 1 &
-            done
-            wait
-        done
-    done
+    #for d in /app/data/mbpo/default/*/ ;do
+    #    for n in $d*/; do
+    #        for s in $n*/; do
+    #            echo $s
+    #            python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo mbpo --evaseed $seed --gpu 1 &
+    #        done
+    #        wait
+    #    done
+    #done
 
 
     # PETS
@@ -50,28 +50,28 @@ do
 
     # ARS
 
-    for d in /app/data/ray_results/*
-    do
-        for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
-        do
-            for n in $d/ARS_$env*/ ; do
-              echo $n
-              python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed $seed --gpu 1 &
-            done
-        done
-        wait
-    done
+    #for d in /app/data/ray_results/*
+    #do
+    #    for env in continuous_CartPole-v0 Hopper-v2 Humanoid-v2 HalfCheetah-v2 Pusher-v2
+    #    do
+    #        for n in $d/ARS_$env*/ ; do
+    #          echo $n
+    #          python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ars --evaseed $seed --gpu 1 &
+    #        done
+    #    done
+    #    wait
+    #done
 
     # PPO
-    for d in /app/data/spinup/ppo/*
-    do
-        for n in $d/cmd_ppo_pytorch/*/
-        do
-            echo $n
-            python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ppo --evaseed $seed --gpu 1 &
-        done
-        wait
-    done
+    #for d in /app/data/spinup/ppo/*
+    #do
+    #    for n in $d/cmd_ppo_pytorch/*/
+    #    do
+    #        echo $n
+    #        python /app/RTDM/scripts/evaluate_repeat.py --path $n --algo ppo --evaseed $seed --gpu 1 &
+    #    done
+    #    wait
+    #done
 
 
     # RTRL
