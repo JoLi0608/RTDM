@@ -11,6 +11,7 @@ import math
 import rtrl
 import os
 import time
+import copy
 from rtrl import Training, run
 from rtrl.wrappers import StatsWrapper
 import numpy as np
@@ -145,19 +146,20 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
         iter_ep = 5
     else:
         iter_ep = 10
-    if algorithm == 'rtrl':
-        prev_action = np.zeros(env.action_space.shape[0])
 
     for repeat in range(repeat):
         print('action repeated:', repeat)
         total_rewards = []
+        if algorithm == 'rtrl':
+            prev_action = [np.zeros(env.action_space.shape[0])]*5
+
         for k in range(iter_ep):
             obs = env.reset()
             total_reward = 0
             total_ep += 1
             for i in range(times):
                 if algorithm == "rtrl":
-                    action = trainer((obs,prev_action))
+                    action = trainer((obs,prev_action[i]))
                 else:
                     action = trainer(obs)
                     
@@ -181,7 +183,7 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                 if done:
                     prev_action = np.zeros(env.action_space.shape[0])
                     break 
-                prev_action = action
+                prev_action.append(copy.deepcopy(action))
                 
             env.close()
         # print(total_rewards)    
