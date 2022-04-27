@@ -17,5 +17,5 @@ for k in d.keys():
     else:
         wconfig.env = k.split("_")[3]
         wconfig.gpu = k.split("_")[5]
-    wandb.log({"inference time":np.median(d["cpu_"+str( wconfig.cpu )+"_"+wconfig.algorithm +"_"+wconfig.env+"_gpu_"+wconfig.gpu])})
+    wandb.log({"inference time":np.median(d[k])})
     run.finish()
