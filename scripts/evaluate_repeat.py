@@ -178,10 +178,10 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                         total_rewards.append(total_reward)
                         # print(total_reward)
                         obs = env.reset()
-                        prev_action = np.zeros(env.action_space.shape[0])
+                        prev_action = [np.zeros(env.action_space.shape[0])]*5
                         break
                 if done:
-                    prev_action = np.zeros(env.action_space.shape[0])
+                    prev_action = [np.zeros(env.action_space.shape[0])]*5
                     break 
                 prev_action.append(copy.deepcopy(action))
                 
