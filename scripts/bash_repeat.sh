@@ -9,12 +9,14 @@
 for seed in 1 2 3 4 5
 do
 
-    for d in /app/data/planet/default/* ;do#
-        for n in $d/*; do
-            for s in $n/*/; do
+    for d in /app/data/planet/default/* 
+    do
+        for n in $d/*
+        do
+            for s in $n/*/
+            do
                 echo $s
-                python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo planet --evaseed $seed --gpu 1 &
-                break
+                #python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo planet --evaseed $seed --gpu 1 &
             done
             wait
         done
