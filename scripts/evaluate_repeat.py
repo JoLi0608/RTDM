@@ -146,7 +146,7 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
     total_rewards = []
     total_ep = 0
     rewards = []
-    if algorithm == 'pets':
+    if algorithm == 'pets' or algorithm=="planet":
         iter_ep = 5
     else:
         iter_ep = 10
@@ -236,7 +236,7 @@ if __name__ == "__main__":
     wconfig.new = 2
              
     times = 100000
-    repeat = 50
+    repeat = 5
 
     if env_name == 'Pusher-v2' or env_name == 'pets_pusher':
         times = 100
