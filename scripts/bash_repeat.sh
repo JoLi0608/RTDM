@@ -16,7 +16,7 @@ do
             for s in $n/*/
             do
                 echo $s
-                #python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo planet --evaseed $seed --gpu 1 &
+                python /app/RTDM/scripts/evaluate_repeat.py --path $s --algo planet --evaseed $seed --gpu 1 &
             done
             wait
         done
