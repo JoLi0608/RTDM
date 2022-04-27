@@ -14,7 +14,7 @@ for k in d.keys():
     if "continuous" in k:
         wconfig.env = "continuous-CartPole-v0"
         wconfig.gpu = k.split("_")[6]
-    else
+    else:
         wconfig.env = k.split("_")[3]
         wconfig.gpu = k.split("_")[5]
     wandb.log({"inference time":np.median(d["cpu_"+str( wconfig.cpu )+"_"+wconfig.algorithm +"_"+wconfig.env+"_gpu_"+k.split("_")[6]]),"cpu":cpu})
