@@ -6,7 +6,7 @@ import numpy as np
 d = pickle.load(open("/app/data/inference_time/data.pkl","rb"))
 
    
-for k in d.keys()
+for k in d.keys():
     run = wandb.init(project="RTDM_inference", entity="pierthodo")
     wconfig = wandb.config
     wconfig.algorithm = k.split("_")[2]
