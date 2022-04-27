@@ -124,11 +124,13 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
     elif algo == "sac":
         from spinup.utils.test_policy import load_policy_and_env, run_policy
         device = "cuda" if gpu else "cpu"
-        env,agent = load_policy_and_env(path,device=device)
+        _,agent = load_policy_and_env(path,device=device)
+        env = gym.make(env_name)
     elif algo == "ppo":
         from spinup.utils.test_policy import load_policy_and_env, run_policy
         device = "cuda" if gpu else "cpu"
-        env,agent = load_policy_and_env(path,device=device)
+        _,agent = load_policy_and_env(path,device=device)
+        env = gym.make(env_name)
     else:
         print("Algo not known", algo)
         raise("Algo not known")
