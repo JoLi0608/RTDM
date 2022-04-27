@@ -157,17 +157,18 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
             obs = env.reset()
             total_reward = 0
             total_ep += 1
+            prev_action = np.zeros(env.action_space.shape[0])
             for i in range(times):
                 if algorithm == "rtrl":
-                    action = trainer((obs,prev_action[i]))
+                    action = trainer((obs,prev_action))
                 else:
                     action = trainer(obs)
                     
-                obs, reward, done, info = env.step(action)
+                obs, reward, done, info = env.step(prev_action)
                 total_reward += reward
                 if repeat:
                     for j in range(repeat):
-                        obs, reward, done, info = env.step(action)
+                        obs, reward, done, info = env.step(prev_action)
                         total_reward += reward
                         if done:
                             total_rewards.append(total_reward)  
@@ -178,12 +179,13 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                         total_rewards.append(total_reward)
                         # print(total_reward)
                         obs = env.reset()
-                        prev_action = [np.zeros(env.action_space.shape[0])]*5
+                        prev_action = np.zeros(env.action_space.shape[0])
                         break
                 if done:
-                    prev_action = [np.zeros(env.action_space.shape[0])]*5
+                    prev_action = np.zeros(env.action_space.shape[0])
                     break 
-                prev_action.append(copy.deepcopy(action))
+                prev_action = action
+                #prev_action.append(copy.deepcopy(action))
                 
             env.close()
         # print(total_rewards)    
@@ -227,7 +229,7 @@ if __name__ == "__main__":
     wconfig.algorithm = args["algo"]
     wconfig.eva_seed = args["evaseed"]
     wconfig.env = env_name
-    wconfig.new = 1
+    wconfig.new = 2
              
     times = 100000
     repeat = 50
