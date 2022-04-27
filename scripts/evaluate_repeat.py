@@ -169,19 +169,17 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
             for i in range(times):
                 if algorithm == "rtrl":
                     action = trainer((obs,prev_action))
+                elif algorithm == "planet":
+                    action = trainer(obs,done)
                 else:
                     action = trainer(obs)
-                if algorithm == "planet":
-                    obs, reward, done, info = env.step(prev_action,done)
-                else:
-                    obs, reward, done, info = env.step(prev_action)
+                
+                obs, reward, done, info = env.step(prev_action)
                 total_reward += reward
                 if repeat:
                     for j in range(repeat):
-                        if algorithm == "planet":
-                            obs, reward, done, info = env.step(prev_action,done)
-                        else:
-                            obs, reward, done, info = env.step(prev_action)
+
+                        obs, reward, done, info = env.step(prev_action)
                         total_reward += reward
                         if done:
                             total_rewards.append(total_reward)  
