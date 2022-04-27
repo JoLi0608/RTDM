@@ -12,5 +12,5 @@ for algo in ["ars","mbpo","sac","ppo","rtrl"]:
             wconfig = wandb.config
             wconfig.algorithm = algo
             wconfig.env = env
-            wandb.log({"inference time":np.median(d["cpu_"+cpu+"_"+algo+"_"+env+"_gpu_0"],"cpu":cpu})
+            wandb.log({"inference time":np.median(d["cpu_"+cpu+"_"+algo+"_"+env+"_gpu_0"]),"cpu":cpu})
         run.finish()
