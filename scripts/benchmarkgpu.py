@@ -55,6 +55,8 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         cfg.dynamics_model.action_size = env.action_space.shape[0]
         planet = hydra.utils.instantiate(cfg.dynamics_model)
         planet.load(path)
+        device = "cuda" if gpu else "cpu"
+        planet.to(device)
         model_env = ModelEnv(env, planet, no_termination, generator=torch_generator)
         ag = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
 
