@@ -94,13 +94,14 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         agent = lambda obs: np.clip(ag.act(obs, deterministic=True),-1.0,1.0)
     elif algo == "rtrl":
         import rtrl
+        from rtrl.wrappers import Float64ToFloat32, TimeLimitResetWrapper, NormalizeActionWrapper,
         r = rtrl.load(path+"state")
         if not gpu:
             r.agent.model.to("cpu")
         else:
             r.agent.model.to("cuda")
         agent = lambda obs: r.agent.act(obs,[],[],[],train=False)[0]
-        env = gym.make(env_name)
+        env = NormalizeActionWrapper(TimeLimitResetWrapper(Float64ToFloat32(gym.make(env_name))))
     elif algo == "ars":
         checkpoint_num = {"continuous_CartPole-v0":"050","HalfCheetah-v2":"300","Hopper-v2":"300","Humanoid-v2":"500","Pusher-v2":"100"}
         import mbrl
