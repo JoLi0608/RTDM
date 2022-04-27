@@ -1,3 +1,6 @@
+import os 
+os.environ["MUJOCO_GL"] = "osmesa"
+
 from cmath import inf
 import gym
 import time
