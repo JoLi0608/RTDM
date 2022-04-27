@@ -176,9 +176,13 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                         total_rewards.append(total_reward)
                         # print(total_reward)
                         obs = env.reset()
+                        prev_action = np.zeros(env.action_space.shape[0])
                         break
                 if done:
+                    prev_action = np.zeros(env.action_space.shape[0])
                     break 
+                prev_action = action
+                
             env.close()
         # print(total_rewards)    
         reward_ave = sum(total_rewards)/len(total_rewards) if len(total_rewards) else sum(total_rewards)/(len(total_rewards)+1)
