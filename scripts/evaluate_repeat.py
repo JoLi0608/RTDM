@@ -173,12 +173,13 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                     action = trainer(obs,done)
                 else:
                     action = trainer(obs)
-                
-                obs, reward, done, info = env.step(prev_action)
+                if repeat == 0:
+                    obs, reward, done, info = env.step(action)
+                else:
+                    obs, reward, done, info = env.step(prev_action)
                 total_reward += reward
                 if repeat:
-                    for j in range(repeat):
-
+                    for j in range(repeat-1):
                         obs, reward, done, info = env.step(prev_action)
                         total_reward += reward
                         if done:
@@ -243,7 +244,7 @@ if __name__ == "__main__":
     wconfig.new = 2
              
     times = 100000
-    repeat = 5
+    repeat = 6
 
     if env_name == 'Pusher-v2' or env_name == 'pets_pusher':
         times = 100
