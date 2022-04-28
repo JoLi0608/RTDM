@@ -252,7 +252,8 @@ if __name__ == "__main__":
              
     times = 100000
     repeat = 5
-
+    if args["algo"] == "rtrl":
+        repeat = 50
     if env_name == 'Pusher-v2' or env_name == 'pets_pusher':
         times = 100
         
