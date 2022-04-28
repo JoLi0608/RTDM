@@ -241,10 +241,10 @@ if __name__ == "__main__":
     wconfig.algorithm = args["algo"]
     wconfig.eva_seed = args["evaseed"]
     wconfig.env = env_name
-    wconfig.new = 2
+    wconfig.new = 6
              
     times = 100000
-    repeat = 6
+    repeat = 5
 
     if env_name == 'Pusher-v2' or env_name == 'pets_pusher':
         times = 100
