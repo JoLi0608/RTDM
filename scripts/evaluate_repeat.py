@@ -245,7 +245,7 @@ if __name__ == "__main__":
     wconfig.algorithm = args["algo"]
     wconfig.eva_seed = args["evaseed"]
     wconfig.env = env_name
-    wconfig.new = 6
+    wconfig.new = 7
              
     times = 100000
     repeat = 5
