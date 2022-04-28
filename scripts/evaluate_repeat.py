@@ -174,7 +174,7 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                 if algorithm == "rtrl":
                     action = trainer((obs,prev_action))
                 elif algorithm == "planet":
-                    action = trainer(obs,done,prev_action)
+                    action = trainer(obs,prev_action,done)
                 else:
                     action = trainer(obs)
                 if repeat == 0:
@@ -245,7 +245,7 @@ if __name__ == "__main__":
     wconfig.algorithm = args["algo"]
     wconfig.eva_seed = args["evaseed"]
     wconfig.env = env_name
-    wconfig.new = 7
+    wconfig.new = 8
              
     times = 100000
     repeat = 5
