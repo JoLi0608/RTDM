@@ -158,7 +158,6 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
         iter_ep = 10
 
     for repeat in range(repeat):
-        repeat = 1
         print('action repeated:', repeat)
         total_rewards = []
         if algorithm == 'rtrl':
@@ -184,9 +183,6 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                 else:
                     obs, reward, done, info = env.step(prev_action)
                     prev_action_list.append(prev_action)
-                print(prev_action)
-                print(reward)
-                print(total_reward)
                 total_reward += reward
                 if repeat:
                     for j in range(repeat-1):
@@ -206,6 +202,7 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                         break
                 if done:
                     prev_action = np.zeros(env.action_space.shape[0])
+                    total_rewards.append(total_reward)  
                     break 
                 prev_action = action
                 #prev_action.append(copy.deepcopy(action))
