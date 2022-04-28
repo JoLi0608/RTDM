@@ -158,6 +158,7 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
         iter_ep = 10
 
     for repeat in range(repeat):
+        repeat = 1
         print('action repeated:', repeat)
         total_rewards = []
         if algorithm == 'rtrl':
@@ -183,6 +184,9 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
                 else:
                     obs, reward, done, info = env.step(prev_action)
                     prev_action_list.append(prev_action)
+                print(prev_action)
+                print(reward)
+                print(total_reward)
                 total_reward += reward
                 if repeat:
                     for j in range(repeat-1):
@@ -248,7 +252,7 @@ if __name__ == "__main__":
     wconfig.algorithm = args["algo"]
     wconfig.eva_seed = args["evaseed"]
     wconfig.env = env_name
-    wconfig.new = 8
+    wconfig.new = 9
              
     times = 100000
     repeat = 5
