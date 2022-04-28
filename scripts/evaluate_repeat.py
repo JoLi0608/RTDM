@@ -69,13 +69,16 @@ def load(path,algo,env_name="Hopper-v2",gpu=False):
         model_env = ModelEnv(env, planet, no_termination, generator=torch_generator)
         ag = create_trajectory_optim_agent_for_model(model_env, cfg.algorithm.agent)
 
-        def agent(obs,done=False):
+        def agent(obs,prev_action,done=False):
             import numpy as np
             if done:
                 print("reset agent")
                 ag.reset()
                 planet.reset_posterior()
                 planet.update_posterior(obs, action=None, rng=torch_generator)
+            else:
+                planet.update_posterior(obs, action=prev_action, rng=torch_generator)
+
             return np.clip(ag.act(obs),-1,1)
 
     elif algo == "pets":
@@ -165,12 +168,13 @@ def play(env, trainer, times, algorithm, repeat = 16, level = 0):
             total_reward = 0
             total_ep += 1
             prev_action = np.zeros(env.action_space.shape[0])
+            prev_action_list = [np.zeros(env.action_space.shape[0])]*5
             done = True
             for i in range(times):
                 if algorithm == "rtrl":
                     action = trainer((obs,prev_action))
                 elif algorithm == "planet":
-                    action = trainer(obs,done)
+                    action = trainer(obs,done,prev_action)
                 else:
                     action = trainer(obs)
                 if repeat == 0:
