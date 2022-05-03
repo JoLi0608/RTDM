@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/logwandb.py", line 60, in <module>
+    final= percents[n]
+IndexError: list index out of range
+[('env', 'Hopper-v2'), ('new', 2), ('eva_seed', '1'), ('algorithm', 'pets')]

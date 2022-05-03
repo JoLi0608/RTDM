@@ -1,0 +1,6 @@
+,summary,config,name
+0,"{'_step': 49, 'Reward': -81.33159220259958, '_wandb': {'runtime': 14}, '_runtime': 13, '_timestamp': 1651051348, 'Action Repeated': 49, 'Percentage of Reward Decreased': 0}","{'env': 'Pusher-v2', 'new': 2, 'eva_seed': '1', 'algorithm': 'sac'}",easy-totem-1150
+1,"{'Reward': -83.76695753983338, '_wandb': {'runtime': 15}, '_runtime': 14, '_timestamp': 1651051348, 'Action Repeated': 49, 'Percentage of Reward Decreased': 0, '_step': 49}","{'env': 'Pusher-v2', 'new': 2, 'eva_seed': '1', 'algorithm': 'sac'}",vibrant-music-1149
+2,"{'_wandb': {'runtime': 14}, '_runtime': 14, '_timestamp': 1651051347, 'Action Repeated': 49, 'Percentage of Reward Decreased': 0, '_step': 49, 'Reward': -82.10759644370953}","{'env': 'Pusher-v2', 'new': 2, 'eva_seed': '1', 'algorithm': 'sac'}",peachy-plasma-1148
+3,"{'_timestamp': 1651051347, 'Action Repeated': 49, 'Percentage of Reward Decreased': 0, '_step': 49, 'Reward': -84.00403101389381, '_wandb': {'runtime': 14}, '_runtime': 14}","{'env': 'Pusher-v2', 'new': 2, 'eva_seed': '1', 'algorithm': 'sac'}",swept-water-1146
+4,{'_wandb': {'runtime': 4}},"{'env': 'Pusher-v2', 'new': 2, 'eva_seed': '1', 'algorithm': 'sac'}",charmed-sponge-1147

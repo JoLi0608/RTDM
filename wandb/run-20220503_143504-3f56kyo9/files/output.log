@@ -1,0 +1,205 @@
+
+[('env', 'Pusher-v2'), ('new', 2), ('eva_seed', '1'), ('algorithm', 'sac')]
+[('env', 'Pusher-v2'), ('new', 2), ('eva_seed', '1'), ('algorithm', 'sac')]
+[('env', 'Pusher-v2'), ('new', 2), ('eva_seed', '1'), ('algorithm', 'sac')]
+[('env', 'Pusher-v2'), ('new', 2), ('eva_seed', '1'), ('algorithm', 'sac')]
+[('env', 'Pusher-v2'), ('new', 2), ('eva_seed', '1'), ('algorithm', 'sac')]
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 0 < 49; dropping {'Percentage of Reward Decreased': 1.0, 'Delay': 0.0, 'Reward': -105.26672162335231}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 1 < 49; dropping {'Percentage of Reward Decreased': 0.821162343081743, 'Delay': 0.01, 'Reward': -101.42175419036049}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 2 < 49; dropping {'Percentage of Reward Decreased': 1.0019165241398391, 'Delay': 0.02, 'Reward': -105.30792644021922}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 3 < 49; dropping {'Percentage of Reward Decreased': 0.9670866522703431, 'Delay': 0.03, 'Reward': -104.55909241196586}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 4 < 49; dropping {'Percentage of Reward Decreased': 1.1023347034313928, 'Delay': 0.04, 'Reward': -107.46689360468413}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 5 < 49; dropping {'Percentage of Reward Decreased': 0.8214300330388529, 'Delay': 0.05, 'Reward': -101.42750946128588}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 6 < 49; dropping {'Percentage of Reward Decreased': 0.9804110265231294, 'Delay': 0.06, 'Reward': -104.84556331496128}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 7 < 49; dropping {'Percentage of Reward Decreased': 0.7267945396552704, 'Delay': 0.07, 'Reward': -99.39286867961144}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 8 < 49; dropping {'Percentage of Reward Decreased': 0.9485108062223312, 'Delay': 0.08, 'Reward': -104.15971610428184}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 9 < 49; dropping {'Percentage of Reward Decreased': 1.0837786975995571, 'Delay': 0.09, 'Reward': -107.06794385696726}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 10 < 49; dropping {'Percentage of Reward Decreased': 0.8059546275926882, 'Delay': 0.1, 'Reward': -101.09479189509653}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 11 < 49; dropping {'Percentage of Reward Decreased': 0.7834195035313559, 'Delay': 0.11, 'Reward': -100.61029204418506}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 12 < 49; dropping {'Percentage of Reward Decreased': 0.7568218311668811, 'Delay': 0.12, 'Reward': -100.03844836317812}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 13 < 49; dropping {'Percentage of Reward Decreased': 1.1385976659773198, 'Delay': 0.13, 'Reward': -108.24653874439105}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 14 < 49; dropping {'Percentage of Reward Decreased': 0.9946441651742159, 'Delay': 0.14, 'Reward': -105.15157243812766}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 15 < 49; dropping {'Percentage of Reward Decreased': 0.9655550938044204, 'Delay': 0.15, 'Reward': -104.52616426626841}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 16 < 49; dropping {'Percentage of Reward Decreased': 0.8672262637191936, 'Delay': 0.16, 'Reward': -102.41211761682762}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 17 < 49; dropping {'Percentage of Reward Decreased': 0.9341409672375686, 'Delay': 0.17, 'Reward': -103.85076795619129}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 18 < 49; dropping {'Percentage of Reward Decreased': 0.8013671724554321, 'Delay': 0.18, 'Reward': -100.9961626919018}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 19 < 49; dropping {'Percentage of Reward Decreased': 0.9583120810829692, 'Delay': 0.19, 'Reward': -104.37044120150328}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 20 < 49; dropping {'Percentage of Reward Decreased': 0.6520863775350184, 'Delay': 0.2, 'Reward': -97.78666081891274}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 21 < 49; dropping {'Percentage of Reward Decreased': 0.5512914839340783, 'Delay': 0.21, 'Reward': -95.61959438566913}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 22 < 49; dropping {'Percentage of Reward Decreased': 0.5606887541268811, 'Delay': 0.22, 'Reward': -95.82163347784348}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 23 < 49; dropping {'Percentage of Reward Decreased': 0.8303232477227465, 'Delay': 0.23, 'Reward': -101.61871147893368}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 24 < 49; dropping {'Percentage of Reward Decreased': 0.8436461495674598, 'Delay': 0.24, 'Reward': -101.90515072550289}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 25 < 49; dropping {'Percentage of Reward Decreased': 0.8610562900305329, 'Delay': 0.25, 'Reward': -102.27946463811989}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 26 < 49; dropping {'Percentage of Reward Decreased': 0.6945965272205594, 'Delay': 0.26, 'Reward': -98.70061900830694}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 27 < 49; dropping {'Percentage of Reward Decreased': 0.7702328621653525, 'Delay': 0.27, 'Reward': -100.32678236576201}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 28 < 49; dropping {'Percentage of Reward Decreased': 0.8389051020264887, 'Delay': 0.28, 'Reward': -101.80321932186327}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 29 < 49; dropping {'Percentage of Reward Decreased': 0.6685042407740178, 'Delay': 0.29, 'Reward': -98.1396410053067}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 30 < 49; dropping {'Percentage of Reward Decreased': 0.6836985372739612, 'Delay': 0.3, 'Reward': -98.46631479547052}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 31 < 49; dropping {'Percentage of Reward Decreased': 0.25500943176158775, 'Delay': 0.31, 'Reward': -89.24960016177974}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 32 < 49; dropping {'Percentage of Reward Decreased': 0.4624165350966071, 'Delay': 0.32, 'Reward': -93.70880395272869}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 33 < 49; dropping {'Percentage of Reward Decreased': 0.30749468575116345, 'Delay': 0.33, 'Reward': -90.37802074041919}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 34 < 49; dropping {'Percentage of Reward Decreased': 0.49376307495645766, 'Delay': 0.34, 'Reward': -94.3827471645501}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 35 < 49; dropping {'Percentage of Reward Decreased': 0.5309856918676226, 'Delay': 0.35000000000000003, 'Reward': -95.18302464671135}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 36 < 49; dropping {'Percentage of Reward Decreased': 0.5096804166138825, 'Delay': 0.36, 'Reward': -94.7249662550215}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 37 < 49; dropping {'Percentage of Reward Decreased': 0.22942266445723758, 'Delay': 0.37, 'Reward': -88.69949070107631}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 38 < 49; dropping {'Percentage of Reward Decreased': 0.23595745564292814, 'Delay': 0.38, 'Reward': -88.83998716990372}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 39 < 49; dropping {'Percentage of Reward Decreased': 0.6733830981028177, 'Delay': 0.39, 'Reward': -98.24453528687305}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 40 < 49; dropping {'Percentage of Reward Decreased': 0.3260154516001108, 'Delay': 0.4, 'Reward': -90.77621283681765}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 41 < 49; dropping {'Percentage of Reward Decreased': 0.5071186570919417, 'Delay': 0.41000000000000003, 'Reward': -94.66988902966106}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 42 < 49; dropping {'Percentage of Reward Decreased': 0.048916521347927566, 'Delay': 0.42, 'Reward': -84.81865120860024}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 43 < 49; dropping {'Percentage of Reward Decreased': 0.3510531823753936, 'Delay': 0.43, 'Reward': -91.31451814167289}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 44 < 49; dropping {'Percentage of Reward Decreased': 0.3403986692107003, 'Delay': 0.44, 'Reward': -91.08544862220724}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 45 < 49; dropping {'Percentage of Reward Decreased': 0.1347999196456896, 'Delay': 0.45, 'Reward': -86.66512401069302}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 46 < 49; dropping {'Percentage of Reward Decreased': 0.2752497501193669, 'Delay': 0.46, 'Reward': -89.68476223144731}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 47 < 49; dropping {'Percentage of Reward Decreased': 0.11834917094564834, 'Delay': 0.47000000000000003, 'Reward': -86.31143679464488}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 48 < 49; dropping {'Percentage of Reward Decreased': 0.2863818791530812, 'Delay': 0.48, 'Reward': -89.92410037941946}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 0 < 49; dropping {'Percentage of Reward Decreased': 1.0, 'Delay': 0.0, 'Reward': -107.69179433612666}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 1 < 49; dropping {'Percentage of Reward Decreased': 0.8336785007983394, 'Delay': 0.01, 'Reward': -103.43659218678788}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 2 < 49; dropping {'Percentage of Reward Decreased': 0.9998376257480676, 'Delay': 0.02, 'Reward': -107.68764012113259}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 3 < 49; dropping {'Percentage of Reward Decreased': 0.9215200843032808, 'Delay': 0.03, 'Reward': -105.68394864236159}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 4 < 49; dropping {'Percentage of Reward Decreased': 1.0021115863243362, 'Delay': 0.04, 'Reward': -107.7458175785154}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 5 < 49; dropping {'Percentage of Reward Decreased': 0.7138388821063986, 'Delay': 0.05, 'Reward': -100.37059166682145}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 6 < 49; dropping {'Percentage of Reward Decreased': 0.8294534267191123, 'Delay': 0.06, 'Reward': -103.32849705543481}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 7 < 49; dropping {'Percentage of Reward Decreased': 0.7307792168598615, 'Delay': 0.07, 'Reward': -100.80399654351784}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 8 < 49; dropping {'Percentage of Reward Decreased': 0.8640633474502202, 'Delay': 0.08, 'Reward': -104.21396411646035}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 9 < 49; dropping {'Percentage of Reward Decreased': 0.8095088185938454, 'Delay': 0.09, 'Reward': -102.81823025427127}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 10 < 49; dropping {'Percentage of Reward Decreased': 0.83834149966115, 'Delay': 0.1, 'Reward': -103.55589127246614}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 11 < 49; dropping {'Percentage of Reward Decreased': 0.7958931857642796, 'Delay': 0.11, 'Reward': -102.46988520952917}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 12 < 49; dropping {'Percentage of Reward Decreased': 0.7803311542626902, 'Delay': 0.12, 'Reward': -102.07174311598448}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 13 < 49; dropping {'Percentage of Reward Decreased': 0.7276924976506864, 'Delay': 0.13, 'Reward': -100.72502530843198}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 14 < 49; dropping {'Percentage of Reward Decreased': 0.8300654306893734, 'Delay': 0.14, 'Reward': -103.34415468612092}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 15 < 49; dropping {'Percentage of Reward Decreased': 0.7901531489351237, 'Delay': 0.15, 'Reward': -102.32303097138228}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 16 < 49; dropping {'Percentage of Reward Decreased': 0.6552645067348091, 'Delay': 0.16, 'Reward': -98.87201325588998}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 17 < 49; dropping {'Percentage of Reward Decreased': 0.7690589924732177, 'Delay': 0.17, 'Reward': -101.78335389808727}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 18 < 49; dropping {'Percentage of Reward Decreased': 0.6274750811234451, 'Delay': 0.18, 'Reward': -98.16104309173224}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 19 < 49; dropping {'Percentage of Reward Decreased': 0.8954823357580854, 'Delay': 0.19, 'Reward': -105.01779373090831}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 20 < 49; dropping {'Percentage of Reward Decreased': 0.6487254941787974, 'Delay': 0.2, 'Reward': -98.70471786463598}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 21 < 49; dropping {'Percentage of Reward Decreased': 0.5781671335540928, 'Delay': 0.21, 'Reward': -96.899538803449}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 22 < 49; dropping {'Percentage of Reward Decreased': 0.5127876640791076, 'Delay': 0.22, 'Reward': -95.22685751829974}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 23 < 49; dropping {'Percentage of Reward Decreased': 0.7767447184042285, 'Delay': 0.23, 'Reward': -101.97998703125313}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 24 < 49; dropping {'Percentage of Reward Decreased': 0.6913578216171603, 'Delay': 0.24, 'Reward': -99.79543176643338}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 25 < 49; dropping {'Percentage of Reward Decreased': 0.5709847405143156, 'Delay': 0.25, 'Reward': -96.71578303857822}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 26 < 49; dropping {'Percentage of Reward Decreased': 0.507014046087812, 'Delay': 0.26, 'Reward': -95.07914413305521}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 27 < 49; dropping {'Percentage of Reward Decreased': 0.5636271883098226, 'Delay': 0.27, 'Reward': -96.52754596697469}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 28 < 49; dropping {'Percentage of Reward Decreased': 0.575584612933868, 'Delay': 0.28, 'Reward': -96.83346708483992}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 29 < 49; dropping {'Percentage of Reward Decreased': 0.41734433488692046, 'Delay': 0.29, 'Reward': -92.78501649673571}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 30 < 49; dropping {'Percentage of Reward Decreased': 0.623064002877184, 'Delay': 0.3, 'Reward': -98.04818919296096}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 31 < 49; dropping {'Percentage of Reward Decreased': 0.5114875253411753, 'Delay': 0.31, 'Reward': -95.19359451154088}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 32 < 49; dropping {'Percentage of Reward Decreased': 0.48057755968559923, 'Delay': 0.32, 'Reward': -94.4027878333608}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 33 < 49; dropping {'Percentage of Reward Decreased': 0.13933108589187126, 'Delay': 0.33, 'Reward': -85.67227051773253}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 34 < 49; dropping {'Percentage of Reward Decreased': 0.4046916495717937, 'Delay': 0.34, 'Reward': -92.46130769176303}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 35 < 49; dropping {'Percentage of Reward Decreased': 0.41487775657412673, 'Delay': 0.35000000000000003, 'Reward': -92.72191106906405}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 36 < 49; dropping {'Percentage of Reward Decreased': 0.4736947227183862, 'Delay': 0.36, 'Reward': -94.22669597033038}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 37 < 49; dropping {'Percentage of Reward Decreased': 0.43188531163309896, 'Delay': 0.37, 'Reward': -93.15703572335897}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 38 < 49; dropping {'Percentage of Reward Decreased': 0.3509525091093665, 'Delay': 0.38, 'Reward': -91.08643488760389}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 39 < 49; dropping {'Percentage of Reward Decreased': 0.530236587793633, 'Delay': 0.39, 'Reward': -95.67327423562185}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 40 < 49; dropping {'Percentage of Reward Decreased': 0.45544446935826766, 'Delay': 0.4, 'Reward': -93.75977787677836}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 41 < 49; dropping {'Percentage of Reward Decreased': 0.3341497094123028, 'Delay': 0.41000000000000003, 'Reward': -90.65654873500756}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 42 < 49; dropping {'Percentage of Reward Decreased': 0.2350276432364402, 'Delay': 0.42, 'Reward': -88.12059017845903}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 43 < 49; dropping {'Percentage of Reward Decreased': 0.5128105373642087, 'Delay': 0.43, 'Reward': -95.22744271295221}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 44 < 49; dropping {'Percentage of Reward Decreased': 0.1733129852294205, 'Delay': 0.44, 'Reward': -86.54167015514459}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 45 < 49; dropping {'Percentage of Reward Decreased': 0.32833559208536245, 'Delay': 0.45, 'Reward': -90.50779920674539}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 46 < 49; dropping {'Percentage of Reward Decreased': 0.10895003064926978, 'Delay': 0.46, 'Reward': -84.89499558822536}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 47 < 49; dropping {'Percentage of Reward Decreased': 0.31381763518475625, 'Delay': 0.47000000000000003, 'Reward': -90.1363689244067}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 48 < 49; dropping {'Percentage of Reward Decreased': -0.030080839404388104, 'Delay': 0.48, 'Reward': -81.33800229561764}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 0 < 49; dropping {'Percentage of Reward Decreased': 1.0, 'Delay': 0.0, 'Reward': -106.59032304402172}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 1 < 49; dropping {'Percentage of Reward Decreased': 0.8658471575891206, 'Delay': 0.01, 'Reward': -103.56030776865786}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 2 < 49; dropping {'Percentage of Reward Decreased': 1.1636614775470369, 'Delay': 0.02, 'Reward': -110.28682896998131}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 3 < 49; dropping {'Percentage of Reward Decreased': 1.0618407289582055, 'Delay': 0.03, 'Reward': -107.98707580762773}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 4 < 49; dropping {'Percentage of Reward Decreased': 1.0911415304888576, 'Delay': 0.04, 'Reward': -108.64887226771586}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 5 < 49; dropping {'Percentage of Reward Decreased': 0.9329814245373774, 'Delay': 0.05, 'Reward': -105.07662192717976}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 6 < 49; dropping {'Percentage of Reward Decreased': 0.9799236314626936, 'Delay': 0.06, 'Reward': -106.13687232133364}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 7 < 49; dropping {'Percentage of Reward Decreased': 0.8353862005689688, 'Delay': 0.07, 'Reward': -102.87230769788354}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 8 < 49; dropping {'Percentage of Reward Decreased': 0.8805962810851585, 'Delay': 0.08, 'Reward': -103.8934357791278}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 9 < 49; dropping {'Percentage of Reward Decreased': 1.2449490422850225, 'Delay': 0.09, 'Reward': -112.12281364557138}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 10 < 49; dropping {'Percentage of Reward Decreased': 0.9658277027243355, 'Delay': 0.1, 'Reward': -105.81849755841321}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 11 < 49; dropping {'Percentage of Reward Decreased': 0.8406262326952515, 'Delay': 0.11, 'Reward': -102.99066059373502}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 12 < 49; dropping {'Percentage of Reward Decreased': 1.1021129264243161, 'Delay': 0.12, 'Reward': -108.89667542029228}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 13 < 49; dropping {'Percentage of Reward Decreased': 1.1644067488256582, 'Delay': 0.13, 'Reward': -110.30366188472192}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 14 < 49; dropping {'Percentage of Reward Decreased': 0.925814779622694, 'Delay': 0.14, 'Reward': -104.91475399226049}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 15 < 49; dropping {'Percentage of Reward Decreased': 0.7877595799512187, 'Delay': 0.15, 'Reward': -101.79659893620293}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 16 < 49; dropping {'Percentage of Reward Decreased': 0.8592490511044178, 'Delay': 0.16, 'Reward': -103.41128100874849}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 17 < 49; dropping {'Percentage of Reward Decreased': 0.7676535277507144, 'Delay': 0.17, 'Reward': -101.34247776962934}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 18 < 49; dropping {'Percentage of Reward Decreased': 0.799646305455028, 'Delay': 0.18, 'Reward': -102.06507598971393}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 19 < 49; dropping {'Percentage of Reward Decreased': 1.0116046426179113, 'Delay': 0.19, 'Reward': -106.85242889109513}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 20 < 49; dropping {'Percentage of Reward Decreased': 0.8188607340055603, 'Delay': 0.2, 'Reward': -102.49905868414828}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 21 < 49; dropping {'Percentage of Reward Decreased': 0.7548546229013041, 'Delay': 0.21, 'Reward': -101.05339796703474}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 22 < 49; dropping {'Percentage of Reward Decreased': 0.5733391347477537, 'Delay': 0.22, 'Reward': -96.95363614360743}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 23 < 49; dropping {'Percentage of Reward Decreased': 0.5811761206090962, 'Delay': 0.23, 'Reward': -97.1306445949077}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 24 < 49; dropping {'Percentage of Reward Decreased': 0.6462564109943572, 'Delay': 0.24, 'Reward': -98.60056703895472}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 25 < 49; dropping {'Percentage of Reward Decreased': 0.5043006972173577, 'Delay': 0.25, 'Reward': -95.39431383224216}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 26 < 49; dropping {'Percentage of Reward Decreased': 0.5873302598179155, 'Delay': 0.26, 'Reward': -97.26964378027215}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 27 < 49; dropping {'Percentage of Reward Decreased': 0.8626045556587449, 'Delay': 0.27, 'Reward': -103.48706941452095}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 28 < 49; dropping {'Percentage of Reward Decreased': 0.9762290892309996, 'Delay': 0.28, 'Reward': -106.05342631157096}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 29 < 49; dropping {'Percentage of Reward Decreased': 0.697367811366153, 'Delay': 0.29, 'Reward': -99.75498405382089}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 30 < 49; dropping {'Percentage of Reward Decreased': 0.597064547606186, 'Delay': 0.3, 'Reward': -97.48950524696333}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 31 < 49; dropping {'Percentage of Reward Decreased': 0.7513961993430232, 'Delay': 0.31, 'Reward': -100.97528500258353}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 32 < 49; dropping {'Percentage of Reward Decreased': 0.5784558286754808, 'Delay': 0.32, 'Reward': -97.06920328688786}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 33 < 49; dropping {'Percentage of Reward Decreased': 0.31831361005608083, 'Delay': 0.33, 'Reward': -91.19355516778471}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 34 < 49; dropping {'Percentage of Reward Decreased': 0.6116621712710546, 'Delay': 0.34, 'Reward': -97.81921143800396}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 35 < 49; dropping {'Percentage of Reward Decreased': 0.4257664669179846, 'Delay': 0.35000000000000003, 'Reward': -93.6205167723392}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 36 < 49; dropping {'Percentage of Reward Decreased': 0.5878508633520072, 'Delay': 0.36, 'Reward': -97.28140228372506}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 37 < 49; dropping {'Percentage of Reward Decreased': 0.32894508219822893, 'Delay': 0.37, 'Reward': -91.43368070229744}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 38 < 49; dropping {'Percentage of Reward Decreased': 0.45894716733461405, 'Delay': 0.38, 'Reward': -94.36994576171338}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 39 < 49; dropping {'Percentage of Reward Decreased': 0.413253057993783, 'Delay': 0.39, 'Reward': -93.33788526408478}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 40 < 49; dropping {'Percentage of Reward Decreased': 0.31871946589294375, 'Delay': 0.4, 'Reward': -91.20272194623823}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 41 < 49; dropping {'Percentage of Reward Decreased': 0.25445547329909224, 'Delay': 0.41000000000000003, 'Reward': -89.75123664249152}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 42 < 49; dropping {'Percentage of Reward Decreased': 0.17649910335236163, 'Delay': 0.42, 'Reward': -87.99049130526598}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 43 < 49; dropping {'Percentage of Reward Decreased': 0.318891945091088, 'Delay': 0.43, 'Reward': -91.20661761177664}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 44 < 49; dropping {'Percentage of Reward Decreased': 0.1649537572015084, 'Delay': 0.44, 'Reward': -87.72972474551389}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 45 < 49; dropping {'Percentage of Reward Decreased': 0.28542547642269545, 'Delay': 0.45, 'Reward': -90.4507341772152}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 46 < 49; dropping {'Percentage of Reward Decreased': 0.2122400366040692, 'Delay': 0.46, 'Reward': -88.79774646111835}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 47 < 49; dropping {'Percentage of Reward Decreased': 0.24708912973208152, 'Delay': 0.47000000000000003, 'Reward': -89.58485825549276}.
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step must only increase in log calls.  Step 48 < 49; dropping {'Percentage of Reward Decreased': 0.3033901584497509, 'Delay': 0.48, 'Reward': -90.85648973170666}.
+    Action Repeated  Percentage of Reward Decreased Algorithm
+0                 0                        1.000000       sac
+1                 1                        0.865847       sac
+2                 2                        1.163661       sac
+3                 3                        1.061841       sac
+4                 4                        1.091142       sac
+5                 5                        0.932981       sac
+6                 6                        0.979924       sac
+7                 7                        0.835386       sac
+8                 8                        0.880596       sac
+9                 9                        1.244949       sac
+10               10                        0.965828       sac
+11               11                        0.840626       sac
+12               12                        1.102113       sac
+13               13                        1.164407       sac
+14               14                        0.925815       sac
+15               15                        0.787760       sac
+16               16                        0.859249       sac
+17               17                        0.767654       sac
+18               18                        0.799646       sac
+19               19                        1.011605       sac
+20               20                        0.818861       sac
+21               21                        0.754855       sac
+22               22                        0.573339       sac
+23               23                        0.581176       sac
+24               24                        0.646256       sac
+25               25                        0.504301       sac
+26               26                        0.587330       sac
+27               27                        0.862605       sac
+28               28                        0.976229       sac
+29               29                        0.697368       sac
+30               30                        0.597065       sac
+31               31                        0.751396       sac
+32               32                        0.578456       sac
+33               33                        0.318314       sac
+34               34                        0.611662       sac
+35               35                        0.425766       sac
+36               36                        0.587851       sac
+37               37                        0.328945       sac
+38               38                        0.458947       sac
+39               39                        0.413253       sac
+40               40                        0.318719       sac
+41               41                        0.254455       sac
+42               42                        0.176499       sac
+43               43                        0.318892       sac
+44               44                        0.164954       sac
+45               45                        0.285425       sac
+46               46                        0.212240       sac
+47               47                        0.247089       sac
+48               48                        0.303390       sac
+49               49                        0.000000       sac
+2022-05-03 14:35:18.984 Python[15113:1053903] ApplePersistenceIgnoreState: Existing state will not be touched. New state will be written to /var/folders/yt/3gz8yy8s1ks3w9hgqhvppyyc0000gn/T/org.python.python.savedState

@@ -1,0 +1,6 @@
+
+[('env', 'Hopper-v2'), ('new', 2), ('eva_seed', '1'), ('algorithm', 'pets')]
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/logwandb.py", line 65, in <module>
+    percent = (1- ((initial-percent[i])/reward_range))*100
+NameError: name 'percent' is not defined

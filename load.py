@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 # # PICKLE
 # import pickle
@@ -460,6 +461,7 @@ inf_dict = {'cpu_5_rtrl_HalfCheetah-v2_gpu_0': [0.00095501, 0.00095452, 0.000971
 
 # 3. same environment same algorithm, difference of different GPU
 envs = ['Hopper-v2','Pusher-v2','continuous','HalfCheetah-v2','Humanoid-v2']
+env_step = {'Hopper-v2':0.002,'Pusher-v2':0.01,'continuous':0.02,'HalfCheetah-v2':0.01,'Humanoid-v2':0.003}
 # envs = ['Hopper-v2','Pusher-v2','continuous','HalfCheetah-v2']
 algs = ['ars','sac','ppo','rtrl','mbpo','pets']
 # algs = ['sac','ppo','mbpo','rtrl']
@@ -483,14 +485,17 @@ def testenv(cpus, gpu, alg, env, dic = inf_dict):
 result = []
 bar_width = 0.15
 objects = cpus
+gpu = '0'
+env = 'Pusher-v2'
 y_pos = np.arange(len(objects))
 for alg in algs:
     # for cpu in cpus:
-    dicenv = testenv(cpus, '0', alg, 'Pusher-v2')
+    dicenv = testenv(cpus, gpu, alg, env)
     result.append(dicenv)
 n = len(result)
 for i in range(n):
     inference = []
+    repeat = []
     dicenv = result[i]
     print(i)
     print(dicenv,type(dicenv))
@@ -501,11 +506,13 @@ for i in range(n):
         keycpu = cpus[j]
         for k in range (m):
             if key[k] == keycpu:
-                inference.append(value[k])
+                # inference.append(value[k])
+                repeat.append((math.floor(value[k]/env_step[env])+1))
     plt.yscale('log')
     # plt.grid(color='k', linestyle='--', linewidth=0.5)
-    ax = plt.bar(y_pos+(i*bar_width), inference, bar_width)
-    plt.axis([ -0.25, 5,1E-6, 1])
+    # ax = plt.bar(y_pos+(i*bar_width), inference, bar_width)
+    ax = plt.bar(y_pos+(i*bar_width), repeat, bar_width)
+    plt.axis([ -0.25, 5,1, 1E2])
     plt.xticks(range(len(objects)), objects)
     # ax.set(ylim=(1E-6, 1E-2))
 
@@ -513,10 +520,10 @@ for i in range(n):
 
 plt.xticks(y_pos, objects)
 plt.legend(algs,loc=2)
-plt.hlines(0.01,-0.25, 5, 'k', '--')
+plt.hlines(env_step[env],-0.25, 5, 'k', '--')
 plt.ylabel('Inference Time (seconds)')
 plt.xlabel('Number of CPUs')
-plt.title('Inference Time in Continuous Pusher-v2')
+plt.title('Inference Time in Pusher-v2')
 
 plt.show()
 

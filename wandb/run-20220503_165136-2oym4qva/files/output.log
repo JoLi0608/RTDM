@@ -1,0 +1,6 @@
+
+[('env', 'continuous_CartPole-v0'), ('new', 2), ('eva_seed', '1'), ('algorithm', 'ars')]
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/logwandb.py", line 65, in <module>
+    percent1 = (1- ((initial-percents[i])/reward_range))*100
+ZeroDivisionError: float division by zero
