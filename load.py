@@ -486,7 +486,7 @@ result = []
 bar_width = 0.15
 objects = cpus
 gpu = '0'
-env = 'Pusher-v2'
+env = 'Hopper-v2'
 y_pos = np.arange(len(objects))
 for alg in algs:
     # for cpu in cpus:
@@ -507,7 +507,7 @@ for i in range(n):
         for k in range (m):
             if key[k] == keycpu:
                 # inference.append(value[k])
-                repeat.append((math.floor(value[k]/env_step[env])+1))
+                repeat.append((math.floor(value[k]/env_step[env])))
     plt.yscale('log')
     # plt.grid(color='k', linestyle='--', linewidth=0.5)
     # ax = plt.bar(y_pos+(i*bar_width), inference, bar_width)

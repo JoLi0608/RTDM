@@ -1,0 +1,26 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.7
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.9.6
+    start_time: 1651611962
+    t:
+      3:
+      - 19
+      4: 3.9.6
+      5: 0.12.7
+      8:
+      - 5
+algorithm:
+  desc: null
+  value: mbpo
+env:
+  desc: null
+  value: HalfCheetah-v2
+eva_seed:
+  desc: null
+  value: '1'
