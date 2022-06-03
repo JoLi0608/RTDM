@@ -1,0 +1,22 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.6",
+    "heartbeatAt": "2022-05-24T08:44:10.321928",
+    "startedAt": "2022-05-24T08:44:04.870086",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/liwenyu/Documents/GitHub/RTDM/logwandb.py",
+    "codePath": "logwandb.py",
+    "git": {
+        "remote": "https://github.com/JoLi0608/RTDM.git",
+        "commit": "da7b8e724ff3febe2bfe2e3547c8a04db039c422"
+    },
+    "email": "wyli608@163.com",
+    "root": "/Users/liwenyu/Documents/GitHub/RTDM",
+    "host": "dhcp-10-241-160-139.cp.wireless.private.cam.ac.uk",
+    "username": "liwenyu",
+    "executable": "/usr/local/bin/python3.9"
+}

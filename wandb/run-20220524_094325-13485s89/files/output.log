@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/liwenyu/Documents/GitHub/RTDM/logwandb.py", line 430, in <module>
+    percent = (rewards[i]/initial)*100
+ZeroDivisionError: float division by zero
+[('env', 'Pusher-v2'), ('new', 9), ('eva_seed', '1'), ('algorithm', 'pets')]
+0 0.0 1.0
