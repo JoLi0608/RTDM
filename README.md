@@ -3,8 +3,6 @@
 
 # Real-time Decision Making
 
-## Description
-
 evaluation.py is the script to evaluate trained algorithms in selected environments under real-time settings.
 
 inference_analysis.py is the script for the plottings of statistical inference analysis.
