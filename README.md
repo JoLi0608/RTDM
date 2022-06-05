@@ -9,9 +9,9 @@ This repostory contains the code for figures in thesis 'Real-time Decision Makin
 
 ### data
 
-The folder $data$ contains two pickle files storing the data for our real-time benchkark.
+The folder /data contains two pickle files storing the data for our real-time benchkark.
 
-$inference/_ time.pkl$ stores the median inference delay of selected algorithms in different continuous-control tasks under varing hardware conditions.
+$inference_time.pkl$ stores the median inference delay of selected algorithms in different continuous-control tasks under varing hardware conditions.
 
 $repeat.pkl$ stores the reward achieved by selected algorithms with varying delay/sticky actions.
 
