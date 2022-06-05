@@ -25,6 +25,6 @@ performance_plot.py uses both inference.pkl and repeat.pkl to plot the performan
 
 ### references
 
-the resources of trained algorithms and selected environments are the same as specified in the thesis.
+The resources of trained algorithms and selected environments are the same as specified in the thesis.
 
 
